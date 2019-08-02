@@ -5,7 +5,7 @@
 
 GRID Server is a multi-purpose, bus oriented, lightweight, industrial improved, server. 
 
-It is written in Pascal Object, which kept a perfect maturity/stability in networking area due to its relative langage/compiler stability.
+It is written in Pascal Object, currently compatible in delphi and FPC (Delphi post Unicode (2009+), FPC 3.04 (Arm) and FPC 3.3+ (Desktop class OS)) 
 
 # Features
 
@@ -16,10 +16,6 @@ It is written in Pascal Object, which kept a perfect maturity/stability in netwo
 - Python Proxy : Run Python code directly on the server.
 
 # Compatibility 
-
-- For Dev : 
- - Delphi Unicode (2009+)
- - FPC 3.04 (Arm) FPC 3.3+ (Desktop class OS) 
 
 - For Features : 
 - MQTT Broker has been tested successully with
