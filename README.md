@@ -17,6 +17,11 @@ It is written in Pascal Object, which kept a perfect maturity/stability in netwo
 
 # Compatibility 
 
+- For Dev : 
+ - Delphi Unicode (2009+)
+ - FPC 3.04 (Arm) FPC 3.3+ (Desktop class OS) 
+
+- For Features : 
 - MQTT Broker has been tested successully with
   - TMS MQTT Client
   - MQTT.fx tools
