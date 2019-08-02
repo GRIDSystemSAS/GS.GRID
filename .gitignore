@@ -66,12 +66,13 @@ __recovery/
 MicroServices
 R&D
 Solutions
-Solutions\App\Cpp
-Solutions\App\Pascal\GUIApps
-Sources
+Solutions/App/Cpp
+Solutions/App/Pascal/GUIApps
 Sources/Cpp
 Sources/csharp
 Sources/python
+Sources/Pascal/ThirdPart/Python
+Sources/Pascal/ThirdPart/Synapse203
 
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat
