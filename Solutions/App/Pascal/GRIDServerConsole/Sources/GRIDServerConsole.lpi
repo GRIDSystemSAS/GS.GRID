@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="10"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <MainUnitHasCreateFormStatements Value="False"/>
+        <MainUnitHasTitleStatement Value="False"/>
+        <MainUnitHasScaledStatement Value="False"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="GRIDServerConsole"/>
+      <UseAppBundle Value="False"/>
+      <ResourceType Value="res"/>
+    </General>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <Display Use="True"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="1">
+      <Item1>
+        <PackageName Value="indylaz"/>
+      </Item1>
+    </RequiredPackages>
+    <Units Count="45">
+      <Unit0>
+        <Filename Value="GRIDServerConsole.dpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Hypervisor.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Types.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.Example.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Tests.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.Transport.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Client\ClientImplementation\GS.GRID.Client.Transport.IndyTCP.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyTCPServer.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Task.Types.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceTaskImplementation\Python\GS.GRID.Task.Python.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyUDPServer.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.BasedProtocols.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.ChatExemple.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.Informations.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.KissB.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.KissB.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\ThirdPart\MQTT\uMQTTEx.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.MQTT.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.MQTT.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.Example.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.KissB.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.Base.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.GetInfos.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.InstantPython.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.KeyValue.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.PythonConf.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ConsoleAdmin\GridServerConsole.AdminMode.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Python.Conf.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Python.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.KissB.Bus.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\Tests\GS.GRID.Server.Tests.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\Tests\GS.GRID.Server.Tests.KissB.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.FilesUtility.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.MicroService.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.MicroServices.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.mORMotWebSocketServer.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Types.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\ThirdPart\OSapi\os_api_unit.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.Users.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit44>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\..\GS.Core"/>
+      <OtherUnitFiles Value="..\..\..\..\..\..\GS.Core;..\..\..\..\..\..\GS.Bus;..\..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\Sources\Pascal\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+      <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="4">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="EExceptionProtocolNegotiation"/>
+      </Item4>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
