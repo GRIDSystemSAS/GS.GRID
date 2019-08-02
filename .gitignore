@@ -80,3 +80,4 @@ Sources/Pascal/ThirdPart/Synapse203
 modules/
 *.conf
 Solutions/App/Pascal/ProjectGroupGRID.groupproj
+*.log

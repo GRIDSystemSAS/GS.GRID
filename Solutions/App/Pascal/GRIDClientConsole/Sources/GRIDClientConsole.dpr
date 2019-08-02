@@ -38,9 +38,13 @@ program GRIDClientConsole;
 
 uses
   {$IFDEF DCC}
-  {$IFDEF MSWINDOWS}
+    {$IFDEF MSWINDOWS}
+      {$IFDEF DEBUG}
   FastMM4,
-  {$ENDIF }
+      {$ELSE}
+  ScaleMM2,
+      {$ENDIF }
+    {$ENDIF }
   {$ENDIF }
   {$IFDEF FPC}
   {$IFDEF unix}
@@ -408,6 +412,9 @@ function IsChatMode : Boolean;
       FreeAndNil(lcli);
     end;
   end;
+
+
+{ TReadThread }
 
 
 begin

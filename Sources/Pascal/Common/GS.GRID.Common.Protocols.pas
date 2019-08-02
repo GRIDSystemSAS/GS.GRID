@@ -163,7 +163,7 @@ end;
 
 function TGridProtocolManager.GetProtocolCount: Uint32;
 begin
-  result := FProtocolList.Count-1;
+  result := FProtocolList.Count;
 end;
 
 {$IFNDEF USE_GENERIC}

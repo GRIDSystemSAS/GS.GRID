@@ -95,7 +95,6 @@ begin
       FTransport.Recv(TStream(lStream));
       lStream.Position := 0;
       Result.FromStream(lStream);
-      FUserId := aUserName;
     Except
       On E : Exception do
       begin
@@ -117,6 +116,7 @@ begin
   FTransport := aTransport;
   FProto := TGRIDProtocol_ExampleProto_BasicChat.Create;
   FProtocol := FProto; //Avoid cast.
+  FUserId := 'UserOfChat'+IntToStr(NativeInt(TThread.Current.ThreadID));
 end;
 
 destructor TGRIDClientExampleChat.Destroy;

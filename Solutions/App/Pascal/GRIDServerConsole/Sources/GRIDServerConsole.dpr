@@ -40,13 +40,13 @@ program GRIDServerConsole;
 
 uses
   {$IFDEF DCC}
-  {$IFDEF MSWINDOWS}
-  {$IFDEF DEBUG}
+    {$IFDEF MSWINDOWS}
+      {$IFDEF DEBUG}
   FastMM4,
-  {$ELSE}
+      {$ELSE}
   ScaleMM2,
-  {$ENDIF }
-  {$ENDIF }
+      {$ENDIF }
+    {$ENDIF }
   {$ENDIF }
   {$IFDEF FPC}
   {$IFDEF unix}
@@ -81,10 +81,8 @@ uses
   GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike in '..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas',
   {$ENDIF }
   GS.GRID.Server.Service.Server.BasedProtocols in '..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.BasedProtocols.pas',
-  {$IFDEF DEBUG}
   GS.GRID.Server.Service.Server.Protocol.ChatExemple in '..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.ChatExemple.pas',
   GS.GRID.Common.Protocols.Example in '..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.Example.pas',
-  {$ENDIF }
   GS.GRID.Server.Service.CentralCnC.Informations in '..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.Informations.pas',
   GS.GRID.Server.Service.Server.Protocol.KissB in '..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.KissB.pas',
   uMQTTEx in '..\..\..\..\..\Sources\Pascal\ThirdPart\MQTT\uMQTTEx.pas',

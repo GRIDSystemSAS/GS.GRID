@@ -88,6 +88,7 @@ class procedure TExampleProto_BasicChat_ServerHandling.handling_Proto(
   const Server: TGRIDServiceServerBasedProtocol;
   aProtocol: TGRIDProtocol_ExampleProto_BasicChat;
   aDataStream, aResultStream : TMemoryStream);
+
 var lcontact : TGRIDProtocol_ExampleProto_BasicChat_ASK_Header;
 
     Procedure HandleConnect;
@@ -136,10 +137,6 @@ var lcontact : TGRIDProtocol_ExampleProto_BasicChat_ASK_Header;
       la := TBusClientDataRepo.Create(Server.GridBus,'CHATSERVER');
       try
         //Get activity of a room.
-
-
-        //Lock "UpdateRoom"
-
         la.GetValue(String('ROOM_'+lCon.ToRoom),lStream);
         lStream.Position := 0;
         if lStream.Size>0 then
@@ -206,7 +203,6 @@ var lcontact : TGRIDProtocol_ExampleProto_BasicChat_ASK_Header;
         FreeAndNil(lStream);
       end;
     end;
-
 
 
 
