@@ -367,7 +367,45 @@ begin
 end;
 
 procedure UserManagement_DEL(aServer : TGRIDServer);
+var l : TCNCUserConfiguration;
+    u : TCNCUser;
+    a : string;
 begin
+  l := TCNCUserConfiguration.Create;
+  try
+    //Check from file only !
+    if FileExists(CST_CNC_FILENAME_USERCONF) then
+      l.LoadFromFile(CST_CNC_FILENAME_USERCONF);
+
+
+    writeln('User deletion : ');
+    if l.UsersList.Count>0 then
+    begin
+      writeln('----------------------------------------------');
+      DisplayUserConfig;
+      writeln('----------------------------------------------');
+      writeln('Enter user name to delete : ');
+      Readln(a);
+      if l.UsersList.Get(a,u) then
+      begin
+        writeln('--> Delete "'+u.UserName+' : confirm Y/n : ');
+        readln(a);
+        if a = 'Y' then
+        begin
+          l.UsersList.Remove(u.UserName);
+          l.SaveToFile(CST_CNC_FILENAME_USERCONF);
+          writeln('user deleted.');
+        end
+        else
+          writeln('User''s list remain untouched.');
+      end
+      else
+        writeln('User "'+a+'" not found : User''s list remain untouched.');
+    end;
+  finally
+
+  end;
+
 end;
 
 
