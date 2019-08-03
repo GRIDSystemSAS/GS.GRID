@@ -1035,3 +1035,1379 @@ This application has leaked memory. The small block leaks are (excluding expecte
 277 - 308 bytes: TIdTCPClient x 1
 
 Note: Memory leak detail is logged to a text file in the same folder as this application. To disable this memory leak check, undefine "EnableMemoryLeakReporting".
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26557
+
+Current memory dump of 256 bytes starting at pointer address 7EECBC80:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 2D 13 A9 79 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 51 BB EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+77 15 00 00 B2 70 40 00 52 3E 53 00 8B 55 53 00 9C 5A 53 00 0A 2F 53 00 D2 2F 53 00 22 30 53 00
+74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 F4 10 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+29 BA 53 00 63 94 40 00 63 94 40 00 29 10 5F 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00
+00 00 00 00 18 00 00 00 AC 59 49 00 10 65 FB 60 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 EF 9A 04 9F 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 91 D9 EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 D6 24 01 00 B2 70 40 00 6E 98 52 00 4B 09 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  -  .  ©  y  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Q  ª  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+w  .  .  .  ≤  p  @  .  R  >  S  .  ã  U  S  .  ú  Z  S  .  .  /  S  .  “  /  S  .  "  0  S  .
+t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  Ù  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+)  ∫  S  .  c  î  @  .  c  î  @  .  )  .  _  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .
+.  .  .  .  .  .  .  .  ¨  Y  I  .  .  e  ˚  `  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ô  ö  .  ü  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ë  Ÿ  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ÷  $  .  .  ≤  p  @  .  n  ò  R  .  K  .  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51814
+
+Current memory dump of 256 bytes starting at pointer address 7EECBF40:
+B0 04 02 00 01 00 00 00 07 00 00 00 76 00 69 00 6E 00 63 00 65 00 6E 00 74 00 00 00 4D 13 45 14
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+D5 67 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+02 98 CC 77 18 00 00 00 B0 04 02 00 69 8E 2F 74 B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00
+62 00 65 00 6E 00 00 00 96 71 D0 8B 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 DA 67 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  v  .  i  .  n  .  c  .  e  .  n  .  t  .  .  .  M  .  E  .
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+’  g  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+.  ò  Ã  w  .  .  .  .  ∞  .  .  .  i  é  /  t  ∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .
+b  .  e  .  n  .  .  .  ñ  q  –  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ⁄  g  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26581
+
+Current memory dump of 256 bytes starting at pointer address 7EECBFF0:
+B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00 62 00 65 00 6E 00 00 00 96 71 D0 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+DA 67 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+02 98 CC 77 18 00 00 00 B0 04 02 00 39 8F 2F 74 B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00
+62 00 65 00 6E 00 00 00 C6 70 D0 8B 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 51 D1 EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 D7 FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .  b  .  e  .  n  .  .  .  ñ  q  –  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+⁄  g  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+.  ò  Ã  w  .  .  .  .  ∞  .  .  .  9  è  /  t  ∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .
+b  .  e  .  n  .  .  .  ∆  p  –  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Q  —  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ◊  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26586
+
+Current memory dump of 256 bytes starting at pointer address 7EECC0A0:
+B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00 62 00 65 00 6E 00 00 00 C6 70 D0 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 51 D1 EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+D7 FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 1C 00 00 00 B0 04 02 00 79 B6 B8 EA 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 86 49 47 15 80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 E1 67 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .  b  .  e  .  n  .  .  .  ∆  p  –  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Q  —  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+◊  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  ∞  .  .  .  y  ∂  ∏  Í  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ü  I  G  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ·  g  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26593
+
+Current memory dump of 256 bytes starting at pointer address 7EECC200:
+B0 04 02 00 01 00 00 00 07 00 00 00 76 00 69 00 6E 00 63 00 65 00 6E 00 74 00 00 00 12 73 45 14
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+42 CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 48 12 00 00 CE 70 40 00 AD 98 52 00
+39 09 54 00 54 21 5D 00 FC 40 5D 00 C2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+DD DA 53 00 18 00 00 00 00 00 00 00 87 55 57 86 B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00
+6D 00 69 00 6E 00 00 00 78 AA A8 79 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 C1 D4 EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B8 FC 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  v  .  i  .  n  .  c  .  e  .  n  .  t  .  .  .  .  s  E  .
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+B     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  H  .  .  .  Œ  p  @  .  ≠  ò  R  .
+9  .  T  .  T  !  ]  .  ¸  @  ]  .  ¬  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+›  ⁄  S  .  .  .  .  .  .  .  .  .  á  U  W  Ü  ∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .
+m  .  i  .  n  .  .  .  x  ™  ®  y  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ¡  ‘  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ∏  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51778
+
+Current memory dump of 256 bytes starting at pointer address 7EECC2B0:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 78 AA A8 79 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 C1 D4 EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+B8 FC 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 16 00 00 00 B0 04 02 00 7F B8 B8 EA 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 47 47 15 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 B1 BC EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 DD 13 00 00 B2 70 40 00 00 00 00 00 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  x  ™  ®  y  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ¡  ‘  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+∏  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  ∞  .  .  .    ∏  ∏  Í  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  G  G  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ±  º  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ›  .  .  .  ≤  p  @  .  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26569
+
+Current memory dump of 256 bytes starting at pointer address 7EECC6D0:
+B0 04 02 00 01 00 00 00 04 00 00 00 66 00 72 00 65 00 64 00 00 00 C4 6A D0 8B 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 41 C4 EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+10 0E 00 00 B2 70 40 00 13 88 5D 00 09 8C 5D 00 C2 98 5D 00 21 A4 5D 00 30 86 5D 00 30 6B 4C 00
+66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 5C 14 00 00 5C 14 00 00 CE 70 40 00 5A 8C 5D 00
+30 86 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+00 00 00 00 20 00 00 00 EC B6 59 00 61 81 05 50 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 9E 7E FA AF 80 80 80 80 00 00 00 00 21 CB EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 61 10 00 00 B2 70 40 00 88 78 56 00 E5 1E 56 00
+∞  .  .  .  .  .  .  .  .  .  .  .  f  .  r  .  e  .  d  .  .  .  ƒ  j  –  ã  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  A  ƒ  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  ≤  p  @  .  .  à  ]  .  .  å  ]  .  ¬  ò  ]  .  !  §  ]  .  0  Ü  ]  .  0  k  L  .
+f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  \  .  .  .  \  .  .  .  Œ  p  @  .  Z  å  ]  .
+0  Ü  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+.  .  .  .     .  .  .  Ï  ∂  Y  .  a  Å  .  P  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  û  ~  ˙  Ø  Ä  Ä  Ä  Ä  .  .  .  .  !  À  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  a  .  .  .  ≤  p  @  .  à  x  V  .  Â  .  V  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26562
+
+Current memory dump of 256 bytes starting at pointer address 7EECCC50:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 2E 65 D0 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+5A CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+02 98 CC 77 18 00 00 00 B0 04 02 00 FE FD 2F 74 B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00
+62 00 65 00 6E 00 00 00 01 02 D0 8B 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 5F CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  .  e  –  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+Z     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+.  ò  Ã  w  .  .  .  .  ∞  .  .  .  ˛  ˝  /  t  ∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .
+b  .  e  .  n  .  .  .  .  .  –  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  _     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51802
+
+Current memory dump of 256 bytes starting at pointer address 7EECCD00:
+B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00 62 00 65 00 6E 00 00 00 01 02 D0 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+5F CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+02 98 CC 77 18 00 00 00 B0 04 02 00 CE FE 2F 74 B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00
+62 00 65 00 6E 00 00 00 31 01 D0 8B 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 4E CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .  b  .  e  .  n  .  .  .  .  .  –  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+_     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+.  ò  Ã  w  .  .  .  .  ∞  .  .  .  Œ  ˛  /  t  ∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .
+b  .  e  .  n  .  .  .  1  .  –  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  N     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51807
+
+Current memory dump of 256 bytes starting at pointer address 7EECCDB0:
+B0 04 02 00 01 00 00 00 05 00 00 00 72 00 75 00 62 00 65 00 6E 00 00 00 31 01 D0 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 D0 B9 EC 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+4E CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+02 98 CC 77 16 00 00 00 B0 04 02 00 50 FF 2F 74 B0 04 02 00 01 00 00 00 04 00 00 00 66 00 72 00
+65 00 64 00 00 00 AF 00 D0 8B 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 E1 C2 EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 BF FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  u  .  b  .  e  .  n  .  .  .  1  .  –  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  –  π  Ï  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+N     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+.  ò  Ã  w  .  .  .  .  ∞  .  .  .  P  ˇ  /  t  ∞  .  .  .  .  .  .  .  .  .  .  .  f  .  r  .
+e  .  d  .  .  .  Ø  .  –  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ·  ¬  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ø  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51790
+
+Current memory dump of 256 bytes starting at pointer address 7EECCE60:
+B0 04 02 00 01 00 00 00 04 00 00 00 66 00 72 00 65 00 64 00 00 00 AF 00 D0 8B 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 E1 C2 EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+BF FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 16 00 00 00 B0 04 02 00 1B C4 B8 EA 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 E4 3B 47 15 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 11 BE EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AD 24 01 00 B2 70 40 00 D0 F9 F2 7E 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  f  .  r  .  e  .  d  .  .  .  Ø  .  –  ã  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ·  ¬  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+ø  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  ∞  .  .  .  .  ƒ  ∏  Í  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  ‰  ;  G  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  .  æ  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≠  $  .  .  ≤  p  @  .  –  ˘  Ú  ~  .  .  .  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51783
+
+Current memory dump of 256 bytes starting at pointer address 7EECD070:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 89 FE CF 8B 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 91 CE EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+CB FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 18 00 00 00 B0 04 02 00 39 C6 B8 EA 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 C6 39 47 15 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 A1 D0 EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 D0 FC 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  â  ˛  œ  ã  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ë  Œ  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+À  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+€  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  ∞  .  .  .  9  ∆  ∏  Í  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ∆  9  G  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  °  –  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  –  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 1983
+
+Current memory dump of 256 bytes starting at pointer address 7EF18680:
+54 48 54 00 8C 1B F3 7E 3C 1C F3 7E 01 00 00 00 00 00 00 00 47 35 B5 15 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 49 CA 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 48 12 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 E9 FD 01 00 16 20 EB 82
+54 48 54 00 6C CE EC 7E EC 8A F1 7E 00 00 00 00 00 00 00 00 E9 DF 14 7D 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 CB 07 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+T  H  T  .  å  .  Û  ~  <  .  Û  ~  .  .  .  .  .  .  .  .  G  5  µ  .  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  I     .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  È  ˝  .  .  .     Î  Ç
+T  H  T  .  l  Œ  Ï  ~  Ï  ä  Ò  ~  .  .  .  .  .  .  .  .  È  ﬂ  .  }  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  À  .  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 51785
+
+Current memory dump of 256 bytes starting at pointer address 7EF18720:
+54 48 54 00 6C CE EC 7E EC 8A F1 7E 00 00 00 00 00 00 00 00 E9 DF 14 7D 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 CB 07 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00 00 C5 DC 7B 70
+54 48 54 00 EC 1C F3 7E 6C 88 F1 7E 00 00 00 00 00 00 00 00 3A 23 84 8F 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D5 07 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00
+T  H  T  .  l  Œ  Ï  ~  Ï  ä  Ò  ~  .  .  .  .  .  .  .  .  È  ﬂ  .  }  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  À  .  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≈  ‹  {  p
+T  H  T  .  Ï  .  Û  ~  l  à  Ò  ~  .  .  .  .  .  .  .  .  :  #  Ñ  è  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ’  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 1995
+
+Current memory dump of 256 bytes starting at pointer address 7EF187C0:
+54 48 54 00 EC 1C F3 7E 6C 88 F1 7E 00 00 00 00 00 00 00 00 3A 23 84 8F 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D5 07 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00
+48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 00 00 00 00 00 00 8A A1 B1 82
+B0 04 02 00 01 00 00 00 02 00 00 00 72 00 72 00 00 00 75 5E 4E 7D 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D0 67 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+T  H  T  .  Ï  .  Û  ~  l  à  Ò  ~  .  .  .  .  .  .  .  .  :  #  Ñ  è  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ’  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .
+H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ä  °  ±  Ç
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  r  .  .  .  u  ^  N  }  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  –  g  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 2005
+
+Current memory dump of 256 bytes starting at pointer address 7EF18860:
+B0 04 02 00 01 00 00 00 02 00 00 00 72 00 72 00 00 00 75 5E 4E 7D 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D0 67 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 48 12 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 E9 FD 01 00 7D BF EA 82
+54 48 54 00 FC BF EC 7E AC C0 EC 7E 00 00 00 00 00 00 00 00 82 40 15 7D 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D7 07 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  r  .  .  .  u  ^  N  }  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  –  g  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  È  ˝  .  .  }  ø  Í  Ç
+T  H  T  .  ¸  ø  Ï  ~  ¨  ¿  Ï  ~  .  .  .  .  .  .  .  .  Ç  @  .  }  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ◊  .  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 26576
+
+Current memory dump of 256 bytes starting at pointer address 7EF18900:
+54 48 54 00 FC BF EC 7E AC C0 EC 7E 00 00 00 00 00 00 00 00 82 40 15 7D 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D7 07 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 00 00 00 00 B1 DE 7B 70
+54 48 54 00 9C 1D F3 7E 4C 8A F1 7E 01 00 00 00 00 00 00 00 4E 21 84 8F 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 E1 07 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00
+T  H  T  .  ¸  ø  Ï  ~  ¨  ¿  Ï  ~  .  .  .  .  .  .  .  .  Ç  @  .  }  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ◊  .  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ±  ﬁ  {  p
+T  H  T  .  ú  .  Û  ~  L  ä  Ò  ~  .  .  .  .  .  .  .  .  N  !  Ñ  è  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ·  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 2007
+
+Current memory dump of 256 bytes starting at pointer address 7EF189A0:
+54 48 54 00 9C 1D F3 7E 4C 8A F1 7E 01 00 00 00 00 00 00 00 4E 21 84 8F 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 E1 07 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00
+48 12 00 00 48 12 00 00 CE 70 40 00 49 99 52 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 12 00 00 00 00 00 00 00 A0 4C 37 86
+B0 04 02 00 01 00 00 00 02 00 00 00 62 00 62 00 00 00 5F B3 C8 79 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 53 CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+T  H  T  .  ú  .  Û  ~  L  ä  Ò  ~  .  .  .  .  .  .  .  .  N  !  Ñ  è  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ·  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  I  ô  R  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .
+“  ®  V  .  .  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  .  .  .  .  .  .  .  .  †  L  7  Ü
+∞  .  .  .  .  .  .  .  .  .  .  .  b  .  b  .  .  .  _  ≥  »  y  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  S     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 2017
+
+Current memory dump of 256 bytes starting at pointer address 7EF18A40:
+B0 04 02 00 01 00 00 00 02 00 00 00 62 00 62 00 00 00 5F B3 C8 79 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 53 CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+48 12 00 00 48 12 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 00 00 E9 FD 01 00 2D 6E FE 82
+B0 04 02 00 01 00 00 00 02 00 00 00 72 00 72 00 00 00 D2 91 01 7D 80 80 00 00 00 00 A1 BD F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B2 FF 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+15 60 5E 00 B3 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+∞  .  .  .  .  .  .  .  .  .  .  .  b  .  b  .  .  .  _  ≥  »  y  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  S     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  È  ˝  .  .  -  n  ˛  Ç
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  r  .  .  .  “  ë  .  }  Ä  Ä  .  .  .  .  °  Ω  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≤  ˇ  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+.  `  ^  .  ≥  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51795
+
+Current memory dump of 256 bytes starting at pointer address 7EF18AE0:
+B0 04 02 00 01 00 00 00 02 00 00 00 72 00 72 00 00 00 D2 91 01 7D 80 80 00 00 00 00 A1 BD F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B2 FF 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+15 60 5E 00 B3 67 5E 00 24 72 5E 00 F4 72 5E 00 66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76
+64 10 00 00 64 10 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 B3 67 5E 00 24 72 5E 00 F4 72 5E 00
+66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76 02 98 CC 77 14 00 00 00 54 48 54 00 86 AB ED EA
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 79 54 12 15 00 00 00 00 E1 B9 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 DE FC 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  r  .  .  .  “  ë  .  }  Ä  Ä  .  .  .  .  °  Ω  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≤  ˇ  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+.  `  ^  .  ≥  g  ^  .  $  r  ^  .  Ù  r  ^  .  f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v
+d  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  ≥  g  ^  .  $  r  ^  .  Ù  r  ^  .
+f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v  .  ò  Ã  w  .  .  .  .  T  H  T  .  Ü  ´  Ì  Í
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  y  T  .  .  .  .  .  .  ·  π  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ﬁ  ¸  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 51821
+
+Current memory dump of 256 bytes starting at pointer address 7EF18D60:
+54 48 54 00 EC B2 F1 7E CC B4 F1 7E 01 00 00 00 00 00 00 00 69 DB 14 7D 00 00 00 00 C1 B6 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 BA FC 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00
+66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 14 00 00 00 54 48 54 00 74 7C FC EA
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 8B 83 03 15 00 00 00 00 C1 A7 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 D8 10 00 00 B2 70 40 00 65 38 53 00 D4 7C 53 00
+3E 83 53 00 20 B0 56 00 ED A1 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+T  H  T  .  Ï  ≤  Ò  ~  Ã  ¥  Ò  ~  .  .  .  .  .  .  .  .  i  €  .  }  .  .  .  .  ¡  ∂  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ∫  ¸  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .
+f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  T  H  T  .  t  |  ¸  Í
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ã  É  .  .  .  .  .  .  ¡  ß  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ÿ  .  .  .  ≤  p  @  .  e  8  S  .  ‘  |  S  .
+>  É  S  .     ∞  V  .  Ì  °  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 51797
+
+Current memory dump of 256 bytes starting at pointer address 7EF18FE0:
+54 48 54 00 0C CD EC 7E BC CD EC 7E 00 00 00 00 00 00 00 00 CE 60 9F 14 00 00 00 00 E1 91 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 35 0B 00 00 B2 70 40 00 31 6A 55 00 D7 94 56 00
+FE A6 56 00 26 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 32 A4 56 00 11 B4 53 00 DD DA 53 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 12 00 00 00 B0 04 02 00 70 45 D7 D8
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 8F BA 28 27 80 80 00 00 00 00 C1 93 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 58 0B 00 00 B2 70 40 00 46 52 53 00 4B 69 53 00
+9A 25 53 00 21 2A 53 00 DC 7B 53 00 18 83 53 00 09 95 56 00 FE A6 56 00 26 A5 56 00 FB B3 53 00
+T  H  T  .  .  Õ  Ï  ~  º  Õ  Ï  ~  .  .  .  .  .  .  .  .  Œ  `  ü  .  .  .  .  .  ·  ë  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  5  .  .  .  ≤  p  @  .  1  j  U  .  ◊  î  V  .
+˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  2  §  V  .  .  ¥  S  .  ›  ⁄  S  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  ∞  .  .  .  p  E  ◊  ÿ
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  è  ∫  (  '  Ä  Ä  .  .  .  .  ¡  ì  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  X  .  .  .  ≤  p  @  .  F  R  S  .  K  i  S  .
+ö  %  S  .  !  *  S  .  ‹  {  S  .  .  É  S  .  .  ï  V  .  ˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 26588
+
+Current memory dump of 256 bytes starting at pointer address 7EF1ADE0:
+54 48 54 00 0C C2 EC 7E AC B1 F1 7E 01 00 00 00 00 00 00 00 7A 1D 15 7D 00 00 00 00 41 AA F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 64 0C 00 00 B2 70 40 00 0A 3A 5B 00 4D 3F 5E 00
+D7 05 5E 00 8C 3B 5E 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+E0 1C 00 00 E0 1C 00 00 CE 70 40 00 63 94 40 00 86 E6 5A 00 B8 56 5B 00 11 B4 53 00 DD DA 53 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 12 00 00 00 B0 04 02 00 06 EE 12 D9
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 F9 11 ED 26 80 80 00 00 00 00 01 90 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 64 10 00 00 B2 70 40 00 9D 78 56 00 E5 1E 56 00
+92 F3 55 00 C3 EB 55 00 80 71 55 00 F5 73 55 00 E5 95 56 00 FE A6 56 00 26 A5 56 00 FB B3 53 00
+T  H  T  .  .  ¬  Ï  ~  ¨  ±  Ò  ~  .  .  .  .  .  .  .  .  z  .  .  }  .  .  .  .  A  ™  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  d  .  .  .  ≤  p  @  .  .  :  [  .  M  ?  ^  .
+◊  .  ^  .  å  ;  ^  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+‡  .  .  .  ‡  .  .  .  Œ  p  @  .  c  î  @  .  Ü  Ê  Z  .  ∏  V  [  .  .  ¥  S  .  ›  ⁄  S  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  ∞  .  .  .  .  Ó  .  Ÿ
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ˘  .  Ì  &  Ä  Ä  .  .  .  .  .  ê  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  d  .  .  .  ≤  p  @  .  ù  x  V  .  Â  .  V  .
+í  Û  U  .  √  Î  U  .  Ä  q  U  .  ı  s  U  .  Â  ï  V  .  ˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26598
+
+Current memory dump of 256 bytes starting at pointer address 7EF1B1A0:
+B0 04 02 00 01 00 00 00 02 00 00 00 62 00 62 00 00 00 AE 1E B5 79 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 61 CA 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 F4 10 00 00 CE 70 40 00 63 94 40 00 8B 55 53 00 9C 5A 53 00 0A 2F 53 00 D2 2F 53 00
+22 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 14 00 00 00 B0 04 02 00 90 F1 5D FC
+54 48 54 00 4C BF EC 7E 2C B4 F1 7E 01 00 00 00 00 00 00 00 6F 0E A2 03 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 72 CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+∞  .  .  .  .  .  .  .  .  .  .  .  b  .  b  .  .  .  Æ  .  µ  y  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  a     .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  Ù  .  .  .  Œ  p  @  .  c  î  @  .  ã  U  S  .  ú  Z  S  .  .  /  S  .  “  /  S  .
+"  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  .  .  .  ∞  .  .  .  ê  Ò  ]  ¸
+T  H  T  .  L  ø  Ï  ~  ,  ¥  Ò  ~  .  .  .  .  .  .  .  .  o  .  ¢  .  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  r     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 51809
+
+Current memory dump of 256 bytes starting at pointer address 7EF1B240:
+54 48 54 00 4C BF EC 7E 2C B4 F1 7E 01 00 00 00 00 00 00 00 6F 0E A2 03 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 72 CA 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+48 12 00 00 64 10 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 E9 FD 01 00 4F 94 FE 82
+B0 04 02 00 01 00 00 00 03 00 00 00 7A 00 61 00 7A 00 00 00 B0 6B 01 7D 00 00 00 00 21 B6 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 BD FF 00 00 B2 70 40 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+T  H  T  .  L  ø  Ï  ~  ,  ¥  Ò  ~  .  .  .  .  .  .  .  .  o  .  ¢  .  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  r     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+H  .  .  .  d  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  È  ˝  .  .  O  î  ˛  Ç
+∞  .  .  .  .  .  .  .  .  .  .  .  z  .  a  .  z  .  .  .  ∞  k  .  }  .  .  .  .  !  ∂  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ω  ˇ  .  .  ≤  p  @  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51826
+
+Current memory dump of 256 bytes starting at pointer address 7EF1B2E0:
+B0 04 02 00 01 00 00 00 03 00 00 00 7A 00 61 00 7A 00 00 00 B0 6B 01 7D 00 00 00 00 21 B6 F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 BD FF 00 00 B2 70 40 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+64 10 00 00 64 10 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 00 00 E9 FD 01 00 00 B3 75 7F
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 FF 4C 8A 80 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 6B CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+∞  .  .  .  .  .  .  .  .  .  .  .  z  .  a  .  z  .  .  .  ∞  k  .  }  .  .  .  .  !  ∂  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ω  ˇ  .  .  ≤  p  @  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+d  .  .  .  d  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  È  ˝  .  .  .  ≥  u  
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ˇ  L  ä  Ä  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  k     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51819
+
+Current memory dump of 256 bytes starting at pointer address 7EF1B420:
+B0 04 02 00 01 00 00 00 02 00 00 00 62 00 62 00 00 00 A9 B9 B4 79 80 80 00 00 00 00 E0 71 F1 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 77 CA 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+48 12 00 00 64 10 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 D1 67 5E 00 24 72 5E 00 F4 72 5E 00
+66 76 5E 00 69 80 5E 00 1F 10 5F 00 3D 34 B1 76 02 98 CC 77 14 00 00 00 54 48 54 00 96 29 87 74
+B0 04 02 00 01 00 00 00 03 00 00 00 7A 00 61 00 7A 00 00 00 69 D6 78 8B 00 00 00 00 41 8C F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AE FC 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+∞  .  .  .  .  .  .  .  .  .  .  .  b  .  b  .  .  .  ©  π  ¥  y  Ä  Ä  .  .  .  .  ‡  q  Ò  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  w     .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+H  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  —  g  ^  .  $  r  ^  .  Ù  r  ^  .
+f  v  ^  .  i  Ä  ^  .  .  .  _  .  =  4  ±  v  .  ò  Ã  w  .  .  .  .  T  H  T  .  ñ  )  á  t
+∞  .  .  .  .  .  .  .  .  .  .  .  z  .  a  .  z  .  .  .  i  ÷  x  ã  .  .  .  .  A  å  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Æ  ¸  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 51831
+
+Current memory dump of 256 bytes starting at pointer address 7EF1B4C0:
+B0 04 02 00 01 00 00 00 03 00 00 00 7A 00 61 00 7A 00 00 00 69 D6 78 8B 00 00 00 00 41 8C F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AE FC 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 48 12 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00
+66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 14 00 00 00 54 48 54 00 C8 A3 FC EA
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 37 5C 03 15 00 00 00 00 41 BE F1 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 E3 FC 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00
+∞  .  .  .  .  .  .  .  .  .  .  .  z  .  a  .  z  .  .  .  i  ÷  x  ã  .  .  .  .  A  å  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Æ  ¸  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .
+f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  T  H  T  .  »  £  ¸  Í
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  7  \  .  .  .  .  .  .  A  æ  Ò  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  „  ¸  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 1988
+
+Current memory dump of 256 bytes starting at pointer address 7EF31B80:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 7B CB 4C 7D 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 70 CA F2 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+C9 07 00 00 B2 70 40 00 27 A2 4B 00 2E 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 18 00 00 00 00 00 00 00 54 35 B3 82 B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00
+6D 00 69 00 6E 00 00 00 AB CA 4C 7D 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 70 CA F2 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 D0 07 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  {  À  L  }  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  p     Ú  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+…  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+.  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  T  5  ≥  Ç  ∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .
+m  .  i  .  n  .  .  .  ´     L  }  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  p     Ú  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  –  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 1993
+
+Current memory dump of 256 bytes starting at pointer address 7EF31C30:
+B0 04 02 00 01 00 00 00 05 00 00 00 61 00 64 00 6D 00 69 00 6E 00 00 00 AB CA 4C 7D 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 70 CA F2 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+D0 07 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 16 00 00 00 00 00 00 00 EE 35 B3 82 B0 04 02 00 01 00 00 00 04 00 00 00 66 00 72 00
+65 00 64 00 00 00 11 CA 4C 7D 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 70 CA F2 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 DC 07 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00
+∞  .  .  .  .  .  .  .  .  .  .  .  a  .  d  .  m  .  i  .  n  .  .  .  ´     L  }  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  p     Ú  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+–  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+.  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  Ó  5  ≥  Ç  ∞  .  .  .  .  .  .  .  .  .  .  .  f  .  r  .
+e  .  d  .  .  .  .     L  }  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  p     Ú  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ‹  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 2000
+
+Current memory dump of 256 bytes starting at pointer address 7EF31CE0:
+B0 04 02 00 01 00 00 00 04 00 00 00 66 00 72 00 65 00 64 00 00 00 11 CA 4C 7D 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 00 00 00 00 70 CA F2 7E 00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00
+DC 07 00 00 B2 70 40 00 27 A2 4B 00 13 50 54 00 6D 4F 54 00 42 52 54 00 19 53 54 00 D2 A8 56 00
+16 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 48 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 1C 00 00 00 00 00 00 00 B0 36 B3 82 B0 04 02 00 01 00 00 00 07 00 00 00 76 00 69 00
+6E 00 63 00 65 00 6E 00 74 00 00 00 4F C9 4C 7D 80 80 80 80 80 80 80 80 00 00 00 00 31 21 F3 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A0 13 00 00 B2 70 40 00 00 00 00 00 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  f  .  r  .  e  .  d  .  .  .  .     L  }  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  p     Ú  ~  .  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .
+‹  .  .  .  ≤  p  @  .  '  ¢  K  .  .  P  T  .  m  O  T  .  B  R  T  .  .  S  T  .  “  ®  V  .
+.  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  H  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  ∞  6  ≥  Ç  ∞  .  .  .  .  .  .  .  .  .  .  .  v  .  i  .
+n  .  c  .  e  .  n  .  t  .  .  .  O  …  L  }  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  1  !  Û  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  †  .  .  .  ≤  p  @  .  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+545013 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][177]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56A516 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Initialize][200]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 2012
+
+Current memory dump of 256 bytes starting at pointer address 7EF31D90:
+B0 04 02 00 01 00 00 00 07 00 00 00 76 00 69 00 6E 00 63 00 65 00 6E 00 74 00 00 00 4F C9 4C 7D
+80 80 80 80 80 80 80 80 00 00 00 00 31 21 F3 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+A0 13 00 00 B2 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 F4 10 00 00 64 10 00 00 CE 70 40 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 1E 00 00 00 E9 FD 01 00 3F 32 76 7F 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 C0 CD 89 80 80 80 80 80 80 80 00 00 00 00 51 1A F3 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 8C 13 00 00 B2 70 40 00 52 3E 53 00 8B 55 53 00
+∞  .  .  .  .  .  .  .  .  .  .  .  v  .  i  .  n  .  c  .  e  .  n  .  t  .  .  .  O  …  L  }
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  1  !  Û  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+†  .  .  .  ≤  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ù  .  .  .  d  .  .  .  Œ  p  @  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  È  ˝  .  .  ?  2  v    |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ¿  Õ  â  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Q  .  Û  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  å  .  .  .  ≤  p  @  .  R  >  S  .  ã  U  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 51773
+
+Current memory dump of 256 bytes starting at pointer address 7EF56410:
+54 48 54 00 BC C2 EC 7E 7C D0 EC 7E 01 00 00 00 00 00 00 00 05 03 11 7D 00 00 00 00 D1 64 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B3 03 00 00 B2 70 40 00 BF 72 5D 00 FB B3 53 00
+DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+B8 0C 00 00 B8 0C 00 00 CE 70 40 00 63 94 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 14 00 00 00 10 68 5D 00 33 F1 6F 4F
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 CC 0E 90 B0 00 00 00 00 51 80 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B4 03 00 00 B2 70 40 00 7E 6A 5D 00 BF 72 5D 00
+FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00
+T  H  T  .  º  ¬  Ï  ~  |  –  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  }  .  .  .  .  —  d  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≥  .  .  .  ≤  p  @  .  ø  r  ]  .  ˚  ≥  S  .
+›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+∏  .  .  .  ∏  .  .  .  Œ  p  @  .  c  î  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+=  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .  .  h  ]  .  3  Ò  o  O
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ã  .  ê  ∞  .  .  .  .  Q  Ä  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ¥  .  .  .  ≤  p  @  .  ~  j  ]  .  ø  r  ]  .
+˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 26552
+
+Current memory dump of 256 bytes starting at pointer address 7EF58530:
+54 48 54 00 8C BC EC 7E 5C CC EC 7E 01 00 00 00 00 00 00 00 1A EF CC 79 00 00 00 00 B1 8E F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 F8 05 00 00 B2 70 40 00 06 52 53 00 43 48 53 00
+F6 7F 53 00 15 2D 54 00 C7 96 58 00 DB D0 5D 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+C8 1B 00 00 64 10 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 63 94 40 00 63 94 40 00
+63 94 40 00 29 10 5F 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 14 00 00 00 F0 FC 52 00 EB DE 2F EB
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 14 21 D0 14 00 00 00 00 D1 87 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 6F 05 00 00 B2 70 40 00 AF 2C 54 00 C7 96 58 00
+DB D0 5D 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+T  H  T  .  å  º  Ï  ~  \  Ã  Ï  ~  .  .  .  .  .  .  .  .  .  Ô  Ã  y  .  .  .  .  ±  é  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ¯  .  .  .  ≤  p  @  .  .  R  S  .  C  H  S  .
+ˆ    S  .  .  -  T  .  «  ñ  X  .  €  –  ]  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+»  .  .  .  d  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  c  î  @  .  c  î  @  .
+c  î  @  .  )  .  _  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .    ¸  R  .  Î  ﬁ  /  Î
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  !  –  .  .  .  .  .  —  á  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  o  .  .  .  ≤  p  @  .  Ø  ,  T  .  «  ñ  X  .
+€  –  ]  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+4BA227 [System.Classes.pas][System.Classes][Classes.TStringStream.GetDataString][9692]
+54502E [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUser.LoadFromStream][178]
+544F6D [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserList.LoadFromStream][158]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 26574
+
+Current memory dump of 256 bytes starting at pointer address 7EF59250:
+B0 04 02 00 01 00 00 00 02 00 00 00 72 00 72 00 00 00 84 5B 75 8B 80 80 00 00 00 00 90 25 F5 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 C4 67 00 00 B2 70 40 00 42 52 54 00 19 53 54 00
+D2 A8 56 00 DB AF 56 00 7C 1F 53 00 67 A2 56 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+48 12 00 00 F4 10 00 00 CE 70 40 00 63 94 40 00 8B 55 53 00 9C 5A 53 00 0A 2F 53 00 D2 2F 53 00
+22 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 14 00 00 00 B0 04 02 00 A3 6F 61 FC
+54 48 54 00 DC C6 EC 7E 5C 92 F5 7E 00 00 00 00 00 00 00 00 5C 90 9E 03 00 00 00 00 D1 82 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 F1 25 01 00 B2 70 40 00 38 45 53 00 DC 7D 53 00
+08 B2 53 00 79 3F 5D 00 18 2B 54 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+∞  .  .  .  .  .  .  .  .  .  .  .  r  .  r  .  .  .  Ñ  [  u  ã  Ä  Ä  .  .  .  .  ê  %  ı  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ƒ  g  .  .  ≤  p  @  .  B  R  T  .  .  S  T  .
+“  ®  V  .  €  Ø  V  .  |  .  S  .  g  ¢  V  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+H  .  .  .  Ù  .  .  .  Œ  p  @  .  c  î  @  .  ã  U  S  .  ú  Z  S  .  .  /  S  .  “  /  S  .
+"  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  .  .  .  ∞  .  .  .  £  o  a  ¸
+T  H  T  .  ‹  ∆  Ï  ~  \  í  ı  ~  .  .  .  .  .  .  .  .  \  ê  û  .  .  .  .  .  —  Ç  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ò  %  .  .  ≤  p  @  .  8  E  S  .  ‹  }  S  .
+.  ≤  S  .  y  ?  ]  .  .  +  T  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1248, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+545242 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.readconf][224]
+545319 [GS.GRID.Server.Service.CentralCnC.Users.pas][GS.GRID.Server.Service.CentralCnC.Users][Grid.Server.Service.Centralcnc.Users.TCNCUserConfiguration.LoadFromFile][241]
+56A8D2 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.InternalUserConfiguration][234]
+56AFDB [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming][326]
+531F7C [GS.Bus.pas][GS.Bus][Bus.BusProcessMessages$qqrpxp23Gs.Bus.TBusClientReaderxixp22Gs.Bus.TBusEnvelopList][921]
+56A267 [GS.GRID.Server.Service.CentralCnC.pas][GS.GRID.Server.Service.CentralCnC][Grid.Server.Service.Centralcnc.TCustomGRIDServiceCentralCnC.Execute][165]
+53B406 [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][434]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: TCNCUser
+
+The allocation number is: 26564
+
+Current memory dump of 256 bytes starting at pointer address 7EF592F0:
+54 48 54 00 DC C6 EC 7E 5C 92 F5 7E 00 00 00 00 00 00 00 00 5C 90 9E 03 00 00 00 00 D1 82 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 F1 25 01 00 B2 70 40 00 38 45 53 00 DC 7D 53 00
+08 B2 53 00 79 3F 5D 00 18 2B 54 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+5C 15 00 00 64 10 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 B0 04 02 00 68 84 0B F9
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 97 7B F4 06 00 00 00 00 D1 96 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 47 06 00 00 B2 70 40 00 50 4F 53 00 5B 6B 53 00
+4E 6D 53 00 EF 47 53 00 F6 7F 53 00 2F 3E 5D 00 9F 2C 54 00 C7 96 58 00 DC 3A 5E 00 FB B3 53 00
+T  H  T  .  ‹  ∆  Ï  ~  \  í  ı  ~  .  .  .  .  .  .  .  .  \  ê  û  .  .  .  .  .  —  Ç  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ò  %  .  .  ≤  p  @  .  8  E  S  .  ‹  }  S  .
+.  ≤  S  .  y  ?  ]  .  .  +  T  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+\  .  .  .  d  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ∞  .  .  .  h  Ñ  .  ˘
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ó  {  Ù  .  .  .  .  .  —  ñ  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  G  .  .  .  ≤  p  @  .  P  O  S  .  [  k  S  .
+N  m  S  .  Ô  G  S  .  ˆ    S  .  /  >  ]  .  ü  ,  T  .  «  ñ  X  .  ‹  :  ^  .  ˚  ≥  S  .
+
+--------------------------------2019/8/3 16:04:52--------------------------------
+This application has leaked memory. The small block leaks are (excluding expected leaks registered by pointer):
+
+13 - 20 bytes: TCNCUser x 12, UnicodeString x 8
+21 - 36 bytes: UnicodeString x 16
+
+Note: Memory leak detail is logged to a text file in the same folder as this application. To disable this memory leak check, undefine "EnableMemoryLeakReporting".

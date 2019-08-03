@@ -297,7 +297,27 @@ begin
 end;
 
 procedure DisplayUserConfig;
+var l : TCNCUserConfiguration;
+    u : TCNCUser;
+    i : integer;
 begin
+  l := TCNCUserConfiguration.Create;
+  try
+    //Check from file only !
+    if FileExists(CST_CNC_FILENAME_USERCONF) then
+      l.LoadFromFile(CST_CNC_FILENAME_USERCONF);
+
+    writeln('User List : '+IntToStr(l.UsersList.Count)+' user(s).');
+    writeln('number -- User Name ');
+    for I := 0 to l.UsersList.Count-1 do
+    begin
+      u := l.UsersList[i];
+      writeln(format('%d   -- %s',[i,u.UserName]));
+    end;
+  finally
+    FreeAndNil(l);
+  end;
+
 end;
 
 procedure UserManagement_ADD(aServer : TGRIDServer);
