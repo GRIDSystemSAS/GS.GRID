@@ -66,6 +66,7 @@ Const
 
   CST_CHANNELNAME_CNC_AUTH_GLOBAL         = '.GRIDServer.System.Auth';
   CST_CHANNELNAME_CNC_PYTHONCONFUPDATE    = '.GRIDServer.System.PythonConfUpdate';
+  CST_CHANNELNAME_CNC_USERCONFUPDATE      = '.GRIDServer.System.UserConfUpdate';
 
   //Repo
   CST_BUSDATAREPO_SERVERINFO = 'ServerInfo';

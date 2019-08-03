@@ -99,12 +99,13 @@ protected
   FLogChannelClient : TBusClientReader;
   FAuthClient : TBusClientReader;
   FPythonUpdate : TBusClientReader;
+  FUsrUpdate : TBusClientReader;
   FFileLog : TextFile;
 
   procedure OnLogIncoming(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop); Virtual;
   procedure OnAuthIncoming(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop); Virtual;
   procedure OnPythonConfUpdateIncoming(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop); Virtual;
-
+  procedure OnUserConfUpdateIncoming(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop); Virtual;
 public
   procedure Initialize; Override;
   Procedure Execute; Override;
@@ -152,11 +153,12 @@ begin
   //Sending info into Bus KeyVal db.
   PublishCNCInfo;
 
-  setlength(cl,4);
-  cl[0] := FAuthClient;
-  cl[1] := FPythonUpdate;
+  setlength(cl,5);
+  cl[0] := FLogChannelClient;
+  cl[1] := FAuthClient;
   cl[2] := FGlobalInstructionChannel;
-  cl[3] := FLogChannelClient;
+  cl[3] := FUsrUpdate;
+  cl[4] := FPythonUpdate;
 
   while Not(MasterThread.Terminated) do
   begin
@@ -175,6 +177,7 @@ begin
   FreeAndNil(FLogChannelClient);
   FreeAndNil(FAuthClient);
   FreeAndNil(FPythonUpdate);
+  FreeAndNil(FUsrUpdate);
   FreeAndNil(FUserConf);
   FreeAndNil(FInfo);
   TGRIDPython.Clean;
@@ -190,6 +193,7 @@ begin
 
   FLogChannelClient := FGridBus.Subscribe(CST_CHANNELNAME_LOGROOT,OnLogIncoming);
   FPythonUpdate := FGridBus.Subscribe(CST_CHANNELNAME_CNC_PYTHONCONFUPDATE,OnPythonConfUpdateIncoming);
+  FUsrUpdate := FGridBus.Subscribe(CST_CHANNELNAME_CNC_USERCONFUPDATE,OnUserConfUpdateIncoming);
   FAuthClient := FGridBus.Subscribe(CST_CHANNELNAME_CNC_AUTH_GLOBAL,OnAuthIncoming);
 
   //Userconf.
@@ -226,7 +230,9 @@ begin
   if FileExists(CST_CNC_FILENAME_USERCONF) then
   begin
     try
+      log('Loading User configuration file...',ClassName,'CNC');
       FUserConf.LoadFromFile(CST_CNC_FILENAME_USERCONF);
+      log(Format('%d user(s) registered',[FUserConf.UsersList.Count]),ClassName,'CNC');
     Except
       On E : Exception do
         log('User configuration not properly initialized ('+E.Message+')',ClassName)
@@ -311,6 +317,13 @@ procedure TCustomGRIDServiceCentralCnC.OnPythonConfUpdateIncoming(
 begin
   //Python file configuration has been modify : Update conf now.
   InternalInstantPythonConfiguration;
+end;
+
+procedure TCustomGRIDServiceCentralCnC.OnUserConfUpdateIncoming(
+  Sender: TBusSystem; aReader: TBusClientReader; var Packet: TBusEnvelop);
+begin
+  //Python file configuration has been modify : Update conf now.
+  InternalUserConfiguration;
 end;
 
 procedure TCustomGRIDServiceCentralCnC.PublishCNCInfo;

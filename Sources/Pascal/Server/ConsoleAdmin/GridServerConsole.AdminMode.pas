@@ -37,7 +37,8 @@ uses classes, sysutils,
      GS.GRID.Server,
      GS.GRID.Server.Service.Types,
      GS.GRID.Server.Service.CentralCnC,
-     GS.GRID.Server.Python.Conf;
+     GS.GRID.Server.Python.Conf,
+     GS.GRID.Server.Service.CentralCnC.Users;
 
 Procedure ConsoleAdminProcess(aServer : TGRIDServer);
 
@@ -98,13 +99,19 @@ begin
   end;
 end;
 
-procedure NotifyCNC(aServer : TGridServer);
+procedure NotifyCNCPython(aServer : TGridServer);
 var l : TBusMessage;
 begin
   //No need any data, message incomming will trig.
   aServer.GridBus.Send(l,CST_CHANNELNAME_CNC_PYTHONCONFUPDATE);
 end;
 
+procedure NotifyCNCUsr(aServer : TGridServer);
+var l : TBusMessage;
+begin
+  //No need any data, message incomming will trig.
+  aServer.GridBus.Send(l,CST_CHANNELNAME_CNC_USERCONFUPDATE);
+end;
 
 procedure PythonManagement_ADD(aServer : TGridServer);
 var li,o : TCNCPythonConfigurationItem;
@@ -149,7 +156,7 @@ begin
    if trim(l.DefaultPythonConfId)='' then
      l.DefaultPythonConfId := a+'.'+b;
    l.SaveToFile(CST_CNC_FILENAME_PYTHONCONF);
-   NotifyCNC(aServer);
+   NotifyCNCPython(aServer);
   finally
     FreeAndNil(l);
   end;
@@ -190,7 +197,7 @@ begin
         l.PythonConfigurations.Remove(ia);
         writeln('configuration removed.');
         l.SaveToFile(CST_CNC_FILENAME_PYTHONCONF);
-        NotifyCNC(aServer);
+        NotifyCNCPython(aServer);
         writeln('python configuration updated.');
       end;
     end;
@@ -231,7 +238,7 @@ begin
       begin
         l.DefaultPythonConfId := l.PythonConfigurations[ia].key;
         l.SaveToFile(CST_CNC_FILENAME_PYTHONCONF);
-        NotifyCNC(aServer);
+        NotifyCNCPython(aServer);
         writeln('python configuration updated.');
       end;
     end;
@@ -294,7 +301,49 @@ begin
 end;
 
 procedure UserManagement_ADD(aServer : TGRIDServer);
+var l : TCNCUserConfiguration;
+    u : TCNCUser;
+    a,b,c : String;
 begin
+  writeln('Enter user name');
+  Readln(a);
+  writeln('enter security password');
+  Readln(b);
+  writeln('is accredited ? ("1")');
+  Readln(c);
+
+  l := TCNCUserConfiguration.Create;
+  try
+    //Check from file only !
+    if FileExists(CST_CNC_FILENAME_USERCONF) then
+      l.LoadFromFile(CST_CNC_FILENAME_USERCONF);
+
+    a := trim(a);
+    b := trim(b);
+    c := trim(c);
+
+    if l.UsersList.Get(a,u) then
+    begin
+      Writeln('Users "'+a+'" already exists. Abort.');
+      Exit;
+    end;
+
+    u := TCNCUser.Create;
+    u.UserName := trim(a);
+    u.Password := trim(b);
+    u.Aggreement := c = '1';
+
+    l.UsersList.Add(a,u);
+
+    l.SaveToFile(CST_CNC_FILENAME_USERCONF);
+
+    writeln('User "'+a+'" added.');
+
+    NotifyCNCusr(aServer);
+  finally
+    FreeAndNil(l);
+  end;
+
 end;
 
 procedure UserManagement_DEL(aServer : TGRIDServer);
