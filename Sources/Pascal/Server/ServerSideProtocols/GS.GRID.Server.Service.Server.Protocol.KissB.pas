@@ -141,6 +141,10 @@ begin
   lCon.Load(aDataStream,aProtocol.ProtocolNativeFormat);
 
   Server.Log('User "'+aUser.ClientId+'" : Ask for agreement CNC...',ClassName);
+
+//  FCNCClient := GridBus.Subscribe(CST_CHANNELNAME_CNC_AUTH_GLOBAL+CST_CHANNELNAME_SEPARATOR+ClassName+CST_CHANNELNAME_SEPARATOR+ServiceID,nil);
+//  FCNCClient.Event := GridBus.GetNewEvent;
+
   lCnc := Server.CNCAuth(aUser.ClientId,lCon.UserName,lCon.Password);
   Server.Log('User "'+aUser.ClientId+'" : Got Agreement Message',ClassName);
 

@@ -348,3 +348,690 @@ This application has leaked memory. The small block leaks are (excluding expecte
 21 - 36 bytes: UnicodeString x 5
 
 Note: Memory leak detail is logged to a text file in the same folder as this application. To disable this memory leak check, undefine "EnableMemoryLeakReporting".
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 52
+
+This block was allocated by thread 0x16F0, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5AF34E [IdStackWindows.pas][IdStackWindows][GetLocalAddressesByAdaptersAddresses][1411]
+5AF7D2 [IdStackWindows.pas][IdStackWindows][TIdStackWindows.GetLocalAddressList][1620]
+5B3A5F [IdStack.pas][IdStack][TIdStack.GetLocalAddresses][679]
+5E282D [GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas][GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike][Grid.Server.Service.Server.Indyudpserver.Sddplike.TGRIDService_IndySSDPLike.GetLocalGridServerIP][114]
+5E2EFC [GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas][GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike][Grid.Server.Service.Server.Indyudpserver.Sddplike.TGRIDService_IndySSDPLike.PerfomSSDPLikeProcess][218]
+5E40E9 [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.OnIdUDPServerUDPRead][221]
+5E0628 [IdUDPServer.pas][IdUDPServer][TIdUDPServer.DoUDPRead][275]
+5E0B28 [IdUDPServer.pas][IdUDPServer][TIdUDPListenerThread.UDPRead][468]
+5D8630 [IdThread.pas][IdThread][TIdThread.Execute][428]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 6678590
+
+Current memory dump of 256 bytes starting at pointer address 7EA05CF0:
+B0 04 02 00 01 00 00 00 0C 00 00 00 31 00 39 00 32 00 2E 00 31 00 36 00 38 00 2E 00 31 00 2E 00
+31 00 36 00 00 00 4C CE 1C 79 80 80 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 F1 0F A0 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 38 0D 63 00 21 71 40 00 76 DA 40 00 96 AC 57 00
+C6 D1 57 00 77 F4 57 00 8A 97 58 00 8F 30 54 00 13 DF 5D 00 1E B4 5D 00 30 6B 4C 00 66 B1 40 00
+D0 18 00 00 BC 08 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 33 00 00 00 00 00 00 00 3F 33 C2 82
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 C0 CC 3D 7D 80 00 00 00 00 71 05 A0 7E
+∞  .  .  .  .  .  .  .  .  .  .  .  1  .  9  .  2  .  .  .  1  .  6  .  8  .  .  .  1  .  .  .
+1  .  6  .  .  .  L  Œ  .  y  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Ò  .  †  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  8  .  c  .  !  q  @  .  v  ⁄  @  .  ñ  ¨  W  .
+∆  —  W  .  w  Ù  W  .  ä  ó  X  .  è  0  T  .  .  ﬂ  ]  .  .  ¥  ]  .  0  k  L  .  f  ±  @  .
+–  .  .  .  º  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  3  .  .  .  .  .  .  .  ?  3  ¬  Ç
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ¿  Ã  =  }  Ä  .  .  .  .  q  .  †  ~
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 52
+
+This block was allocated by thread 0x16F0, and the stack trace (return addresses) at the time was:
+407121 [System.pas][System][@ReallocMem$qqrrpvi][4983]
+40DA76 [System.pas][System][@DynArraySetLength$qqrv][36033]
+4B6BB5 [System.Classes.pas][System.Classes][Classes.TStringList.AddObject][7235]
+5E282D [GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas][GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike][Grid.Server.Service.Server.Indyudpserver.Sddplike.TGRIDService_IndySSDPLike.GetLocalGridServerIP][114]
+5E2EFC [GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas][GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike][Grid.Server.Service.Server.Indyudpserver.Sddplike.TGRIDService_IndySSDPLike.PerfomSSDPLikeProcess][218]
+5E40E9 [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.OnIdUDPServerUDPRead][221]
+5E0628 [IdUDPServer.pas][IdUDPServer][TIdUDPServer.DoUDPRead][275]
+5E0B28 [IdUDPServer.pas][IdUDPServer][TIdUDPListenerThread.UDPRead][468]
+5D8630 [IdThread.pas][IdThread][TIdThread.Execute][428]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+
+The block is currently used for an object of class: Unknown
+
+The allocation number is: 6678597
+
+Current memory dump of 256 bytes starting at pointer address 7EA063B0:
+01 00 00 00 04 00 00 00 FC 5C A0 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 AC E2 DD 8B 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 F1 1E A0 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 34 1B 67 00 21 71 40 00 76 DA 40 00 24 91 53 00
+0A 5A 53 00 0A 2F 53 00 D2 2F 53 00 22 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+BC 08 00 00 BC 08 00 00 CE 70 40 00 0A 2F 53 00 D2 2F 53 00 22 30 53 00 74 7C 53 00 30 6B 4C 00
+66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 30 00 00 00 00 00 00 00 C0 20 20 61
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 3F DF DF 9E 80 80 80 80 00 00 00 00 71 02 A0 7E
+.  .  .  .  .  .  .  .  ¸  \  †  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  ¨  ‚  ›  ã  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  Ò  .  †  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  4  .  g  .  !  q  @  .  v  ⁄  @  .  $  ë  S  .
+.  Z  S  .  .  /  S  .  “  /  S  .  "  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+º  .  .  .  º  .  .  .  Œ  p  @  .  .  /  S  .  “  /  S  .  "  0  S  .  t  |  S  .  0  k  L  .
+f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  0  .  .  .  .  .  .  .  ¿        a
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ?  ﬂ  ﬂ  û  Ä  Ä  Ä  Ä  .  .  .  .  q  .  †  ~
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 117015
+
+Current memory dump of 256 bytes starting at pointer address 7EECB2B0:
+B0 04 02 00 01 00 00 00 09 00 00 00 31 00 32 00 37 00 2E 00 30 00 2E 00 30 00 2E 00 31 00 00 00
+00 D7 4A 27 80 80 80 80 00 00 00 00 B1 AC EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+97 4B 01 00 B2 70 40 00 0C 6F 53 00 0C 3C 54 00 5F D2 5D 00 42 30 54 00 13 DF 5D 00 1E B4 5D 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 EC 17 00 00 48 17 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 5D BB 4F 00 63 94 40 00 63 94 40 00 B3 96 58 00 F8 CE 5D 00 11 B4 53 00 DD DA 53 00
+30 6B 4C 00 20 00 00 00 CC 84 4F 00 88 2A DB 73 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 77 D5 24 8C 80 80 80 80 00 00 00 00 A1 9F EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 DC CE 01 00 B2 70 40 00 B0 73 5B 00 0B BE 5D 00
+∞  .  .  .  .  .  .  .  .  .  .  .  1  .  2  .  7  .  .  .  0  .  .  .  0  .  .  .  1  .  .  .
+.  ◊  J  '  Ä  Ä  Ä  Ä  .  .  .  .  ±  ¨  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+ó  K  .  .  ≤  p  @  .  .  o  S  .  .  <  T  .  _  “  ]  .  B  0  T  .  .  ﬂ  ]  .  .  ¥  ]  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  Ï  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  ]  ª  O  .  c  î  @  .  c  î  @  .  ≥  ñ  X  .  ¯  Œ  ]  .  .  ¥  S  .  ›  ⁄  S  .
+0  k  L  .     .  .  .  Ã  Ñ  O  .  à  *  €  s  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  w  ’  $  å  Ä  Ä  Ä  Ä  .  .  .  .  °  ü  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ‹  Œ  .  .  ≤  p  @  .  ∞  s  [  .  .  æ  ]  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5CA6B9 [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][928]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TIdReplyRFC
+
+The allocation number is: 117005
+
+Current memory dump of 256 bytes starting at pointer address 7EECB780:
+E8 8A 5C 00 00 00 00 00 00 00 00 00 00 00 00 00 90 D7 F8 7E 00 00 00 00 D0 D5 F8 7E 00 00 00 00
+03 3F CA AF 80 80 80 80 00 00 00 00 01 AC EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+EC C9 01 00 B2 70 40 00 AE 01 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FC 15 00 00 FC 15 00 00 CE 70 40 00 63 94 40 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 18 00 00 00 AC 59 49 00 3D 80 05 4E 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 C2 7F FA B1 80 80 80 80 80 80 80 80 80 80 80 80 00 00 00 00 41 9E EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 15 4B 01 00 B2 70 40 00 02 34 5B 00 3B 34 5B 00
+Ë  ä  \  .  .  .  .  .  .  .  .  .  .  .  .  .  ê  ◊  ¯  ~  .  .  .  .  –  ’  ¯  ~  .  .  .  .
+.  ?     Ø  Ä  Ä  Ä  Ä  .  .  .  .  .  ¨  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+Ï  …  .  .  ≤  p  @  .  Æ  .  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ¸  .  .  .  ¸  .  .  .  Œ  p  @  .  c  î  @  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  ¨  Y  I  .  =  Ä  .  N  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ¬    ˙  ±  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  A  û  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  K  .  .  ≤  p  @  .  .  4  [  .  ;  4  [  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 36
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5CA6CE [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][929]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TIdReplyRFC
+
+The allocation number is: 117010
+
+Current memory dump of 256 bytes starting at pointer address 7EECBF10:
+E8 8A 5C 00 00 00 00 00 00 00 00 00 00 00 00 00 B0 DD F8 7E 00 00 00 00 F0 DB F8 7E 00 00 00 00
+46 08 19 AF 80 80 80 80 00 00 00 00 C1 B9 EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+E9 C9 01 00 B2 70 40 00 A0 01 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FC 15 00 00 FC 15 00 00 CE 70 40 00 63 94 40 00
+63 94 40 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+00 00 00 00 20 00 00 00 B0 04 02 00 2B C7 FE 4D 7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80
+80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 D4 38 01 B2 80 80 80 80 00 00 00 00 31 BD EC 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9F 35 01 00 B2 70 40 00 20 82 57 00 07 F2 57 00
+Ë  ä  \  .  .  .  .  .  .  .  .  .  .  .  .  .  ∞  ›  ¯  ~  .  .  .  .    €  ¯  ~  .  .  .  .
+F  .  .  Ø  Ä  Ä  Ä  Ä  .  .  .  .  ¡  π  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+È  …  .  .  ≤  p  @  .  †  .  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ¸  .  .  .  ¸  .  .  .  Œ  p  @  .  c  î  @  .
+c  î  @  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+.  .  .  .     .  .  .  ∞  .  .  .  +  «  ˛  M  |  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ‘  8  .  ≤  Ä  Ä  Ä  Ä  .  .  .  .  1  Ω  Ï  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ü  5  .  .  ≤  p  @  .     Ç  W  .  .  Ú  W  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x19AC, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5B3A0A [IdStack.pas][IdStack][TIdStack.GetLocalAddresses][671]
+5E3F4D [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.OnIdServerAfterBind][201]
+5E05D7 [IdUDPServer.pas][IdUDPServer][TIdUDPServer.DoAfterBind][261]
+5E3B8C [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.Initialize][143]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 3136
+
+Current memory dump of 256 bytes starting at pointer address 7EF20020:
+B0 04 02 00 01 00 00 00 02 00 00 00 0D 00 0A 00 00 00 7D 47 6D 15 80 80 00 00 00 00 81 29 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 38 59 02 00 B2 70 40 00 F2 6E 53 00 06 52 53 00
+4D 2D 53 00 C8 2F 53 00 01 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+BC 08 00 00 EC 15 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 63 94 40 00 63 94 40 00
+63 94 40 00 63 94 40 00 29 10 5F 00 3D 34 B1 76 02 98 CC 77 14 00 00 00 40 F9 52 00 68 F1 67 61
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 97 0E 98 9E 00 00 00 00 01 13 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 42 59 02 00 B2 70 40 00 46 52 53 00 4D 2D 53 00
+C8 2F 53 00 01 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+∞  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  }  G  m  .  Ä  Ä  .  .  .  .  Å  )  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  8  Y  .  .  ≤  p  @  .  Ú  n  S  .  .  R  S  .
+M  -  S  .  »  /  S  .  .  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+º  .  .  .  Ï  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  c  î  @  .  c  î  @  .
+c  î  @  .  c  î  @  .  )  .  _  .  =  4  ±  v  .  ò  Ã  w  .  .  .  .  @  ˘  R  .  h  Ò  g  a
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ó  .  ò  û  .  .  .  .  .  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  B  Y  .  .  ≤  p  @  .  F  R  S  .  M  -  S  .
+»  /  S  .  .  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8642 [IdReply.pas][IdReply][TIdReply.CommonInit][242]
+5CA6B9 [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][928]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 117009
+
+Current memory dump of 256 bytes starting at pointer address 7EF208E0:
+B0 04 02 00 01 00 00 00 02 00 00 00 0D 00 0A 00 00 00 9F 37 42 26 80 80 00 00 00 00 81 0B F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 BD C9 01 00 B2 70 40 00 33 86 5C 00 CE A6 5C 00
+A0 01 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+24 1B 00 00 24 1B 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 30 6B 4C 00 66 B1 40 00
+3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 12 00 00 00 B0 04 02 00 65 DC FD 4E
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 9A 23 02 B1 80 80 00 00 00 00 61 30 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 60 93 66 00 B2 70 40 00 50 4F 53 00 92 CF 57 00
+42 F2 57 00 8A 97 58 00 8F 30 54 00 13 DF 5D 00 1E B4 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+∞  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ü  7  B  &  Ä  Ä  .  .  .  .  Å  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ω  …  .  .  ≤  p  @  .  3  Ü  \  .  Œ  ¶  \  .
+†  .  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+$  .  .  .  $  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  0  k  L  .  f  ±  @  .
+=  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .  ∞  .  .  .  e  ‹  ˝  N
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ö  #  .  ±  Ä  Ä  .  .  .  .  a  0  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  `  ì  f  .  ≤  p  @  .  P  O  S  .  í  œ  W  .
+B  Ú  W  .  ä  ó  X  .  è  0  T  .  .  ﬂ  ]  .  .  ¥  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8633 [IdReply.pas][IdReply][TIdReply.CommonInit][241]
+5CA6CE [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][929]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 117012
+
+Current memory dump of 256 bytes starting at pointer address 7EF20CA0:
+B0 04 02 00 01 00 00 00 02 00 00 00 0D 00 0A 00 00 00 42 36 42 26 80 80 00 00 00 00 01 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B2 C9 01 00 B2 70 40 00 42 86 5C 00 CE A6 5C 00
+A0 01 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+1C 10 00 00 1C 10 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 30 6B 4C 00 66 B1 40 00
+3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 12 00 00 00 B0 04 02 00 19 CA FD 4E
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 E6 35 02 B1 80 80 00 00 00 00 C1 0C F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 B0 C9 01 00 B2 70 40 00 33 86 5C 00 CE A6 5C 00
+A0 01 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  B  6  B  &  Ä  Ä  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≤  …  .  .  ≤  p  @  .  B  Ü  \  .  Œ  ¶  \  .
+†  .  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  0  k  L  .  f  ±  @  .
+=  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .  ∞  .  .  .  .     ˝  N
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ê  5  .  ±  Ä  Ä  .  .  .  .  ¡  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ∞  …  .  .  ≤  p  @  .  3  Ü  \  .  Œ  ¶  \  .
+†  .  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8642 [IdReply.pas][IdReply][TIdReply.CommonInit][242]
+5CA6CE [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][929]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 117014
+
+Current memory dump of 256 bytes starting at pointer address 7EF21060:
+B0 04 02 00 01 00 00 00 02 00 00 00 0D 00 0A 00 00 00 CD 7D 29 AF 80 80 00 00 00 00 C1 11 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 AA 10 00 00 B2 70 40 00 1D 1F 56 00 92 F3 55 00
+C3 EB 55 00 80 71 55 00 F5 73 55 00 E5 95 56 00 FE A6 56 00 26 A5 56 00 FB B3 53 00 DD DA 53 00
+48 0C 00 00 48 0C 00 00 CE 70 40 00 63 94 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 00 00 E4 04 01 00 5B 09 0D 83
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 A4 F6 F2 7C 80 80 00 00 00 00 81 10 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 7A 0E 00 00 B2 70 40 00 68 99 5D 00 B4 A3 5D 00
+30 86 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Õ  }  )  Ø  Ä  Ä  .  .  .  .  ¡  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ™  .  .  .  ≤  p  @  .  .  .  V  .  í  Û  U  .
+√  Î  U  .  Ä  q  U  .  ı  s  U  .  Â  ï  V  .  ˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ‰  .  .  .  [  .  .  É
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  §  ˆ  Ú  |  Ä  Ä  .  .  .  .  Å  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  z  .  .  .  ≤  p  @  .  h  ô  ]  .  ¥  £  ]  .
+0  Ü  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8633 [IdReply.pas][IdReply][TIdReply.CommonInit][241]
+5CA6B9 [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][928]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: UnicodeString
+
+The allocation number is: 117007
+
+Current memory dump of 256 bytes starting at pointer address 7EF21920:
+B0 04 02 00 01 00 00 00 02 00 00 00 0D 00 0A 00 00 00 D2 34 A0 26 80 80 00 00 00 00 01 18 F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 95 4B 01 00 B2 70 40 00 F2 6E 53 00 0C 3C 54 00
+5F D2 5D 00 42 30 54 00 13 DF 5D 00 1E B4 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+EC 17 00 00 48 17 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 5D BB 4F 00 63 94 40 00
+63 94 40 00 B3 96 58 00 F8 CE 5D 00 11 B4 53 00 DD DA 53 00 14 00 00 00 40 F9 52 00 67 2E D8 73
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 98 D1 27 8C 00 00 00 00 61 1C F2 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 24 CB 01 00 B2 70 40 00 42 86 5C 00 CE A6 5C 00
+30 86 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00
+∞  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  “  4  †  &  Ä  Ä  .  .  .  .  .  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ï  K  .  .  ≤  p  @  .  Ú  n  S  .  .  <  T  .
+_  “  ]  .  B  0  T  .  .  ﬂ  ]  .  .  ¥  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+Ï  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  ]  ª  O  .  c  î  @  .
+c  î  @  .  ≥  ñ  X  .  ¯  Œ  ]  .  .  ¥  S  .  ›  ⁄  S  .  .  .  .  .  @  ˘  R  .  g  .  ÿ  s
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  ò  —  '  å  .  .  .  .  a  .  Ú  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  $  À  .  .  ≤  p  @  .  B  Ü  \  .  Œ  ¶  \  .
+0  Ü  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 20
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TGRIDTransportIndyTCP
+
+The allocation number is: 117003
+
+Current memory dump of 256 bytes starting at pointer address 7EF55A10:
+3C BE 5C 00 70 8D FA 7E 60 EA 00 00 BC B2 EC 7E 00 00 00 00 8A C1 43 B0 00 00 00 00 31 69 F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 77 1A 67 00 B2 70 40 00 38 45 53 00 DC 7D 53 00
+08 B2 53 00 79 3F 5D 00 18 2B 54 00 06 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+D4 1E 00 00 EC 15 00 00 CE 70 40 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 00 00 00 B0 04 02 00 0E 4F 71 F9
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 F1 B0 8E 06 00 00 00 00 71 5B F5 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 61 03 00 00 B2 70 40 00 06 52 53 00 4B 69 53 00
+9A 25 53 00 21 2A 53 00 DC 7B 53 00 86 A4 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00
+<  æ  \  .  p  ç  ˙  ~  `  Í  .  .  º  ≤  Ï  ~  .  .  .  .  ä  ¡  C  ∞  .  .  .  .  1  i  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  w  .  g  .  ≤  p  @  .  8  E  S  .  ‹  }  S  .
+.  ≤  S  .  y  ?  ]  .  .  +  T  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+‘  .  .  .  Ï  .  .  .  Œ  p  @  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ∞  .  .  .  .  O  q  ˘
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ò  ∞  é  .  .  .  .  .  q  [  ı  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  a  .  .  .  ≤  p  @  .  .  R  S  .  K  i  S  .
+ö  %  S  .  !  *  S  .  ‹  {  S  .  Ü  §  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 12
+
+This block was allocated by thread 0x1748, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5B3F88 [IdStack.pas][IdStack][TIdStack.IncUsage][815]
+5B58AF [IdComponent.pas][IdComponent][TIdComponent.InitComponent][229]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TIdStackWindows
+
+The allocation number is: 1867
+
+Current memory dump of 256 bytes starting at pointer address 7EF71040:
+34 D4 5A 00 D0 DC F8 7E 00 00 00 00 ED 0F 02 15 00 00 00 00 E1 03 F7 7E 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 78 0B 00 00 B2 70 40 00 22 52 53 00 4B 69 53 00 9A 25 53 00 21 2A 53 00
+DC 7B 53 00 18 83 53 00 09 95 56 00 FE A6 56 00 26 A5 56 00 FB B3 53 00 48 0C 00 00 EC 15 00 00
+CE 70 40 00 63 94 40 00 63 94 40 00 63 94 40 00 29 BA 53 00 63 94 40 00 63 94 40 00 29 10 5F 00
+3D 34 B1 76 02 98 CC 77 D5 97 CC 77 0C 00 00 00 50 E2 52 00 79 B5 56 EB 7C DC 5F 00 80 80 80 80
+80 80 80 80 86 4A A9 14 00 00 00 00 91 0E F7 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+D1 0B 00 00 B2 70 40 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+D5 97 CC 77 00 00 00 00 00 00 00 00 00 00 00 00 AC 19 00 00 AC 19 00 00 CE 70 40 00 63 94 40 00
+4  ‘  Z  .  –  ‹  ¯  ~  .  .  .  .  Ì  .  .  .  .  .  .  .  ·  .  ˜  ~  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  x  .  .  .  ≤  p  @  .  "  R  S  .  K  i  S  .  ö  %  S  .  !  *  S  .
+‹  {  S  .  .  É  S  .  .  ï  V  .  ˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .  H  .  .  .  Ï  .  .  .
+Œ  p  @  .  c  î  @  .  c  î  @  .  c  î  @  .  )  ∫  S  .  c  î  @  .  c  î  @  .  )  .  _  .
+=  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  P  ‚  R  .  y  µ  V  Î  |  ‹  _  .  Ä  Ä  Ä  Ä
+Ä  Ä  Ä  Ä  Ü  J  ©  .  .  .  .  .  ë  .  ˜  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+—  .  .  .  ≤  p  @  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .  ¨  .  .  .  ¨  .  .  .  Œ  p  @  .  c  î  @  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 84
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8642 [IdReply.pas][IdReply][TIdReply.CommonInit][242]
+5CA6B9 [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][928]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TStringList
+
+The allocation number is: 117008
+
+Current memory dump of 256 bytes starting at pointer address 7EF8D5D0:
+B0 23 49 00 00 00 00 00 20 D1 F7 7E EC 08 F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 BC 69 63 B0 80 80 80 80 80 80 80 80 00 00 00 00 91 DA F8 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 50 0B 00 00 B2 70 40 00 73 E6 55 00 C4 94 56 00
+FE A6 56 00 26 A5 56 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+48 0C 00 00 48 0C 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 32 A4 56 00 11 B4 53 00 DD DA 53 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 4C 00 00 00 B0 23 49 00 24 1B 26 D9
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+∞  #  I  .  .  .  .  .     —  ˜  ~  Ï  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  º  i  c  ∞  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  ë  ⁄  ¯  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  P  .  .  .  ≤  p  @  .  s  Ê  U  .  ƒ  î  V  .
+˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  2  §  V  .  .  ¥  S  .  ›  ⁄  S  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  L  .  .  .  ∞  #  I  .  $  .  &  Ÿ
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 84
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8633 [IdReply.pas][IdReply][TIdReply.CommonInit][241]
+5CA6B9 [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][928]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TStringList
+
+The allocation number is: 117006
+
+Current memory dump of 256 bytes starting at pointer address 7EF8D790:
+B0 23 49 00 00 00 00 00 20 D1 F7 7E 2C 19 F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 0D 68 63 B0 80 80 80 80 80 80 80 80 00 00 00 00 11 32 F9 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 09 09 00 00 B2 70 40 00 FB B3 53 00 DD DA 53 00
+30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 00 00 00 00
+D4 1E 00 00 D4 1E 00 00 CE 70 40 00 11 B4 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76
+02 98 CC 77 D5 97 CC 77 00 00 00 00 00 00 00 00 00 00 00 00 54 00 00 00 D8 B4 58 00 67 D4 D0 4E
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+∞  #  I  .  .  .  .  .     —  ˜  ~  ,  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  h  c  ∞  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  .  2  ˘  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ≤  p  @  .  ˚  ≥  S  .  ›  ⁄  S  .
+0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .
+‘  .  .  .  ‘  .  .  .  Œ  p  @  .  .  ¥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v
+.  ò  Ã  w  ’  ó  Ã  w  .  .  .  .  .  .  .  .  .  .  .  .  T  .  .  .  ÿ  ¥  X  .  g  ‘  –  N
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 84
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8642 [IdReply.pas][IdReply][TIdReply.CommonInit][242]
+5CA6CE [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][929]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TStringList
+
+The allocation number is: 117013
+
+Current memory dump of 256 bytes starting at pointer address 7EF8DBF0:
+B0 23 49 00 00 00 00 00 20 D1 F7 7E 6C 10 F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 7B 40 85 B0 80 80 80 80 80 80 80 80 00 00 00 00 10 C1 F8 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 3F 0C 00 00 B2 70 40 00 0A 3A 5B 00 4D 3F 5E 00
+D7 05 5E 00 8C 3B 5E 00 FB B3 53 00 DD DA 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77
+AC 19 00 00 38 0B 00 00 CE 70 40 00 63 94 40 00 8B 55 53 00 9C 5A 53 00 0A 2F 53 00 D2 2F 53 00
+01 30 53 00 74 7C 53 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 4C 00 00 00 B0 23 49 00 C0 45 9F EA
+B0 23 49 00 00 00 00 00 20 D1 F7 7E 2C 00 F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+∞  #  I  .  .  .  .  .     —  ˜  ~  l  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  {  @  Ö  ∞  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  .  ¡  ¯  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  ?  .  .  .  ≤  p  @  .  .  :  [  .  M  ?  ^  .
+◊  .  ^  .  å  ;  ^  .  ˚  ≥  S  .  ›  ⁄  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w
+¨  .  .  .  8  .  .  .  Œ  p  @  .  c  î  @  .  ã  U  S  .  ú  Z  S  .  .  /  S  .  “  /  S  .
+.  0  S  .  t  |  S  .  0  k  L  .  f  ±  @  .  =  4  ±  v  L  .  .  .  ∞  #  I  .  ¿  E  ü  Í
+∞  #  I  .  .  .  .  .     —  ˜  ~  ,  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 84
+
+This block was allocated by thread 0x19AC, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5B3A0A [IdStack.pas][IdStack][TIdStack.GetLocalAddresses][671]
+5E3F4D [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.OnIdServerAfterBind][201]
+5E05D7 [IdUDPServer.pas][IdUDPServer][TIdUDPServer.DoAfterBind][261]
+5E3B8C [GS.GRID.Server.Service.Server.IndyUDPServer.pas][GS.GRID.Server.Service.Server.IndyUDPServer][Grid.Server.Service.Server.Indyudpserver.TGRIDServiceIndyUDPServer.Initialize][143]
+53B3FB [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.DoProcessTask][433]
+53DADD [GS.Bus.Services.pas][GS.Bus.Services][Bus.Services.TCustomServiceThread.Execute][1179]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TStringList
+
+The allocation number is: 3135
+
+Current memory dump of 256 bytes starting at pointer address 7EF8DCD0:
+B0 23 49 00 00 00 00 00 20 D1 F7 7E 2C 00 F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+B8 63 A0 7E 01 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 3F BA 60 15 80 80 80 80 80 80 80 80 00 00 00 00 10 C1 F8 7E
+00 00 00 00 00 00 00 00 BC 5F 41 00 00 00 00 00 13 C9 01 00 B2 70 40 00 33 86 5C 00 CE A6 5C 00
+DD D2 5D 00 4F 36 5D 00 F0 25 5D 00 30 6B 4C 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+28 17 00 00 EC 17 00 00 CE 70 40 00 63 94 40 00 66 B1 40 00 3D 34 B1 76 02 98 CC 77 D5 97 CC 77
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4C 00 00 00 B0 23 49 00 33 C1 7A 4F
+B0 23 49 00 00 00 00 00 20 D1 F7 7E AC 0C F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+∞  #  I  .  .  .  .  .     —  ˜  ~  ,  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+∏  c  †  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  ?  ∫  `  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  .  ¡  ¯  ~
+.  .  .  .  .  .  .  .  º  _  A  .  .  .  .  .  .  …  .  .  ≤  p  @  .  3  Ü  \  .  Œ  ¶  \  .
+›  “  ]  .  O  6  ]  .    %  ]  .  0  k  L  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+(  .  .  .  Ï  .  .  .  Œ  p  @  .  c  î  @  .  f  ±  @  .  =  4  ±  v  .  ò  Ã  w  ’  ó  Ã  w
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  L  .  .  .  ∞  #  I  .  3  ¡  z  O
+∞  #  I  .  .  .  .  .     —  ˜  ~  ¨  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 84
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5C8633 [IdReply.pas][IdReply][TIdReply.CommonInit][241]
+5CA6CE [IdTCPConnection.pas][IdTCPConnection][TIdTCPConnection.InitComponent][929]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TStringList
+
+The allocation number is: 117011
+
+Current memory dump of 256 bytes starting at pointer address 7EF8DDB0:
+B0 23 49 00 00 00 00 00 20 D1 F7 7E AC 0C F2 7E 00 00 00 00 00 00 00 00 2C 00 22 00 3D 00 0E 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 CC 3E 85 B0 80 80 80 80 80 80 80 80 00 00 00 00 31 D6 F8 7E
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 A7 10 00 00 B2 70 40 00 9D 78 56 00 E5 1E 56 00
+92 F3 55 00 C3 EB 55 00 80 71 55 00 F5 73 55 00 E5 95 56 00 FE A6 56 00 26 A5 56 00 FB B3 53 00
+48 0C 00 00 48 0C 00 00 CE 70 40 00 63 94 40 00 63 94 40 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4C 00 00 00 B0 23 49 00 D9 27 9F 83
+7C DC 5F 00 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+∞  #  I  .  .  .  .  .     —  ˜  ~  ¨  .  Ú  ~  .  .  .  .  .  .  .  .  ,  .  "  .  =  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  Ã  >  Ö  ∞  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  .  .  .  .  1  ÷  ¯  ~
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ß  .  .  .  ≤  p  @  .  ù  x  V  .  Â  .  V  .
+í  Û  U  .  √  Î  U  .  Ä  q  U  .  ı  s  U  .  Â  ï  V  .  ˛  ¶  V  .  &  •  V  .  ˚  ≥  S  .
+H  .  .  .  H  .  .  .  Œ  p  @  .  c  î  @  .  c  î  @  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  L  .  .  .  ∞  #  I  .  Ÿ  '  ü  É
+|  ‹  _  .  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä  Ä
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+A memory block has been leaked. The size is: 308
+
+This block was allocated by thread 0x1728, and the stack trace (return addresses) at the time was:
+4070B2 [System.pas][System][@GetMem$qqri][4791]
+5DD2DD [GS.GRID.Server.Service.Server.IndyTCPServer.pas][GS.GRID.Server.Service.Server.IndyTCPServer][Grid.Server.Service.Server.Indytcpserver.TGRIDServiceIndyTCPServer.AutoTestImplementation][305]
+5D364F [GS.GRID.Server.Service.Types.pas][GS.GRID.Server.Service.Types][Grid.Server.Service.Types.TCustomGRIDService.AutoTest][217]
+5D25F0 [GS.GRID.Server.pas][GS.GRID.Server][Grid.Server.TThreadTests.Execute][246]
+4C6B30 [System.Classes.pas][System.Classes][Classes.ThreadProc$qqrxp22System.Classes.TThread][15367]
+40B166 [System.pas][System][ThreadWrapper$qqspv][24941]
+76B1343D [BaseThreadInitThunk]
+77CC9802 [Unknown function at RtlInitializeExceptionChain]
+77CC97D5 [Unknown function at RtlInitializeExceptionChain]
+
+The block is currently used for an object of class: TIdTCPClient
+
+The allocation number is: 117004
+
+Current memory dump of 256 bytes starting at pointer address 7EFA8D70:
+AC 2F 5C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 98 BC 49 00 A8 BC 49 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 B7 EC 7E 00 00 00 00
+00 00 00 00 10 BF EC 7E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 E8 8A 5C 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00 00 01 00 00 00 00 00 00
+¨  /  \  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ò  º  I  .  ®  º  I  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ä  ∑  Ï  ~  .  .  .  .
+.  .  .  .  .  ø  Ï  ~  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  Ë  ä  \  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+.  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  ˇ  ˇ  ˇ  ˇ  .  .  .  .  .  .  .  .  .  .  .  .
+
+--------------------------------2019/8/3 15:54:25--------------------------------
+This application has leaked memory. The small block leaks are (excluding expected leaks registered by pointer):
+
+5 - 12 bytes: TIdStackWindows x 1
+13 - 20 bytes: TGRIDTransportIndyTCP x 1, UnicodeString x 5
+21 - 36 bytes: TIdReplyRFC x 2, UnicodeString x 1
+37 - 52 bytes: UnicodeString x 1, Unknown x 1
+69 - 84 bytes: TStringList x 5
+277 - 308 bytes: TIdTCPClient x 1
+
+Note: Memory leak detail is logged to a text file in the same folder as this application. To disable this memory leak check, undefine "EnableMemoryLeakReporting".

@@ -81,3 +81,4 @@ modules/
 *.conf
 Solutions/App/Pascal/ProjectGroupGRID.groupproj
 *.log
+Solutions/App/Pascal/GRIDServerConsole/Sources/Binaries/D102/Win32Debug/GRIDServerConsole_MemoryManager_EventLog.txt

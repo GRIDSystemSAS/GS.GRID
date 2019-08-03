@@ -99,7 +99,6 @@ var lcontact : TGRIDProtocol_ExampleProto_BasicChat_ASK_Header;
     begin
       lCon.FromStream(aDataStream);
       lCnc := Server.CNCAuth('', lCon.UserName,lCon.Password);
-
       if lCnc.Agreement then
       begin
         //Build response stream to deliver to the client.

@@ -65,7 +65,6 @@ Type
 TGRIDServiceServerBasedProtocol = class(TGridServiceServer)
 private
 protected
-  FCNCClient : TBusClientReader; //Auth dialog with Cnc.
   //to be called in Client entry point.
   function Protocol_ServerProcess( aUser : TGRIDServerUser;
                                    aInStream : TMemoryStream;
@@ -76,8 +75,6 @@ protected
 
 Public
   function CNCAuth(aServiceUserId, aUser,aPass : String) : TCentralCNC_Message_AuthAsk;
-
-  Property ClientCnC : TBusClientReader read FCNCClient;
 public
 end;
 
@@ -101,10 +98,12 @@ uses
 
 
 function TGRIDServiceServerBasedProtocol.CNCAuth(
-  aServiceUserId, aUser, aPass: String): TCentralCNC_Message_AuthAsk;
+    aServiceUserId, aUser, aPass: String): TCentralCNC_Message_AuthAsk;
 var lMessageToCNC, lMessageCNCAnswer : TBusEnvelop;
     lStream : TMemoryStream;
     temp : TCentralCNC_Message_AuthAsk;
+    CncCli : TBusClientReader;
+    c : TGUID;
 begin
   temp.UserName := aUser;
   temp.password := aPass;
@@ -114,6 +113,9 @@ begin
   Result.UserName := '';
   Result.password := '';
   Result.AgreementSessionId := '';
+
+  CreateGUID(c);
+  CncCli := self.GridBus.Subscribe('Tempo_'+c.ToString,nil);
   lStream :=  TMemoryStream.Create;
   try
     temp.ToStream(lStream);
@@ -121,7 +123,7 @@ begin
     //Ask to CNC service if this user have right.
     lMessageToCNC.TargetChannel := CST_CHANNELNAME_CNC_AUTH_GLOBAL;
     lMessageToCNC.ContentMessage.FromStream(lStream);
-    if Self.GridBus.SendAndRecv(Self.ClientCnC,lMessageToCNC,lMessageCNCAnswer)>0 then
+    if Self.GridBus.SendAndRecv(CncCli,lMessageToCNC,lMessageCNCAnswer)>0 then
     begin
       lStream.Clear;
       lMessageCNCAnswer.ContentMessage.ToStream(TStream(lStream));
@@ -130,6 +132,8 @@ begin
     end;
   finally
     FreeAndNil(lStream);
+    Self.GridBus.UnSubscribe(CncCli);
+    FreeAndNil(CncCli);
   end;
 end;
 
@@ -137,15 +141,11 @@ end;
 procedure TGRIDServiceServerBasedProtocol.Finalize;
 begin
   inherited;
-  GridBus.UnSubscribe(FCNCClient);
-  FreeAndNil(FCNCClient);
 end;
 
 procedure TGRIDServiceServerBasedProtocol.Initialize;
 begin
   inherited;
-  FCNCClient := GridBus.Subscribe(CST_CHANNELNAME_CNC_AUTH_GLOBAL+CST_CHANNELNAME_SEPARATOR+ClassName+CST_CHANNELNAME_SEPARATOR+ServiceID,nil);
-  FCNCClient.Event := GridBus.GetNewEvent;
   TGRIDProtocolMQTT_ServerHandling.StartServer := Now;
 end;
 
