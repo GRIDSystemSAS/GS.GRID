@@ -232,6 +232,8 @@ begin
   setUp(TMQTTParser(Sender),Server,Client,ClientProto,DataOut);
 
   lCnc :=  Server.CNCAuth(ClientID, UserName,Password);
+  Client.IsAccredited := lCnc.Agreement;
+  Client.GlobalUserName := lCnc.UserName;
   Allowed := lCnc.Agreement;
   if Allowed then
     begin
