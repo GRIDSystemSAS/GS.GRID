@@ -111,19 +111,27 @@ begin
 end;
 
 function TGRIDSimpleAPIInstantPython.InstantPythonRun(code: UTF8String): UTF8String;
-var lcode : TStringList;
-    ls : TMemoryStream;
+var ls : TMemoryStream;
+    Python : TGRIDPythonExecutionEnvironnement;
 begin
-  lcode := TStringList.Create;
+  result := '';
   ls := TMemoryStream.Create;
   try
-    lcode.Text := trim(code);
-    FRepo.ClearValue(IntToStr(TThread.CurrentThread.ThreadID));
-    TGRIDPython.GRIDPythonEngine.ExecStrings(lcode);
-    FRepo.GetValue(IntToStr(TThread.CurrentThread.ThreadID),ls);
-    result := StampedStringItemsToString(StreamToStampedStringItems(ls));
+    Python := TGRIDPython.GetExecutionEnvironnement;
+    FRepo.ClearValue(IntToStr(Python.ThreadID));
+    try
+      Python.Code.Text := code;
+      Python.Start;
+    finally
+      Python.WaitFor;
+      if Assigned(Python.FatalException) then
+        raise Python.FatalException;
+      FRepo.GetValue(IntToStr(Python.ThreadID),ls);
+      FreeAndNil(Python);
+    end;
+    if ls.Size>0 then
+      result := StampedStringItemsToString(StreamToStampedStringItems(ls));
   finally
-    freeAndNil(lcode);
     freeAndNil(ls);
   end;
 end;

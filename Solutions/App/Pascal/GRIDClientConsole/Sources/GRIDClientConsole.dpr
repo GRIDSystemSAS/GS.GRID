@@ -295,7 +295,7 @@ function IsChatMode : Boolean;
           else
           if lc = '4' then
           begin
-            Writeln('InstantPythonRun : '+lCli.instantPythonRun('print("hello world".upper())'));
+            Writeln('InstantPythonRun : '+lCli.instantPythonRun('def gridmain():'+sLineBreak+' print("hello world".upper())'));
             if not(lCli.LastStatus) then
               Writeln(lcli.LastStatusInfo);
           end

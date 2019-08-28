@@ -126,16 +126,17 @@ scene = [
     CheckeredSphere(vec3(0,-99999.5, 0), 99999, rgb(.75, .75, .75), 0.25),
     ]
 
-r = float(w) / h
-# Screen coordinates: x0, y0, x1, y1.
-S = (-1., 1. / r + .25, 1., -1. / r + .25)
-x = np.tile(np.linspace(S[0], S[2], w), h)
-y = np.repeat(np.linspace(S[1], S[3], h), w)
+def gridmain():	
+ r = float(w) / h
+ # Screen coordinates: x0, y0, x1, y1.
+ S = (-1., 1. / r + .25, 1., -1. / r + .25)
+ x = np.tile(np.linspace(S[0], S[2], w), h)
+ y = np.repeat(np.linspace(S[1], S[3], h), w)
 
-t0 = time.time()
-Q = vec3(x, y, 0)
-color = raytrace(E, (Q - E).norm(), scene)
-print ("Took", time.time() - t0)
+ t0 = time.time()
+ Q = vec3(x, y, 0)
+ color = raytrace(E, (Q - E).norm(), scene)
+ print ("Took", time.time() - t0)
 
-rgb = [Image.fromarray((255 * np.clip(c, 0, 1).reshape((h, w))).astype(np.uint8), "L") for c in color.components()]
-#Image.merge("RGB", rgb).save("c:\\fig.png")
+ rgb = [Image.fromarray((255 * np.clip(c, 0, 1).reshape((h, w))).astype(np.uint8), "L") for c in color.components()]
+ #Image.merge("RGB", rgb).save("c:\\fig.png")

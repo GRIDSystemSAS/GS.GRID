@@ -58,14 +58,27 @@ Type
     procedure InternalPythonDataU(Sender: TObject; const Data : UnicodeString);
   end;
 
+
+  //
+  TGRIDPythonExecutionEnvironnement = class(TPythonThread)
+  private
+  public
+    Code : TStringList;
+    procedure ExecuteWithPython; Override;
+    constructor Create; virtual;
+    destructor Destroy; override;
+  end;
+
   TGRIDPython = class
   private
     Class var PythonInstance : TPythonEngine;
     Class var DataCom : TBusClientDataRepo;
+    Class var OwnThreadState: PPyThreadState;
   public
     class procedure clean;
     class function Setup(aDataBus : TBus) : Boolean; //Hot configuration swap
     class function GRIDPythonEngine : TPythonEngine;
+    class function GetExecutionEnvironnement : TGRIDPythonExecutionEnvironnement;
   end;
 
 implementation
@@ -84,6 +97,11 @@ begin
     PythonInstance.IO.Free;
     FreeAndNil(PythonInstance);
   end;
+end;
+
+class function TGRIDPython.GetExecutionEnvironnement: TGRIDPythonExecutionEnvironnement;
+begin
+  result := TGRIDPythonExecutionEnvironnement.Create;
 end;
 
 class function TGRIDPython.GRIDPythonEngine: TPythonEngine;
@@ -122,9 +140,8 @@ begin
     PythonInstance := TPythonEngine.Create(nil);
     PythonInstance.IO := TPythonInputOutput.Create(nil);
     PythonInstance.IO.UnicodeIO := true;
-    Datacom := TBusClientDataRepo.Create(aDataBus,CST_BUSDATAREPO_INSTANTPYTHON);
-
     PythonInstance.IO.OnSendUniData := gPythonDummy.InternalPythonDataU;
+    Datacom := TBusClientDataRepo.Create(aDataBus,CST_BUSDATAREPO_INSTANTPYTHON);
     try
       if FConf.DefaultPythonConfId<>'' then
         FconfID := FConf.DefaultPythonConfId
@@ -143,6 +160,13 @@ begin
       end;
 
       PythonInstance.LoadDll;
+
+      PythonInstance.InitThreads := true;
+
+      OwnThreadState := PythonInstance.PyThreadState_Get;
+      PythonInstance.PyEval_ReleaseThread(OwnThreadState);
+
+
     Except
       On E : Exception do
       begin
@@ -160,6 +184,47 @@ procedure TPythonDummy.InternalPythonDataU(Sender: TObject;
   const Data: UnicodeString);
 begin
   TGRIDPython.DataCom.SetValueStamped(IntToStr(TThread.CurrentThread.ThreadID),Data);
+end;
+
+{ TGRIDPythonExecutionEnvironnement }
+
+constructor TGRIDPythonExecutionEnvironnement.Create;
+begin
+  inherited Create(true);
+  code := TStringList.Create;
+  //ThreadExecMode := emNewInterpreter;
+  ThreadExecMode := emNewState;
+end;
+
+destructor TGRIDPythonExecutionEnvironnement.Destroy;
+begin
+  FreeAndNil(code);
+  inherited;
+end;
+
+procedure TGRIDPythonExecutionEnvironnement.ExecuteWithPython;
+var pyfunc: PPyObject;
+begin
+  //some explaination : Mutlithreads over Python dll and Pyt4Del is difficult to stabilize.
+  //in fact, 2 pure running of python scripts will crash the later one, in "ChangeState" mode.
+  //"We cannot use "newInterpreter" mode because of *huge* memory cunsumption (anyway, it has others probs) execution.
+  //So, the better way is to prepare your python code and call a func : that's work much and seems stable enought.
+  //--> If your read that, and have solution to launch "classic" python code, I'm open and curious.
+
+
+  if Pos('gridmain()',code.Text)=0 then
+    raise Exception.Create('Error Message - no gridmain() function define');
+
+  TGRIDPython.PythonInstance.ExecStrings(code);
+  pyfunc :=  TGRIDPython.PythonInstance.FindFunction(TGRIDPython.PythonInstance.ExecModule, 'gridmain');
+  if Assigned(pyfunc) then
+  begin
+    try
+      TGRIDPython.PythonInstance.EvalFunction(pyfunc,[]);
+    finally
+      TGRIDPython.PythonInstance.Py_DecRef(pyfunc);
+    end;
+  end;
 end;
 
 Initialization
