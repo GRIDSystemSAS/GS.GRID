@@ -1,11 +1,15 @@
 # GS.GRID
  Multi-Server  - MQTT broker, KissB enabled and more !
-
+  
 # What is it
 
 GRID Server is a multi-purpose, bus oriented, lightweight, industrial improved, server. 
 
 It is written in Pascal Object, currently compatible in delphi and FPC (Delphi post Unicode (2009+), FPC 3.04 (Arm) and FPC 3.3+ (Desktop class OS)) 
+
+# Articles
+Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-python-services/
+
 
 # Features
 
