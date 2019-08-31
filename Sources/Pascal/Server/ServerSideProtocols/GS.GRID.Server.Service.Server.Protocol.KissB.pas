@@ -117,10 +117,7 @@ class procedure TGRIDProtocolKissB_ServerHandling.handling_Connect(
 var
   lCon : TGRIDProtocol_KB_CLT_NEGOCIATE;
   lResp : TGRIDProtocol_KB_SRV_NEGOCIATE_HALF_RESPONSE;
-  lStream : TMemoryStream;
-  protosc : TGRIDProtocol_KissB; //Shortcut.
 begin
-  protosc := resolveKissBProtocol(aUser);
   lCon.Load(aDataStream,aProtocol.ProtocolNativeFormat);
   //this first connection mainly give client info and "asking" data from client (Format, cyher, compress and son on).
   // it is processed in Protocol.IsFormatProtocolResolved.
@@ -172,9 +169,7 @@ class procedure TGRIDProtocolKissB_ServerHandling.handling_process_rpc_simple(
 var
   lCon : TGRIDProtocol_KB_CLT_PROCESS_SPL_API;
   lRespA : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
-  lStream : TMemoryStream;
   ltempString : string;
-  lMessageToCNC, lMessageCNCAnswer : TBusEnvelop;
 
   procedure GetInfoProcess;
   var lResp : TGRIDProtocol_KB_SRV_PROCESS_API_INFO;
@@ -394,7 +389,6 @@ class procedure TGRIDProtocolKissB_ServerHandling.handling_Process(
 var
   lCon : TGRIDProtocol_KB_CLT_PROCESS_SPL_API;
   lResp : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
-  lStream : TMemoryStream;
 begin
   lCon.Load(aDataStream,aProtocol.ProtocolNativeFormat);
   aResultStream.Clear;
@@ -409,7 +403,6 @@ class procedure TGRIDProtocolKissB_ServerHandling.handling_Proto(
 
   var lm : TGSJson;
       lCommand : TKBCltCommand;
-      lcon : TGRIDProtocol_KB_CLT_NEGOCIATE;
       JSON : String;
 begin
   if aProtocol.IsProtocolFormatResolved(aDataStream) then

@@ -103,7 +103,6 @@ end;
 
 TGRIDProtocolMQTT_ServerHandling = Class
 private
-  class var MsgId : Int32;
   class var Stats : TGRIDServerStat;
 
   class procedure setUp(const aParser : TMQTTParser;
@@ -372,8 +371,6 @@ var
   Client : TGRIDServerUser; //Pointer.
   ClientProto : TGRIDProtocol_MQTT; //Pointer.
   DataOut : TMemoryStream;
-
-  MessageBus : TBusMessage;
 begin
   //This event is called by on send. All data accumulates here (dataOut).
   Assert(Sender is TMQTTParser);

@@ -137,7 +137,6 @@ begin
 end;
 
 function TGRIDSimpleAPIInstantPython.Version: UTF8String;
-var FPythonEngine : TPythonEngine;
 begin
   result := FConf.AsString;
 end;

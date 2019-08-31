@@ -72,6 +72,7 @@ Sources/csharp
 Sources/python
 Sources/Pascal/ThirdPart/Python
 Sources/Pascal/ThirdPart/Synapse203
+lib
 
 # Castalia statistics file (since XE7 Castalia is distributed with Delphi)
 *.stat

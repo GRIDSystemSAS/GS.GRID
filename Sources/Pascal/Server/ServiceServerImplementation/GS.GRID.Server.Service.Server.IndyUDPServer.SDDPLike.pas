@@ -158,7 +158,7 @@ end;
 procedure TGRIDService_IndySSDPLike.PerfomSSDPLikeProcess(
   AThread: TIdUDPListenerThread; const AData: TIdBytes;
   ABinding: TIdSocketHandle);
-var i : integer;
+var
     t : TStringList;
     linter,li : String;
     localUDPC : TIdUDPClient;

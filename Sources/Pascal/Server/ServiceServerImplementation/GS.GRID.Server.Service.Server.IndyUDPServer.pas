@@ -127,8 +127,7 @@ begin
 end;
 
 procedure TGRIDServiceIndyUDPServer.Initialize;
-var tmpstr : String;
-    lExcStack : String;
+var lExcStack : String;
 begin
   Inherited; //Do not remove !
   Log('Local UDP Server activating...',ClassName);

@@ -403,10 +403,7 @@ begin
 end;
 
 class function TGRIDProtocol_KissB.Negociate(aStream: TStream): Boolean;
-var lh : TKBHeader_FromCLT;
-    la : TGRIDProtocol_KB_CLT_NEGOCIATE;
-    len : int32;
-    ll : uint32;
+var la : TGRIDProtocol_KB_CLT_NEGOCIATE;
 begin
   Assert(assigned(aStream));
   Assert(aStream.Size>0);
@@ -1044,7 +1041,6 @@ end;
 procedure TGRIDProtocol_KB_SRV_BUS_CMD_MSG_RESPONSE.Load(aStream: TStream;
   const aFormat: TGRIDProtocolFormat);
 var la : TGSJson;
-    lar : TGSJsonArray;
     i,l : integer;
 begin
   case aFormat of
@@ -1098,7 +1094,6 @@ end;
 procedure TGRIDProtocol_KB_SRV_BUS_CMD_MSG_RESPONSE.Save(aStream: TStream;
   const aFormat: TGRIDProtocolFormat);
 var la : TGSJson;
-    lar : TGSJsonArray;
     i : integer;
 begin
   case aFormat of

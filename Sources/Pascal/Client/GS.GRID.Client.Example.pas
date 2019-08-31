@@ -116,7 +116,7 @@ begin
   FTransport := aTransport;
   FProto := TGRIDProtocol_ExampleProto_BasicChat.Create;
   FProtocol := FProto; //Avoid cast.
-  FUserId := 'UserOfChat'+IntToStr(NativeInt(TThread.Current.ThreadID));
+  FUserId := 'UserOfChat'+IntToStr(NativeInt(TThread.CurrentThread.ThreadID));
 end;
 
 destructor TGRIDClientExampleChat.Destroy;

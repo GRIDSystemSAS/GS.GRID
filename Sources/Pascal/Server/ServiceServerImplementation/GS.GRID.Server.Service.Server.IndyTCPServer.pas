@@ -59,7 +59,6 @@ Type
 TGRIDContext = class(TIdServerContext)
 private
   FUser : TGRIDServerUser; //Pointer.
-  FServerUserReady: boolean;
   Function GetServerUserReady : boolean;
 public
   procedure CleanContext;
@@ -432,10 +431,8 @@ end;
 
 procedure TGRIDServiceIndyTCPServer.OnIdServerException(AContext: TIdContext;
   AException: Exception);
-var LError : string;
 begin
   TGRIDContext(AContext).CleanContext;
-  LError := ComposeErrorString(AContext,AException.Message);
   //{ TODO : Allow server Level configuration of Log Exception's Verbose option }
   Log('ServerException('+IntToStr(Integer(AContext))+'*********************',ClassName);
   Log('ServerException('+IntToStr(Integer(AContext))+') "'+AException.Message+'"',ClassName);
@@ -448,7 +445,6 @@ begin
 end;
 
 procedure TGRIDServiceIndyTCPServer.OnIdServerExecute(AContext: TIdContext);
-var lError : String;
 begin
 
   if not IPFilter(AContext.Binding.PeerIP) then
@@ -590,9 +586,7 @@ end;
 
 Procedure TGRIDServiceIndyTCPServer.GetIncomingStream(aData : TObject;
   var aStream: TMemoryStream; const PrefixByteCount : Boolean = false);
-var Amount,AmountMax : Uint32;
-    lDataSize : Uint32;
-    lUser : TGRIDServerUser;
+var lUser : TGRIDServerUser;
     lMem : TMemoryStream;
     lSize : Uint32;
     lSized : boolean;
@@ -617,7 +611,6 @@ begin
 }
   with TIdContext(aData).Connection.IOHandler do
   begin
-    Amount := 0;
     Repeat
       CheckForDataOnSource(CST_CHECKDATAONSOURCE_DEFAULT_DELAY);
       CheckForDisconnect(True);

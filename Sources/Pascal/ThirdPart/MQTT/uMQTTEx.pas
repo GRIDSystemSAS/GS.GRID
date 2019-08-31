@@ -472,7 +472,6 @@ var
   Str : RawByteString;
   Strs : TStringList;
   Qoss : array of TMQTTQOSType;
-  Se : Word;
 begin
   while aStream.Position <> aStream.Size do
     begin
@@ -773,7 +772,6 @@ end;
 procedure TMQTTParser.SendPublish (anID : Word; aTopic : UTF8String; aMessage : RawByteString; aQos : TMQTTQOSType; aDup : boolean = false; aRetain : boolean = false);
 var
   s : TMemoryStream;
-  b : TStringStream;
 begin
   FTxStream.Clear;     // dup qos and retain used
   AddHdr (FTxStream, mtPUBLISH, aDup, aQos, aRetain);

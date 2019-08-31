@@ -531,7 +531,6 @@ end;
 procedure TMsg_MicroService_CLI_FromServer_ToClient_AskResponse_List.Load(
   aStream: TStream; const aFormat: TGRIDProtocolFormat);
 var la : TGSJson;
-    lar : TGSJsonArray;
     i,l : integer;
     serviceAsBytes : TBytes;
     ll : TMemoryStream;
@@ -587,7 +586,6 @@ end;
 procedure TMsg_MicroService_CLI_FromServer_ToClient_AskResponse_List.Save(
   aStream: TStream; const aFormat: TGRIDProtocolFormat);
 var la : TGSJson;
-    lar : TGSJsonArray;
     i : integer;
     ll : TMemoryStream;
 begin

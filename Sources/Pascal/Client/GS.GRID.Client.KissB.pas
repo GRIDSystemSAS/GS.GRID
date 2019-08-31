@@ -140,7 +140,6 @@ end;
 function TGRIDClientKissB.Connect(const aUserName, aPassword : String;
                                   Const Format : TGRIDProtocolFormat): TGRIDProtocol_KB_SRV_NEGOCIATE_RESPONSE;
 var lAskConnect : TGRIDProtocol_KB_CLT_NEGOCIATE;
-    lResp : TGRIDProtocol_KB_SRV_NEGOCIATE_HALF_RESPONSE;
     lAskConnectUP : TGRIDProtocol_KB_CLT_NEGOCIATE_UP;
 
 begin
@@ -261,8 +260,6 @@ begin
 end;
 
 function TGRIDClientKissB.instantPythonRun(aCode: string): string;
-var res : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
-    i : Integer;
 var lAskConnect : TGRIDProtocol_KB_CLT_PROCESS_SPL_API;
 begin
   ResetlastStatus;
@@ -297,7 +294,6 @@ begin
 end;
 
 function TGRIDClientKissB.instantPythonVersion: string;
-var res : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
 begin
   ResetlastStatus;
   Assert(assigned(Protocol));
@@ -550,7 +546,6 @@ function TGRIDClientKissB.InternalKeyGet(const aRepository, aKey: string;
   var aValue: TStream): boolean;
 var lAskConnect : TGRIDProtocol_KB_CLT_PROCESS_SPL_API;
     lreq : TGRIDProtocol_KB_CLT_PROCESS_SPL_API_KEYVALUE;
-    lRes : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
 begin
   ResetlastStatus;
   Assert(assigned(Protocol));
@@ -598,7 +593,6 @@ function TGRIDClientKissB.InternalKeySet(const aRepository, aKey: String;
   const aValue: TStream): boolean;
 var lAskConnect : TGRIDProtocol_KB_CLT_PROCESS_SPL_API;
     lreq : TGRIDProtocol_KB_CLT_PROCESS_SPL_API_KEYVALUE;
-    lRes : TGRIDProtocol_KB_SRV_PROCESS_SPL_API_RESPONSE;
 begin
   ResetlastStatus;
   Assert(assigned(Protocol));
@@ -779,7 +773,6 @@ end;
 
 
 function TGRIDClientKissB.CheckMsg(var MessageBox : TGRIDMessages; const TimeOutMS : Uint32 = 0) : Boolean;
-var i : integer;
 begin
   ResetlastStatus;
   Assert(assigned(Protocol));

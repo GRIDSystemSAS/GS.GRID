@@ -286,7 +286,6 @@ type
   procedure TThreadSendMessageStress.execute;
   var aClient : TGRIDClientKissB;
       i : Integer;
-      l : TGRIDMessages;
   begin
     FreeOnTerminate := true;
     aClient := TGRIDClientKissB.Create(TGRIDTransportIndyTCP.Create);
@@ -296,9 +295,6 @@ type
       begin
         for i := 0 to mess-1 do
           aClient.SendMessage(Format('testchan-cli%d thread %d',[CliID,CurrentThread.ThreadID]), Format('testchan-cli%d thread %d Hi number %d !',[CliID,CurrentThread.ThreadID,i]));
-
-        //while aClient.SendCount>aClient.SendAckCount do  :/
-        //  aClient.CheckMsg(l,1000);
       end
       else
       begin
