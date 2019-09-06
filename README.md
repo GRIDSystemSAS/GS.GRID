@@ -10,6 +10,8 @@ It is written in Pascal Object, currently compatible in delphi and FPC (Delphi p
 # Articles
 Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-python-services/
 
+# History
+- 20190906 | add cpp access : https://github.com/VincentGsell/GS.GRID-for-cpp
 
 # Features
 
@@ -44,7 +46,8 @@ Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-pyt
  
 # Client library
 
-- Native C++/Stdlib (KissB/Binary) : 20%
+- Native C++/Stdlib (KissB/Binary) : 45%
+ - https://github.com/VincentGsell/GS.GRID-for-cpp
 - Native Python (KissB/Json) : 50%
 - c# (KissB/Json) : 0%
 - Pascal Object (KissB/Binary and Json) : 100%
