@@ -1,0 +1,80 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D5CF40A4-B2BB-479E-806E-86C0D3E2AA77}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GRIDClientConsole\Sources\GRIDClientConsole.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GRIDServerConsole\Sources\GRIDServerConsole.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GRIDClientConsole">
+        <MSBuild Projects="GRIDClientConsole\Sources\GRIDClientConsole.dproj"/>
+    </Target>
+    <Target Name="GRIDClientConsole:Clean">
+        <MSBuild Projects="GRIDClientConsole\Sources\GRIDClientConsole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GRIDClientConsole:Make">
+        <MSBuild Projects="GRIDClientConsole\Sources\GRIDClientConsole.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GRIDServerConsole">
+        <MSBuild Projects="GRIDServerConsole\Sources\GRIDServerConsole.dproj"/>
+    </Target>
+    <Target Name="GRIDServerConsole:Clean">
+        <MSBuild Projects="GRIDServerConsole\Sources\GRIDServerConsole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GRIDServerConsole:Make">
+        <MSBuild Projects="GRIDServerConsole\Sources\GRIDServerConsole.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GRIDLogViewVCL">
+        <MSBuild Projects="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj"/>
+    </Target>
+    <Target Name="GRIDLogViewVCL:Clean">
+        <MSBuild Projects="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GRIDLogViewVCL:Make">
+        <MSBuild Projects="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+    <ItemGroup Condition="'$(BuildGroup)'=='Win - DEBUG'">
+        <BuildGroupProject Include="GRIDClientConsole\Sources\GRIDClientConsole.dproj">
+            <ProjectGuid>{11052B0F-BD6C-47D2-8A29-6F444CE99219}</ProjectGuid>
+            <Configurations>Debug;Release</Configurations>
+            <Platforms>Win32;Win64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="GRIDServerConsole\Sources\GRIDServerConsole.dproj">
+            <ProjectGuid>{E71D8A4B-2FAE-46CF-B74F-AA398B58C227}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj">
+            <ProjectGuid>{6BA893D2-4AAC-4411-A35E-641C1328D718}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+</Project>
