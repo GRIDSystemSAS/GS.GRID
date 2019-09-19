@@ -377,6 +377,7 @@ begin
     Repeat
       lpos := FUtilityStream.Position;
 
+
       case FProtocol.ProtocolNativeFormat of
         TGRIDProtocolFormat.Binary :
           response := TKBCltCommand_FromServer(ReadByte(FUtilityStream));

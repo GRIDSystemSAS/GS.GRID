@@ -15,7 +15,7 @@
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
-    <BuildModes Count="2">
+    <BuildModes Count="3">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Linux64Bits">
         <CompilerOptions>
@@ -25,8 +25,8 @@
             <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
           </Target>
           <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\..\GS.Core"/>
-            <OtherUnitFiles Value="..\..\..\..\..\..\GS.Core;..\..\..\..\..\..\GS.Bus;..\..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\Sources\Pascal\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+            <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
+            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
             <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -35,6 +35,24 @@
           </CodeGeneration>
         </CompilerOptions>
       </Item2>
+      <Item3 Name="Linux32Bits">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
+            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+            <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="linux"/>
+          </CodeGeneration>
+        </CompilerOptions>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -240,8 +258,8 @@
       <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\..\GS.Core"/>
-      <OtherUnitFiles Value="..\..\..\..\..\..\GS.Core;..\..\..\..\..\..\GS.Bus;..\..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\Sources\Pascal\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+      <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
+      <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
       <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
   </CompilerOptions>
