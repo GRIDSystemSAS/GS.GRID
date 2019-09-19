@@ -3,239 +3,275 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="10"/>
-    <BuildModes Active="Linux64Bits"/>
-    <Units Count="45">
+    <BuildModes Active="Default"/>
+    <Units Count="50">
       <Unit0>
         <Filename Value="GRIDServerConsole.dpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="19"/>
-        <CursorPos X="2" Y="39"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="55"/>
+        <CursorPos X="8" Y="58"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Hypervisor.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit1>
       <Unit2>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit2>
       <Unit3>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit3>
       <Unit4>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Types.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit4>
       <Unit5>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit5>
       <Unit6>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.Example.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit7>
       <Unit8>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Tests.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit8>
       <Unit9>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit9>
       <Unit10>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.Transport.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit10>
       <Unit11>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Client\ClientImplementation\GS.GRID.Client.Transport.IndyTCP.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit11>
       <Unit12>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyTCPServer.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit12>
       <Unit13>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Task.Types.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit13>
       <Unit14>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceTaskImplementation\Python\GS.GRID.Task.Python.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit14>
       <Unit15>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyUDPServer.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit15>
       <Unit16>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.IndyUDPServer.SDDPLike.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit16>
       <Unit17>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.BasedProtocols.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit17>
       <Unit18>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.ChatExemple.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit18>
       <Unit19>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.Informations.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit19>
       <Unit20>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.KissB.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit20>
       <Unit21>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.KissB.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit21>
       <Unit22>
         <Filename Value="..\..\..\..\..\Sources\Pascal\ThirdPart\MQTT\uMQTTEx.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit22>
       <Unit23>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.MQTT.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit23>
       <Unit24>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.MQTT.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit24>
       <Unit25>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.Example.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit25>
       <Unit26>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Client\GS.GRID.Client.KissB.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit26>
       <Unit27>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.Base.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit27>
       <Unit28>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.GetInfos.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit28>
       <Unit29>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.InstantPython.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit29>
       <Unit30>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.KeyValue.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit30>
       <Unit31>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.PythonConf.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit31>
       <Unit32>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ConsoleAdmin\GridServerConsole.AdminMode.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit32>
       <Unit33>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Python.Conf.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit33>
       <Unit34>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Python.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit34>
       <Unit35>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServerSideProtocols\GS.GRID.Server.Service.Server.Protocol.KissB.Bus.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit35>
       <Unit36>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\Tests\GS.GRID.Server.Tests.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit36>
       <Unit37>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\Tests\GS.GRID.Server.Tests.KissB.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit37>
       <Unit38>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\SimpleApi\GS.GRID.SplAPI.FilesUtility.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit38>
       <Unit39>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Protocols.MicroService.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit39>
       <Unit40>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Server.MicroServices.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit40>
       <Unit41>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\ServiceServerImplementation\GS.GRID.Server.Service.Server.mORMotWebSocketServer.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit41>
       <Unit42>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Common\GS.GRID.Common.Types.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit42>
       <Unit43>
         <Filename Value="..\..\..\..\..\Sources\Pascal\ThirdPart\OSapi\os_api_unit.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit43>
       <Unit44>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.CentralCnC.Users.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="21"/>
       </Unit44>
+      <Unit45>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="64"/>
+        <CursorPos X="11" Y="36"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="25"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.Services.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="25"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="771"/>
+        <CursorPos X="60" Y="805"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit49>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="23" HistoryIndex="22">
       <Position1>
         <Filename Value="GRIDServerConsole.dpr"/>
       </Position1>
@@ -247,6 +283,84 @@
         <Filename Value="GRIDServerConsole.dpr"/>
         <Caret Line="60" Column="3" TopLine="40"/>
       </Position3>
+      <Position4>
+        <Filename Value="GRIDServerConsole.dpr"/>
+        <Caret Line="39" Column="2" TopLine="19"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+        <Caret Line="213" TopLine="193"/>
+      </Position5>
+      <Position6>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+        <Caret Line="272" Column="42" TopLine="252"/>
+      </Position6>
+      <Position7>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+        <Caret Line="592" Column="17" TopLine="585"/>
+      </Position7>
+      <Position8>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+      </Position8>
+      <Position9>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
+        <Caret Line="741" TopLine="702"/>
+      </Position9>
+      <Position10>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.pas"/>
+        <Caret Line="477" TopLine="438"/>
+      </Position10>
+      <Position11>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
+        <Caret Line="80" TopLine="80"/>
+      </Position11>
+      <Position12>
+        <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
+        <Caret Line="589" Column="5" TopLine="550"/>
+      </Position12>
+      <Position13>
+        <Filename Value="GRIDServerConsole.dpr"/>
+        <Caret Line="58" Column="8" TopLine="55"/>
+      </Position13>
+      <Position14>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.Services.pas"/>
+        <Caret TopLine="25"/>
+      </Position14>
+      <Position15>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="152" Column="95" TopLine="143"/>
+      </Position15>
+      <Position16>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="153" Column="8" TopLine="143"/>
+      </Position16>
+      <Position17>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="159" Column="16" TopLine="143"/>
+      </Position17>
+      <Position18>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="160" Column="19" TopLine="143"/>
+      </Position18>
+      <Position19>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="161" Column="19" TopLine="143"/>
+      </Position19>
+      <Position20>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="206" Column="8" TopLine="174"/>
+      </Position20>
+      <Position21>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="214" Column="17" TopLine="182"/>
+      </Position21>
+      <Position22>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="215" Column="19" TopLine="183"/>
+      </Position22>
+      <Position23>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+      </Position23>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

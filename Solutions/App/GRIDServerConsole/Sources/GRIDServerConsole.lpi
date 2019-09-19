@@ -17,40 +17,66 @@
     </General>
     <BuildModes Count="3">
       <Item1 Name="Default" Default="True"/>
-      <Item2 Name="Linux64Bits">
+      <Item2 Name="Debug">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
+            <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\Debug\GRIDServerConsole"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
-            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleApi;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits"/>
             <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
           <CodeGeneration>
-            <TargetCPU Value="x86_64"/>
-            <TargetOS Value="linux"/>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+              <StackChecks Value="True"/>
+            </Checks>
+            <VerifyObjMethodCallValidity Value="True"/>
           </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseHeaptrc Value="True"/>
+              <TrashVariables Value="True"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+          </Linking>
         </CompilerOptions>
       </Item2>
-      <Item3 Name="Linux32Bits">
+      <Item3 Name="Release">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
+            <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\Release\GRIDServerConsole"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
-            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+            <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleApi;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits"/>
             <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
-            <TargetCPU Value="i386"/>
-            <TargetOS Value="linux"/>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
           </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+          </Linking>
         </CompilerOptions>
       </Item3>
     </BuildModes>
@@ -255,11 +281,11 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <Target>
-      <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\GRIDServerConsole"/>
+      <Filename Value="Binaries\FPC\$(TargetCPU)-$(TargetOS)\Debug\GRIDServerConsole"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir);..\..\..\..\..\GS.Core"/>
-      <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleAPI;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits;E:\Code\mORMot.git\;E:\Code\mORMot.git\CrossPlatform\;E:\Code\mORMot.git\SQLite3\"/>
+      <OtherUnitFiles Value="..\..\..\..\..\GS.Core;..\..\..\..\..\GS.Bus;..\..\..\..\..\GS.Core\ThirdPart\Json4Delphi\src;..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\SimpleApi;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\Python-for-Lazarus\python4lazarus\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseInterfaces;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\BaseUnits;..\..\..\..\..\GS.Core\ThirdPart\BaseNcoding\BaseNcoding\src\UtilityUnits"/>
       <UnitOutputDirectory Value="lib\FPC\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
   </CompilerOptions>
