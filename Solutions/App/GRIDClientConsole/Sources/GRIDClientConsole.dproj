@@ -5,8 +5,8 @@
         <FrameworkType>None</FrameworkType>
         <MainSource>GRIDClientConsole.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>131</TargetedPlatforms>
         <AppType>Console</AppType>
     </PropertyGroup>
@@ -94,8 +94,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_DcuOutput>Binaries\$(Platform)\$(Config)\dcu</DCC_DcuOutput>
+        <DCC_ExeOutput>Binaries\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
         <DCC_S>false</DCC_S>
@@ -176,8 +176,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-        <Debugger_RunParams>admin vincent admin binary</Debugger_RunParams>
-        <DCC_UnitSearchPath>..\..\..\..\..\GS.GRID\Sources\Client;..\..\..\..\..\GS.GRID\Sources\Client\ClientImplementation;..\..\..\..\..\GS.GRID\Sources\Common;..\..\..\..\..\GS.GRID\Sources\MSOA;..\..\..\..\..\GS.GRID\Sources\Server;..\..\..\..\..\GS.GRID\Sources\Server\ConsoleAdmin;..\..\..\..\..\GS.GRID\Sources\Server\ServerSideProtocols;..\..\..\..\..\GS.GRID\Sources\Server\ServiceServerImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation;..\..\..\..\..\GS.GRID\Sources\Server\ServiceTaskImplementation\Python;..\..\..\..\..\GS.GRID\Sources\Server\SimpleApi;..\..\..\..\..\GS.GRID\Sources\Server\Tests;..\..\..\..\..\GS.GRID\Sources\ThirdPart\MQTT;..\..\..\..\..\GS.GRID\Sources\ThirdPart\OSapi;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Python\python4delphi\PythonForDelphi\Components\Sources\Core;..\..\..\..\..\GS.GRID\Sources\ThirdPart\Windows\NamedPipes;..\..\..\..\..\GS.GRID;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <Debugger_RunParams>admin admin admin binary</Debugger_RunParams>
         <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
