@@ -11,7 +11,9 @@ It is written in Pascal Object, currently compatible in delphi and FPC (Delphi p
 Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-python-services/
 
 # History
+- 20190920 | *Release v1.0.0* Main targeted plaform (Win/nix - x86, x64, Arm) available.
 - 20190906 | add cpp access : https://github.com/VincentGsell/GS.GRID-for-cpp
+- 20190802 | First Commit here.
 
 # Features
 
@@ -46,11 +48,10 @@ Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-pyt
  
 # Client library
 
-- Native C++/Stdlib (KissB/Binary) : 45%
- - https://github.com/VincentGsell/GS.GRID-for-cpp
-- Native Python (KissB/Json) : 50%
-- c# (KissB/Json) : 0%
+- C++ (KissB/Binary) : 100% - https://github.com/VincentGsell/GS.GRID-for-cpp
+- Python (KissB/Json) : 60%
 - Pascal Object (KissB/Binary and Json) : 100%
+- c# (KissB/Json) : 0%
 
 # Dependancy
 
@@ -68,7 +69,3 @@ Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-pyt
  - althought GRID Server is equiped for security, and ready to stuck to TLS/SSL2 security, this server is aimed to be a backend one, processing on "safe" area, not directly connected to the net. 
  - We have, at Grid System, build a secured level server which work directly on the net, please contact us if needed. 
  
-# History
-
-20190802 : First Commit.
-
