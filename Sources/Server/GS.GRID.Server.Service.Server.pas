@@ -55,7 +55,9 @@ Uses
  GS.Bus,
  GS.Bus.Services,
  GS.GRID.Server.Service.Types,
+ GS.GRID.Common.Types,
  GS.GRID.Common.Protocols;
+
 const
 CGRIDServerUserTransportLayer : array[0..6] of string = ('none', 'net_tcp', 'net_udp', 'net_http', 'net_ws', 'win_pipe', 'net_udp_nrl');
 
@@ -274,7 +276,12 @@ begin
       if Assigned(result) then
         Break;
     Except
-      //We have to test here all protocol : Exception is not valuable. Even in log.
+      On E : Exception do
+      begin
+        Log('Protocol Negoce : ['+E.Message+']',ClassName,
+            'GetProtocol['+GridProtocolManager.Protocols[i].ClassName+']',
+            TGridLogCategory.glcException);
+      end;
     end;
   end;
 end;

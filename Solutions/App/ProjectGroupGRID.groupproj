@@ -12,6 +12,9 @@
         <Projects Include="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Demo\SenseHATDemo\RaspSenseHatControl.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="GRIDLogViewVCL:Make">
         <MSBuild Projects="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj" Targets="Make"/>
     </Target>
+    <Target Name="RaspSenseHatControl">
+        <MSBuild Projects="Demo\SenseHATDemo\RaspSenseHatControl.dproj"/>
+    </Target>
+    <Target Name="RaspSenseHatControl:Clean">
+        <MSBuild Projects="Demo\SenseHATDemo\RaspSenseHatControl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RaspSenseHatControl:Make">
+        <MSBuild Projects="Demo\SenseHATDemo\RaspSenseHatControl.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL"/>
+        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL;RaspSenseHatControl"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean"/>
+        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean;RaspSenseHatControl:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make"/>
+        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make;RaspSenseHatControl:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
     <ItemGroup Condition="'$(BuildGroup)'=='Win - DEBUG'">
@@ -66,6 +78,12 @@
         </BuildGroupProject>
         <BuildGroupProject Include="GRIDServerConsole\Sources\GRIDServerConsole.dproj">
             <ProjectGuid>{E71D8A4B-2FAE-46CF-B74F-AA398B58C227}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="Demo\SenseHATDemo\RaspSenseHatControl.dproj">
+            <ProjectGuid>{BBDBDAB5-4708-4A18-B35E-CD7ACB867309}</ProjectGuid>
             <Configurations>Debug</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>False</Enabled>

@@ -69,6 +69,7 @@ Type
 // Log format message
 //------------------------------------------------------------------------------
   TGridLogCategory = (glcInfo, glcWarning, glcException, glcFatal);
+  TGridLogCategories = set of TGridLogCategory;
   TGRIDLogChunk = Packed Record
     DateTime : TDateTime;
     ThreadID : UInt64;

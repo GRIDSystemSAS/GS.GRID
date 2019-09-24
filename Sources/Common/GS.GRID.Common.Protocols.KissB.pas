@@ -408,18 +408,19 @@ begin
   Assert(assigned(aStream));
   Assert(aStream.Size>0);
   result := false;
+
+  if (aStream.Size<20) or (aStream.Size>200) then
+  begin
+    raise EExceptionProtocolNegotiation.Create(ClassName + ' - Protocol negociation failure [A4]');
+  end;
+
   //Try to negociate in binary format first
   try
     aStream.Position := 0;
 
-    if (aStream.Size<20) or (aStream.Size>200) then
-    begin
-      raise Exception.Create('Protocol failure [a4]');
-    end;
-
     la.Load(aStream);
     if la.Header.Command <> TKBCltCommand.connect then
-      raise Exception.Create('Protocol failure [a5]');
+      raise EExceptionProtocolNegotiation.Create(ClassName + ' - Protocol negociation failure [A5]');
 
     //it is ok, remove first int. (useless an not a part of app level protocol.
     aStream.Position := 0;
@@ -429,7 +430,7 @@ begin
        aStream.Position := 0;
        la.Load(aStream,TGRIDProtocolFormat.json);
        if la.Header.Command <> TKBCltCommand.connect then
-         raise Exception.Create('Protocol failure [a6]');
+        raise EExceptionProtocolNegotiation.Create(ClassName + ' - Protocol negociation failure [A6]');
 
       aStream.Position := 0;
     Except

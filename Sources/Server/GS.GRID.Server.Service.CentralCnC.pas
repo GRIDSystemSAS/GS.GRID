@@ -89,6 +89,7 @@ TCustomGRIDServiceCentralCnC = class(TGRIDService)
 private
   FUserConf : TCNCUserConfiguration;
   FInfo : TGRIDCentralCNCInformation;
+  FLogCategories: TGridLogCategories;
 
   procedure SetUpLogFile;
   procedure PublishCNCInfo;
@@ -112,6 +113,8 @@ public
   procedure Finalize; Override;
 
   Procedure LoadConfiguration; Override;
+
+  property LogCategories : TGridLogCategories read FLogCategories write FLogCategories;
 end;
 
 TGRIDServiceCentralCnC = class(TCustomGRIDServiceCentralCnC)
@@ -186,6 +189,7 @@ end;
 
 procedure TCustomGRIDServiceCentralCnC.Initialize;
 begin
+  FLogCategories := [TGridLogCategory.glcWarning, TGridLogCategory.glcException, TGridLogCategory.glcFatal];
   FUserConf := TCNCUserConfiguration.Create;
   FInfo := TGRIDCentralCNCInformation.Create;
   MasterThread.Bus.DeclareDataRepository(CST_BUSDATAREPO_SERVERINFO);
@@ -308,8 +312,11 @@ begin
     FreeAndNil(l);
   end;
 
-  ll := FormatDateTime('hhnnsszzzz',now) + '/' + Format('[%d]/%d/  %s/%s',[ls.ThreadID,Byte(ls.Category),ls.LogText,ls.Module]);
-  Writeln(FFileLog,ll);
+  if ls.Category in LogCategories then
+  begin
+    ll := FormatDateTime('hhnnsszzzz',now) + '/' + Format('[%d]/%d/  %s/%s',[ls.ThreadID,Byte(ls.Category),ls.LogText,ls.Module]);
+    Writeln(FFileLog,ll);
+  end;
 end;
 
 procedure TCustomGRIDServiceCentralCnC.OnPythonConfUpdateIncoming(
