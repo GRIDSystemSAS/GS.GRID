@@ -11,6 +11,7 @@ It is written in Pascal Object, currently compatible in delphi and FPC (Delphi p
 Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-python-services/
 
 # History
+- 20190924 | Added Sense Hat demo
 - 20190920 | *Release v1.0.0* [Main targeted plaform (Win/nix - x86, x64, Arm) available](https://github.com/GRIDSystemSAS/GS.GRID/releases)
 
 - 20190906 | [add cpp binary API](https://github.com/VincentGsell/GS.GRID-for-cpp)
