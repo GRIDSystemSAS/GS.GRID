@@ -20,7 +20,7 @@ Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-pyt
 
 - KissB protocol : Bus Messaging protocol, shared a few common attributes with mqtt-protocol, but it is simpler (yes it can), and wider on its purpose)
 - MQTT Broker
-- Protocol Binding : Different Protocol can be server on the *same* port, ("negotiatiate" protocol steps).
+- Protocol Binding : *rare feature* Different Protocol can be server on the *same* port, ("negotiate" protocol steps).
 - Key Value DB : In memory KeyValue DB is available, it use Bus capabilities to serve Key/Value number, string and stream data.
 - Python Proxy : Run Python code directly on the server.
 
