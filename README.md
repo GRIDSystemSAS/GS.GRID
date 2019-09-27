@@ -8,7 +8,8 @@ GRID Server is a multi-purpose, bus oriented, lightweight, industrial improved, 
 It is written in Pascal Object, currently compatible in delphi and FPC (Delphi post Unicode (2009+), FPC 3.04 (Arm) and FPC 3.3+ (Desktop class OS)) 
 
 # Articles
-Use Python services :  https://grids.systems/2019/08/29/grid-server-focus-on-python-services/
+20190924 : [Grid Server as middlewhare for raspberry](https://grids.systems/2019/09/24/delphi-gridserver-and-raspberrys-sense-hat/)
+20190901 : [Uses Python services](https://grids.systems/2019/08/29/grid-server-focus-on-python-services/)
 
 # History
 - 20190924 | Added Sense Hat demo
