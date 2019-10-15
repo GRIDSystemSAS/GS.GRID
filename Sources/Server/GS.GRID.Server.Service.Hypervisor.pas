@@ -43,10 +43,12 @@ uses
  Classes,
  SysUtils,
  SyncObjs,
+ Generics.collections,
  {$ELSE}
  System.Classes,
  System.SysUtils,
  System.SyncObjs,
+ System.Generics.collections,
  {$ENDIF}
  GS.Bus,
  GS.Bus.Services,
@@ -55,12 +57,68 @@ uses
  GS.Stream,
  GS.TimerScheduler,
  GS.GRID.Server.Service.Types,
- GS.GRID.Server.Service.Server.MicroServices,
- GS.GRID.Common.Protocols.MicroService,
+ GS.GRID.Common.Types,
  os_api_unit
  ;
 
+
+const
+  CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT = 'system.hv';
+
 Type
+
+  TMicroServiceLegal = record
+    Author : String;
+    Company : String;
+    webSite : String;
+  end;
+
+  TMicroServiceImplementationType = (internalThread,externalBinary);
+  TMicroServiceImplementation = record
+    address : String;
+    ImplType : TMicroServiceImplementationType;
+  end;
+
+  TMicroServiceBinaryStartBehaviour = (onDemand, awakeOnGridStart);
+  TMicroServiceBinaryEndBehaviour = (serviceResponsability, noMoreClient);
+
+  TMicroServiceDefinition = Class
+  public
+    Name : String;
+    Description : String;
+    LegalInformations : TMicroServiceLegal;
+    ServiceImplementation : TMicroServiceImplementation;
+    StartBehaviour : TMicroServiceBinaryStartBehaviour;
+    EndBehaviour : TMicroServiceBinaryStartBehaviour;
+  End;
+
+
+  TGridHypervisorTaskDefinitionTaskStatus = (defined, starting, processing, finished);
+  TGridHypervisorTaskDefinition = class
+  public
+    TaskID : String;
+    MicroServiceDefinition : TMicroServiceDefinition;
+    TaskStartOn : TDateTime;
+    TaskRegisterOn : TDateTime;
+    TaskFinished : Boolean;
+    TaskFinisheOn : TDateTime;
+    TaskStatus : TGridHypervisorTaskDefinitionTaskStatus;
+    TaskOK : boolean;
+    TaskKODesc : String;
+    TaskProcessedTime : UInt64; //ms
+    TaskHypervisorClientResponseID : String;
+    stdInChan : String;
+    stdOutChan :string;
+    RunCount : Integer;
+  end;
+
+  TStackTaskHypervised = class(TStackTask)
+  public
+    HypervisorBus : TBus;
+    TaskDefinition : TGridHypervisorTaskDefinition;
+
+    procedure notifyProgress(txt : string; const percentavailable : boolean= false; const percent : single = 0.0);
+  end;
 
   TCustomGridHypervisor = Class(TGRIDService)
   private
@@ -68,27 +126,41 @@ Type
     FDico : TBusClientDataRepo;
 
     //MicroService.
-    FMicroService_Registering : TBusClientReader;
-    FMicroService_ClientAskForSvcList : TBusClientReader;
+    FMicroService_ClientAskByTxt : TBusClientReader;
+    FM : TBusClientReaderArray;
+    FStrTxtOrder : TStringList;
+    FReady : boolean;
 
     //Microservice list.
-    FMicroServices : TGSProtectedGridServerMicroServiceList;
+    FMicroServices : TObjectDictionary<String,TMicroServiceDefinition>;
+    //Task (Microservice execution) List.
+    FTasks :  TObjectDictionary<String,TGridHypervisorTaskDefinition>;
+
   protected
     FTimerScheduler : TGSTimerSchedulerThreadContainer;
-    FThreadPool :TStackThreadPool; //that will execute internal and external business task.
+    FThreadPool :TStackDynamicThreadPool; //that will execute internal and external business task.
 
-    //this event for external binaries (Microsrvice itself) which want to register their service.
-    Procedure InternatSystemHypervisorMicroServiceRegistering(Sender : TBusSystem;aReader : TBusClientReader; Var Packet : TBusEnvelop);
-    Procedure InternatSystemHypervisorMicroServiceAskList(Sender : TBusSystem;aReader : TBusClientReader; Var Packet : TBusEnvelop);
+    //ThreadPool :
+    procedure OnTaskStart(Const aThreadIndex : UInt32; aIStackTask : TStackTask; TaskProcessTimeValue : UInt64);
+    procedure OnTaskFinished(Const aThreadIndex : UInt32; aIStackTask : TStackTask; TaskProcessTimeValue : UInt64);
 
-    //
+    //Timer and publication.
     Procedure InternalSystemHypervisorTimer(Sender : TObject);
     procedure PublishSecond;
+
+    function GetServiceReady: boolean; override;
+
+
+    //High level service usage : This one is "drivable" by text,
+    //thought KissB, MQTT, event web or even bus (embedded app)  : Text order based and response via messaging.
+    Procedure InternalSystemHypervisorMicroServiceAskByText(Sender : TBusSystem;aReader : TBusClientReader; Var Packet : TBusEnvelop);
+    function InternalHypervisorlaunchProcess(task : TGridHypervisorTaskDefinition) : Boolean;
   public
     //Service...
     procedure Initialize; Override;
     Procedure Execute; Override;
     procedure Finalize; Override;
+
 
     //All task affected to service will be freed on destroy.
     property Scheduler : TGSTimerSchedulerThreadContainer read FTimerScheduler;
@@ -99,56 +171,59 @@ Type
      function AutoTestImplementation: TCustomGridServiveServerTestResult; Override;
   End;
 
+  //Task define internally (TTask) which implemnents a "service".
+  //See : GS.GHS.HelloWorldService.pas for trivial exemple implementation.
+  //for working, this service need to be declared and enabled in MicroService repo (For security reason)
+  TStackTaskHypervisedClass = class of TStackTaskHypervised;
+  Var GLB_InternalTasksClassList : Array Of TStackTaskHypervisedClass;
 implementation
 
 { TCustomGridHypervisor }
 
 
 procedure TCustomGridHypervisor.Execute;
-var la : TBusClientReaderArray;
 begin
-  setlength(la,3);
-  la[0] := FGlobalInstructionChannel;
-  la[1] := FMicroService_Registering;
-  la[2] := FMicroService_ClientAskForSvcList;
-
+  FReady := true;
   while Not(MasterThread.Terminated) do
   begin
-    BusProcessMessages(la);
-    Sleep(CST_ONE_SEC);
-    //MasterThread.DoHeartBeat;
+    if BusProcessMessages(FM)=0 then
+      Sleep(CST_THREAD_COOLDOWN);
   end;
-
 end;
 
 procedure TCustomGridHypervisor.Finalize;
 begin
   FTimerScheduler.Enabled := false;
-  GridBus.UnSubscribe(FMicroService_Registering);
-  GridBus.UnSubscribe(FMicroService_ClientAskForSvcList);
+  GridBus.UnSubscribe(FMicroService_ClientAskByTxt);
   FreeAndNil(FTimerScheduler);
   FreeAndNil(FThreadPool);
-  FreeAndNil(FMicroService_Registering);
-  FreeAndNil(FMicroService_ClientAskForSvcList);
+  FreeAndNil(FMicroService_ClientAskByTxt);
   FreeAndNil(FCPU);
   FreeAndNil(FDICO);
   FreeAndNil(FMicroServices);
+  FreeAndNil(FStrTxtOrder);
+  FreeAndNil(FTasks);
   inherited;
+end;
+
+function TCustomGridHypervisor.GetServiceReady: boolean;
+begin
+  result := FReady;
 end;
 
 procedure TCustomGridHypervisor.Initialize;
 begin
   inherited;
-  FMicroServices := TGSProtectedGridServerMicroServiceList.Create;
+  FReady := false;
   FCPU := TgsCPUUsage.Create;
   FTimerScheduler := TGSTimerSchedulerThreadContainer.Create;
   FThreadPool := TStackDynamicThreadPool.Create;
+  FThreadPool.OnTaskStart := OnTaskStart;
+  FThreadPool.OnTaskFinished := OnTaskFinished;
 
-  FMicroService_Registering := GridBus.Subscribe(CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_REGISTRATION,InternatSystemHypervisorMicroServiceRegistering);
-  FMicroService_Registering.Event := GridBus.GetNewEvent;
-
-  FMicroService_ClientAskForSvcList := GridBus.Subscribe(CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_LIST,InternatSystemHypervisorMicroServiceAskList);
-  FMicroService_ClientAskForSvcList.Event := GridBus.GetNewEvent;
+  FMicroService_ClientAskByTxt := GridBus.Subscribe(CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT,InternalSystemHypervisorMicroServiceAskByText);
+  FMicroService_ClientAskByTxt.Event := GridBus.GetNewEvent;
+  FStrTxtOrder := TStringList.Create;
 
   //Use central timer for CPU Data.
   FTimerScheduler.OnTimer := InternalSystemHypervisorTimer;
@@ -156,6 +231,13 @@ begin
 
   //For Posting CPU Data.
   FDico := TBusClientDataRepo.Create(Self.MasterThread.Bus,CST_BUSDATAREPO_SERVERINFO);
+
+  setlength(FM,4);
+  FM[0] := FGlobalInstructionChannel;
+  FM[3] := FMicroService_ClientAskByTxt;
+
+  FTasks :=  TObjectDictionary<String,TGridHypervisorTaskDefinition>.Create([doOwnsValues]);
+  FMicroServices := TObjectDictionary<String,TMicroServiceDefinition>.Create([doOwnsValues]);
 end;
 
 
@@ -167,101 +249,267 @@ begin
   PublishSecond;
 end;
 
-procedure TCustomGridHypervisor.InternatSystemHypervisorMicroServiceAskList(
-  Sender: TBusSystem; aReader: TBusClientReader; var Packet: TBusEnvelop);
 
-var
-  Client : TMsg_MicroService_CLI_FromClient_ToServer_Ask;
-  Response : TMsg_MicroService_CLI_FromServer_ToClient_AskResponse_List;
-
-  lStream : TMemoryStream;
-  ResponseMes : TBusMessage;
-
-  ll : TObjectList_TMicroService;
-  i : integer;
-
+procedure TCustomGridHypervisor.OnTaskStart(const aThreadIndex: UInt32;
+  aIStackTask: TStackTask; TaskProcessTimeValue: UInt64);
 begin
-  lstream := Packet.ContentMessage.AsStream;
-  try
-    Client.load(Packet.ContentMessage.AsStream);
-    case Client.ClientAskCode of
-      TMicroService_CLI_ClientAskCode.list:
+  Assert(aIStackTask is TStackTaskHypervised);
+  TStackTaskHypervised(aIStackTask).TaskDefinition.TaskStartOn := now;
+  TStackTaskHypervised(aIStackTask).TaskDefinition.TaskStatus := TGridHypervisorTaskDefinitionTaskStatus.starting;
+  { TODO : notify Task launch on system.hv.taskStart }
+end;
+
+procedure TCustomGridHypervisor.OnTaskFinished(const aThreadIndex: UInt32;
+  aIStackTask: TStackTask; TaskProcessTimeValue: UInt64);
+begin
+  Assert(aIStackTask is TStackTaskHypervised);
+  TStackTaskHypervised(aIStackTask).TaskDefinition.TaskStatus := TGridHypervisorTaskDefinitionTaskStatus.finished;
+  TStackTaskHypervised(aIStackTask).TaskDefinition.TaskProcessedTime := TaskProcessTimeValue;
+  TStackTaskHypervised(aIStackTask).TaskDefinition.RunCount := TStackTaskHypervised(aIStackTask).TaskDefinition.RunCount + 1;
+  { TODO : notify Task launch on system.hv.taskFinish }
+end;
+
+function TCustomGridHypervisor.InternalHypervisorlaunchProcess(task : TGridHypervisorTaskDefinition) : boolean;
+var  l : TStackTaskHypervised;
+     i,j : integer;
+begin
+  result := false;
+  case task.MicroServiceDefinition.ServiceImplementation.ImplType of
+    TMicroServiceImplementationType.internalThread :
+    begin
+      j := -1;
+      for i := 0 to Length(GLB_InternalTasksClassList)-1 do
       begin
-        Response.AskedCode := TMicroService_CLI_ClientAskCode.list;
-        Response.Status := True;
-        Response.StatusInfo := '';
-        ll := FMicroServices.Lock;
-        try
-          for I := 0 to ll.Count-1 do
-          begin
-            Response.Services[i] := ll[i].ServiceInformations;
-          end;
-        finally
-          FMicroServices.Unlock;
+        if GLB_InternalTasksClassList[i].ClassName = task.MicroServiceDefinition.ServiceImplementation.address then
+        begin
+          j := i;
+          break;
         end;
-        lStream.Clear;
-        Response.Save(lStream);
+      end;
+
+      if j>-1 then
+      begin
+        l := GLB_InternalTasksClassList[j].Create;
+        l.TaskDefinition := task;
+        l.HypervisorBus := GridBus;
+        FThreadPool.Submit(l);
+        result := true;
+        { TODO : notify Task launch on system.hv.taskRun }
       end
       else
-        raise Exception.Create('Error Message');
+      begin
+        task.TaskOK:= false;
+        task.TaskKODesc := 'TaskReference not found';
+      end;
     end;
-    lStream.Position := 0;
-    ResponseMes.FromStream(lStream);
-    GridBus.Send(ResponseMes,Packet.ResponseChannel);
-  finally
-    FreeAndNil(lStream);
+    TMicroServiceImplementationType.externalBinary :
+    begin
+      raise Exception.Create('todo');
+    end;
   end;
 end;
 
-procedure TCustomGridHypervisor.InternatSystemHypervisorMicroServiceRegistering(
+procedure TCustomGridHypervisor.InternalSystemHypervisorMicroServiceAskByText(
   Sender: TBusSystem; aReader: TBusClientReader; var Packet: TBusEnvelop);
+var order : String;
+    respoChan : String;
+    taskID : String;
+    resp : TBusMessage;
+    mm : TMicroServiceDefinition;
+    i : integer;
+    tp : String;
+    enum : TPair<string,TMicroServiceDefinition>;
+    enumt : TPair<string,TGridHypervisorTaskDefinition>;
+    taskdef : TGridHypervisorTaskDefinition;
+    ag : TGUID;
 
-  var lChannelService : String;
-    Service : TMsg_FromService_ServiceData;
-    Response : TMsg_FromServer_ServiceRegistrationResponse;
+    procedure GenerateWarningMessage(warningtxt : string);
+    begin
+      FStrTxtOrder.Clear;
+      FStrTxtOrder.Add('response=OK');
+      FStrTxtOrder.Add('messagetype=warning');
+      FStrTxtOrder.Add('messagedesc='+warningtxt);
+      resp.FromString(FStrTxtOrder.Text);
+      GridBus.Send(resp,respoChan);
+    end;
 
-    lStream : TMEmoryStream;
-    lms : TObjectList_TMicroService;
-    ls : TMicroService;
+    procedure generateExceptionMessage(exceptionTxt : string);
+    begin
+      FStrTxtOrder.Clear;
+      FStrTxtOrder.Add('response=KO');
+      FStrTxtOrder.Add('messagetype=exception');
+      FStrTxtOrder.Add('messagedesc='+exceptionTxt);
+      resp.FromString(FStrTxtOrder.Text);
+      GridBus.Send(resp,respoChan);
+    end;
 
-    ResponseMes : TBusMessage;
+    procedure generateOkMessage(const okMessage : string = '');
+    begin
+      FStrTxtOrder.Clear;
+      FStrTxtOrder.Add('response=OK');
+      if okMessage<>'' then
+        FStrTxtOrder.Add('messagedesc='+okMessage);
+      resp.FromString(FStrTxtOrder.Text);
+      GridBus.Send(resp,respoChan);
+    end;
 
 begin
-  lstream := Packet.ContentMessage.AsStream;
-  try
-    Service.load(Packet.ContentMessage.AsStream);
 
-    lms := FMicroServices.Lock;
-    try
-      if NOT lms.MicroServiceById(Service.ID,ls) then
+  try
+    FStrTxtOrder.Text := Packet.ContentMessage.AsString;
+    respoChan := FStrTxtOrder.Values['srto'];
+    if respoChan='' then
+      respoChan := Packet.ResponseChannel;
+    order := FStrTxtOrder.Values['orde'];
+    if respoChan<>'' then
+    begin
+      if order<>'' then
       begin
-        ls := TMicroService.Create(Packet.ClientSourceId);
-        ls.ServiceInformations := Service;
-        ls.ChannelExecute := 'EX/'+Service.ID+'/'+WithoutT(ClassName)+'.'+ls.UserIdOwner;
-        lms.Add(ls);
+        if (order = 'sl') or (order='servicelist') then
+        begin
+          //available service list
+          FStrTxtOrder.Clear;
+          FStrTxtOrder.Add('response=OK');
+          FStrTxtOrder.Add('servicecount='+IntToStr(FMicroServices.Count));
+          i := 1;
+          for enum in FMicroServices do
+          begin
+            tp := 'internal';
+            if enum.Value.ServiceImplementation.ImplType <> TMicroServiceImplementationType.externalBinary then
+              tp := 'external';
+            FStrTxtOrder.Add(format('service%d="%s","%s","%s","%s"',[i,enum.Value.Name,enum.Value.Description,enum.Value.ServiceImplementation.address,tp]));
+            inc(i);
+          end;
+          resp.FromString(FStrTxtOrder.Text);
+          GridBus.Send(resp,respoChan);
+        end
+        else
+        if (order = 'st') or (order='status') then
+        begin
+          FStrTxtOrder.Clear;
+          FStrTxtOrder.Add('response=OK');
+          FStrTxtOrder.Add('taskcount='+IntToStr(FTasks.Count));
+          i := 1;
+          FStrTxtOrder.Add('messagedesc=taskNumber,name,taskID,Status,Ok,NOKDesc');
+          for enumt in FTasks do
+          begin
+            FStrTxtOrder.Add(format('task%d="%s","%s","%s","%s","%s","%d"',[i,enumt.Value.MicroServiceDefinition.Name,enumt.Value.TaskID,intToStr(integer(enumt.Value.TaskStatus)),BoolToStr(enumt.Value.TaskOK),enumt.Value.TaskKODesc, enumt.Value.RunCount]));
+            inc(i);
+          end;
+          resp.FromString(FStrTxtOrder.Text);
+          GridBus.Send(resp,respoChan);
+        end
+        else
+        if order='defservice' then
+        begin
+          //define microservice by code (usually done by file, on startup.)
+
+          if FMicroServices.TryGetValue(FStrTxtOrder.Values['name'],mm) then
+          begin
+           GenerateWarningMessage('microservice '+mm.Name+' already defined');
+          end
+          else
+          begin
+            mm := TMicroServiceDefinition.Create;
+            mm.Name := lowercase(trim(FStrTxtOrder.Values['name']));
+            mm.Description := FStrTxtOrder.Values['descriptiondesc'];
+            mm.ServiceImplementation.address := FStrTxtOrder.Values['address'];
+            mm.ServiceImplementation.ImplType := TMicroServiceImplementationType.internalThread;
+            if FStrTxtOrder.Values['implType'] <> 'internal' then
+              mm.ServiceImplementation.ImplType := TMicroServiceImplementationType.externalBinary;
+
+            FMicroServices.Add(mm.Name,mm);
+
+            FStrTxtOrder.Clear;
+            FStrTxtOrder.Add('response=OK');
+            resp.FromString(FStrTxtOrder.Text);
+            GridBus.Send(resp,respoChan);
+          end;
+        end
+        else
+        if order='run' then
+        begin
+        //no order, we are expecting a taskID, previsously generated by order query.
+          taskID := FStrTxtOrder.Values['taskid'];
+          if FTasks.TryGetValue(taskID,taskdef) then
+          begin
+            respoChan := taskdef.TaskHypervisorClientResponseID;
+            if respoChan<>'' then
+            begin
+              if InternalHypervisorlaunchProcess(taskdef) then //takeoff.
+              begin
+                generateOkMessage(format('service %s has been launched',[taskdef.MicroServiceDefinition.Name]));
+              end
+              else
+              begin
+                generateExceptionMessage(format('service %s launch error : %s',[taskdef.MicroServiceDefinition.Name,taskdef.TaskKODesc]));
+              end;
+            end;
+          end
+          else
+          begin
+            generateExceptionMessage(format('run task "%s" launch error : %s',[taskID,'taskID not provided']));
+          end
+        end
+        else
+        if (order = '.') or (order='hi') then
+        begin
+          generateOkMessage('welcome on Grid Hypervisor');
+        end
+        else
+        begin
+          //order is uknown, it mustbe an API invoke.
+          if FMicroServices.TryGetValue(order,mm) then
+          begin
+            //Open task definition : Next ask will launch task.
+            taskdef := TGridHypervisorTaskDefinition.Create;
+            taskDef.TaskID := 'TID'+GUIDToString(ag.NewGuid);
+            taskdef.MicroServiceDefinition := mm;
+            taskdef.TaskRegisterOn := now;
+            taskdef.TaskStartOn := 0.0;
+            taskdef.TaskFinisheOn := 0.0;
+            taskdef.TaskFinished := false;
+            taskdef.TaskOK := false;
+            taskdef.TaskKODesc := '';
+            taskdef.TaskHypervisorClientResponseID := respoChan; //link between client and its tasks
+            taskdef.stdInChan := format('HVTI/%S',[taskDef.TaskID]);
+            taskdef.stdOutChan := format('HVTO/%S',[taskDef.TaskID]);
+            taskdef.RunCount := 0;
+
+            FTasks.Add(taskdef.TaskID,taskdef);
+
+            FStrTxtOrder.Clear;
+            FStrTxtOrder.Add('response=OK');
+            FStrTxtOrder.Add('taskid='+taskdef.TaskID);
+            FStrTxtOrder.Add('stdinchan='+taskdef.stdInChan);
+            FStrTxtOrder.Add('stdoutchan='+taskdef.stdOutChan);
+            resp.FromString(FStrTxtOrder.Text);
+            GridBus.Send(resp,respoChan);
+          end
+          else
+          begin
+            generateExceptionMessage(format('unknown service "%s".',[order]));
+          end;
+        end;
+      end
+      else
+      begin
+        generateExceptionMessage('empty order.');
       end;
-      ls.Registered;
-    finally
-      FMicroServices.Unlock;
+    end
+    else
+    begin
+      raise Exception.Create('Hypervisor dialog protocol issue');
     end;
 
-    Response.Status := true;
-    Response.StatusInfo := '';
-//    Response.ChannelName_ServiceStartNotification := 'SSN/'+Service.ID+'/'+WithoutT(ClassName);
-//    Response.ChannelName_ServiceShutdownNotification := 'SDN/'+Service.ID+'/'+WithoutT(ClassName);
-//    Response.ChannelName_AskForStatus := 'AFS/'+Service.ID+'/'+WithoutT(ClassName);
-    Response.ChannelName_ServerExecute := ls.ChannelExecute;
-    lChannelService := 'SSN/'+Service.ID+'/'+WithoutT(ClassName);
-
-    lstream.Clear;
-    Response.Save(lStream);
-    lStream.Position := 0;
-    ResponseMes.FromStream(lStream);
-    GridBus.Send(ResponseMes,Service.ResponseChannel);
-  finally
-    FreeAndNil(lStream);
+  Except
+    On E : Exception do
+    begin
+      Log(E.Message,ClassName,'InternalSystemHypervisorMicroServiceAskByText',TGridLogCategory.glcException);
+    end;
   end;
 end;
+
 
 procedure TCustomGridHypervisor.PublishSecond;
 var amessage : TBusMessage;
@@ -280,6 +528,16 @@ end;
 class function TGridHypervisor.GetDefaultImplementation: TGridService;
 begin
   Result := TGridHypervisor.Create;
+end;
+
+{ TStackTaskHypervised }
+
+procedure TStackTaskHypervised.notifyProgress(txt: string;
+  const percentavailable: boolean; const percent: single);
+begin
+  { TODO : notify Task launch on system.hv.taskprogress }
+  //mes.FromString(...)
+  //yourBus.Send(mes,'system.hv.taskprogress');
 end;
 
 end.

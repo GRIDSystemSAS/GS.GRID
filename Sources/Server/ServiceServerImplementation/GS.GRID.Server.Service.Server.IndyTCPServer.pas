@@ -54,8 +54,10 @@ const
   CST_MAX_BYTES_AMOUNT_ALLOWED_BEFORE_CONNECT = 1024*1024; //One meg. allowed for connection phase, before acrreditation.
   CST_MAX_BYTES_AMOUNT_ALLOWED_ONCE_ACREDITED = CST_MAX_BYTES_AMOUNT_ALLOWED_BEFORE_CONNECT * 1000; //Bytes allowed when accredited.
   CST_MAX_UPLOAD_LIMIT_REACHED = 'Max allowed upload reached.';
+  CST_INDYTCP_CONFIGURATION_FILE = 'grid.tcpservice.indy.conf';
 
 Type
+
 TGRIDContext = class(TIdServerContext)
 private
   FUser : TGRIDServerUser; //Pointer.
@@ -68,9 +70,19 @@ end;
 
 TGRIDServiceIndyTCPServer = class(TGRIDServiceServerBasedProtocol)
 protected
+  Type
+  TGRIDBindType = (ip4,ip6);
+  TGRIDBindCache = Record
+    ip : string;
+    port : uint32;
+    ty : TGRIDBindType;
+  end;
+  TGRIDBindCaches = Array of TGRIDBindCache;
+
+  var
+  FBindFromFile : TGRIDBindCaches;
   FRunTimeClientCount : Uint32;
   FServer : TIdTCPServer;
-  FDesiredPort: UInt32;
 
   Function IPFilter(const StrIP: string): Boolean;
   Function IPClient(aContext : TidContext) : String;
@@ -124,8 +136,6 @@ public
   //****************************************************************************
   //****************************************************************************
   //****************************************************************************
-
-  Property DesiredPort : UInt32 read FDesiredPort;
 
   Function AutoTestImplementation : TCustomGridServiveServerTestResult; Override;
 
@@ -212,28 +222,57 @@ end;
 
 
 procedure TGRIDServiceIndyTCPServer.LoadConfiguration;
+const
+  HolyPort = 60000;
 var lFile : TStringList;
-    lFileName : String;
-    ls : string;
-begin
-  FDesiredPort := 60000;
-  lFileName := ExtractFileDir(ParamStr(0))+'\GRIDServer.configuration';
-  if FileExists(lFileName) then
-  begin
-    lFile := TStringList.Create;
-    try
-      lFile.LoadFromFile(lFileName);
-      ls := lFile.Values['PORT'];
-      if length(ls)>0 then
-        FDesiredPort := StrToIntDef(ls,0);
-    finally
-      FreeAndNil(lFile);
+    ip,po,ty : string;
+    i : integer;
+
+    procedure load;
+    begin
+      if lFile.Count=0 then
+        lFile.LoadFromFile(CST_INDYTCP_CONFIGURATION_FILE);
+
+      ip :='.';
+      i := 1;
+      while ip<>'' do
+      begin
+        ip := trim(lFile.Values['BindingIP_'+IntToStr(i)]);
+        po := trim(lFile.Values['BindingPort_'+IntToStr(i)]);
+        ty := trim(lowercase(lFile.Values['BindingType_'+IntToStr(i)]));
+        if (ip='') and (po='') then
+          break;
+        SetLength(FBindFromFile,length(FBindFromFile)+1);
+        FBindFromFile[Length(FBindFromFile)-1].ip := ip;
+        FBindFromFile[Length(FBindFromFile)-1].port := StrToIntDef(po,HolyPort);
+        FBindFromFile[Length(FBindFromFile)-1].ty := TGRIDBindType.ip4;
+        if ty = 'ipv6' then
+          FBindFromFile[Length(FBindFromFile)-1].ty := TGRIDBindType.ip6;
+        MasterThread.DoLog('Added GRID TCP Server Binding ('+intTostr(i)+') : '+ty+'/'+ip+':'+po);
+        inc(i);
+      end;
+      MasterThread.DoLog('GRID TCP Server configuration loaded.');
     end;
-    MasterThread.DoLog('GRID TCP Server configuration loaded.');
-  end
-  else
-  begin
-    MasterThread.DoLog('GRID TCP Server configuration not found.');
+
+    procedure save;
+    begin
+      MasterThread.DoLog('GRID TCP Server configuration not found');
+      Lfile.Clear;
+      lfile.Add('BindingIP_1=0.0.0.0');
+      lfile.Add('BindingPort_1='+IntToStr(HolyPort));
+      lfile.Add('BindingType_1=IPv4');
+      lFile.SaveToFile(CST_INDYTCP_CONFIGURATION_FILE);
+      MasterThread.DoLog('GRID TCP Server configuration file created.');
+    end;
+
+begin
+  lFile := TStringList.Create;
+  try
+    if Not FileExists(CST_INDYTCP_CONFIGURATION_FILE) then
+      save;
+    load;
+  finally
+    FreeAndNil(lfile);
   end;
 end;
 
@@ -263,20 +302,32 @@ begin
 end;
 
 procedure TGRIDServiceIndyTCPServer.Initialize;
-{$IFDEF FPC}
-var a : TIdSocketHandle;
-{$ENDIF}
+var
+  i : integer;
+  a : TIdSocketHandle;
 begin
   inherited;
   FRunTimeClientCount := 0;
   FServer := TIdTCPServer.Create(nil);
   FServer.ContextClass := TGRIDContext;
-  FServer.DefaultPort := DesiredPort;
-  FServer.Bindings.Clear; //One binding only.
-  {$IFDEF FPC} //Linux seems to not support same binding on 2 interface (ipv6 and ipv4)
-  a := FServer.Bindings.Add;
-  a.IPVersion := TIdIPVersion.Id_IPv4;
-  {$ENDIF}
+  FServer.Bindings.Clear; //binding...
+
+  //VGS : DO NO REMOVE the comment above !
+  ///Before, we forces ipv4 and solve the linux unique interface issue. Now, this issue can be back.
+  ///{$IFDEF FPC} //Linux seems to not support same binding on 2 interface (ipv6 and ipv4)
+  ///a := FServer.Bindings.Add;
+  ///a.IPVersion := TIdIPVersion.Id_IPv4;
+  ///{$ENDIF}
+
+  for I := 0 to Length(FBindFromFile)-1 do
+  begin
+    a := FServer.Bindings.Add();
+    a.IP := FBindFromFile[i].ip;
+    a.port := FBindFromFile[i].port;
+    a.IPVersion := TIdIPVersion.Id_IPv4;
+    if  FBindFromFile[i].ty = TGRIDBindType.ip6 then
+      a.IPVersion := TIdIPVersion.Id_IPv6;
+  end;
   FServer.OnExecute := OnIdServerExecute;
   FServer.OnAfterBind := OnIdServerAfterBind; //IN MAIN THREAD.
   FServer.OnConnect := OnIdServerConnect;
@@ -369,43 +420,31 @@ end;
 
 procedure TGRIDServiceIndyTCPServer.OnIdServerAfterBind(Sender: TObject);
 
-function GetLocalAddressesPatch : String; //Equivalent in Indy produce memleak (The story of "iF the TStringList is nil)
+Procedure LocalAddressesPatch; //Equivalent in Indy produce memleak (The story of "iF the TStringList is nil)
 var
   LList: TIdStackLocalAddressList;
   I: Integer;
-  FLocalAddresses : TStringList;
 begin
-  Result := '';
-  FLocalAddresses := TStringList.Create;
+  LList := TIdStackLocalAddressList.Create;
   try
-    FLocalAddresses.BeginUpdate;
-    LList := TIdStackLocalAddressList.Create;
-    try
-      // for backwards compatibility, return only IPv4 addresses
-      GStack.GetLocalAddressList(LList);
-      for I := 0 to LList.Count-1 do
-      begin
-//        if LList[I].IPVersion = Id_IPv4 then begin
-          FLocalAddresses.Add(LList[I].IPAddress);
-//        end;
-      end;
-    finally
-      LList.Free;
+    // for backwards compatibility, return only IPv4 addresses
+    GStack.GetLocalAddressList(LList);
+    for I := 0 to LList.Count-1 do
+    begin
+      Log('TCP Binding : local address stack : '+LList[I].IPAddress,ClassName);
     end;
-    result := FLocalAddresses.Text;
   finally
-    FreeAndNil(FlocalAddresses);
+    LList.Free;
   end;
 end;
 
 
 var
    n:Integer;
-   s : string;
 begin
-  Log(ClassName+' / OnIdServerAfterBind',ClassName);
   //This run in main thread.
-  s := GetLocalAddressesPatch; // + #13#10;
+  //LocalAddressesPatch;
+  Log('TCP Binding Local addresses : '+GStack.LocalAddresses.Text,ClassName);
   for n:= 0 to FServer.Bindings.Count-1 do
   begin
     with FServer.Bindings[n] do
@@ -414,10 +453,9 @@ begin
       begin
         FServer.DefaultPort := FServer.Bindings[n].Port;
       end;
-      s := s + ( ip+':'+IntToStr(Port) ) + ' / ' + PeerIP + #13#10;
+      Log('TCP Binding : ( '+ip+':'+IntToStr(Port)+' ) / Peer:' + PeerIP,ClassName);
     end;
   end;
-  Log('Server listening on '+s,ClassName);
 end;
 
 procedure TGRIDServiceIndyTCPServer.OnIdServerConnect(AContext: TIdContext);

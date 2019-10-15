@@ -166,6 +166,8 @@ Type
     FGlobalInstructionChannel : TBusClientReader;
     FSharedEvent : TEvent; //Shared between all BusClientReader.
 
+    function GetServiceReady: boolean; virtual;
+
     Procedure OnGlobalInstructionIncoming(Sender : TBusSystem;aReader : TBusClientReader; Var Packet : TBusEnvelop); Virtual;
 
     Procedure InternalExecute(Const Clients : Array of TBusClientReader);
@@ -191,6 +193,7 @@ Type
     Property GridBus : TGridBus read FGridBus Write FGridBus;
     Property Server : TObject read FServer write FServer;
     Property ServiceID : String read FServiceId Write FServiceId;
+    property ServiceReady : boolean read GetServiceReady;
 
     Property GlobalInstructionChannel : TBusClientReader read GetGlobalInstructionChannel;
 
@@ -280,6 +283,11 @@ end;
 function TCustomGRIDService.GetGlobalInstructionChannel: TBusClientReader;
 begin
   Result := FGlobalInstructionChannel;
+end;
+
+function TCustomGRIDService.GetServiceReady: boolean;
+begin
+  result := false; //Must be override if used in your service.
 end;
 
 procedure TCustomGRIDService.Initialize;

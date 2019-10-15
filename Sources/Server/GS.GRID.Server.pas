@@ -53,26 +53,24 @@ TThreadTests = Class(TThread)
   Procedure Execute; Override;
 End;
 
-TCustomGridServer = class
+TCustomGridServer = class abstract
 protected
   FGridBus : TGridBus;
-{$IFDEF HYPERVISOR_SUPPORT}
-  FHypervisor : TGridHypervisor;
-{$ENDIF}
   //Service Runner. (Private bus for Service system)
   FServices : TServiceManager;
   FOwnedTask: Boolean;
+
+  Procedure Stop; //Never used : Called by detructor : Start can be called only once.
 public
-  Procedure AddGRIDService(aGridService : TGRIDService; const aStartServiceImmediately : Boolean = False;
-                                                        const aWaitForStart : boolean = true);
+  function AddGRIDService(aGridService : TGRIDService; const aStartServiceImmediately : Boolean = False;
+                                                        const aWaitForStart : boolean = true) : TCustomService;
 
   Procedure Start;
-  Procedure Stop;
-
   Procedure Tests;
 
   Constructor Create; Virtual;
   Destructor Destroy; Override;
+
   Function Stats(aBus : TBus) : String;
 
   Procedure LogServer( const Text : String;
@@ -81,15 +79,26 @@ public
                    const aForcedClassName : String = '');
 
   Property GridBus : TGridBus read FGridBus;
-{$IFDEF HYPERVISOR_SUPPORT}
-  Property Hypervisor : TGridHypervisor read FHypervisor;
-{$ENDIF}
+
   Property OwnedTask : Boolean read FOwnedTask Write FOwnedTask;
   Property Services : TServiceManager read FServices;
-
 end;
 
+//Complete Grid server for Server class application.
 TGridServer = class(TCustomGridServer)
+protected
+  FCnc : TCustomService;
+public
+  Constructor Create; override;
+  Destructor Destroy; Override;
+end;
+
+//Grid server for app : Only bus and hypervisor.
+//No security, no service responding on mqtt or kissb protocol : Zhe minimal to
+//work with hypervisor and bus services.
+TCustomEmbededGridServer = class(TCustomGridServer)
+public
+  constructor Create; Override;
 end;
 
 implementation
@@ -102,9 +111,9 @@ implementation
 
 { TCustomGridServer }
 
-procedure TCustomGridServer.AddGRIDService( aGridService: TGRIDService;
+Function TCustomGridServer.AddGRIDService( aGridService: TGRIDService;
                                             const aStartServiceImmediately : Boolean = False;
-                                            const aWaitForStart : boolean = true);
+                                            const aWaitForStart : boolean = true) : TCustomService;
 var ls : TCustomService;
 begin
   Assert(Assigned(FgridBus));
@@ -116,7 +125,9 @@ begin
   FServices.RegisterService(ls);
   if aStartServiceImmediately then
     ls.StartService(aWaitForStart);
+  result := ls;
 end;
+
 constructor TCustomGridServer.Create;
 var i : Integer;
 begin
@@ -126,33 +137,11 @@ begin
 
   FServices := TServiceManager.Create;
   FOwnedTask := True;
-
-  AddGRIDService(TGRIDServiceCentralCnC.GetDefaultImplementation,true); //Start CNC first, for log and system stuff.
-{$IFDEF HYPERVISOR_SUPPORT}
-  AddGRIDService(TGridHypervisor.GetDefaultImplementation,true);
-{$ENDIF}
-  logserver(IntToStr(Length(GLB_ServerService_ImplClasses))+' Server services found : ',className);
-  for I := 0 to Length(GLB_ServerService_ImplClasses)-1 do
-  begin
-    logserver(' --> Starting Server services '+IntToStr(i+1)+' : '+GLB_ServerService_ImplClasses[i].ClassName+'...');
-    AddGRIDService(GLB_ServerService_ImplClasses[i].GetDefaultImplementation,true);
-  end;
-
-  {$IFDEF DEBUG}
-    {$IFDEF DCC}
-      {$IFDEF WIN32}
-  //Delphi Win32 only (WinPipe not compliant in 64bit - to see}
-  // - test purpose only -
-  AddGRIDService(TGRIDServiceWinNamedPipeServer.GetDefaultImplementation,true);
-  while not(TGRIDServiceWinNamedPipeServer(Services.Services[Services.ServiceCount-1].Task).ServerReady) do;
-      {$ENDIF}
-    {$ENDIF}
-  {$ENDIF}
 end;
 
 destructor TCustomGridServer.Destroy;
 begin
-  Stop;
+  Stop; //all other "forgotten" services
   FServices.UnregisterAllServices(FOwnedTask);
   FreeAndNil(FServices);
   FreeandNil(FGridBus);
@@ -189,16 +178,16 @@ end;
 procedure TCustomGridServer.Start;
 begin
   Assert(assigned(FGridBus));
-  FServices.StartAllServices;
-  FServices.Start;
+  if FServices.Suspended then
+  begin
+    FServices.StartAllServices;
+    FServices.Start;
+  end;
 end;
 
 procedure TCustomGridServer.Stop;
 begin
   FServices.StopAllServices;
-  { TODO 1 -oVGS -cFeature :
-CnC service should be the last to stop. Hence, got not all log.
-To change. (perhaps put log inti GridServer level ?) }
 end;
 
 
@@ -248,6 +237,80 @@ begin
   finally
 //    Services.ServicesUnlock;
   end;
+end;
+
+{ TGridServer }
+
+constructor TGridServer.Create;
+var i : Integer;
+begin
+  Inherited; //Mandatory
+
+  fCnc := AddGRIDService(TGRIDServiceCentralCnC.GetDefaultImplementation,true); //Start CNC first, for log and system stuff.
+  Sleep(1000);
+{$IFDEF HYPERVISOR_SUPPORT}
+  AddGRIDService(TGridHypervisor.GetDefaultImplementation,true);
+{$ENDIF}
+  logserver(IntToStr(Length(GLB_ServerService_ImplClasses))+' Server services found : ',className);
+  for I := 0 to Length(GLB_ServerService_ImplClasses)-1 do
+  begin
+    logserver(' --> Starting Server services '+IntToStr(i+1)+' : '+GLB_ServerService_ImplClasses[i].ClassName+'...');
+    AddGRIDService(GLB_ServerService_ImplClasses[i].GetDefaultImplementation,true);
+  end;
+
+  {$IFDEF DEBUG}
+    {$IFDEF DCC}
+      {$IFDEF WIN32}
+  //Delphi Win32 only (WinPipe not compliant in 64bit - to see}
+  // - test purpose only -
+  AddGRIDService(TGRIDServiceWinNamedPipeServer.GetDefaultImplementation,true);
+  while not(TGRIDServiceWinNamedPipeServer(Services.Services[Services.ServiceCount-1].Task).ServerReady) do;
+      {$ENDIF}
+    {$ENDIF}
+  {$ENDIF}
+end;
+
+
+destructor TGridServer.Destroy;
+var i : integer;
+    ll : TServiceList;
+
+begin
+  LogServer('Server shuting down...');
+  //Manually stop all known service (To have may of log.)
+  ll := Services.ServicesLock;
+  try
+    for I := 0 to ll.Count-1 do
+    begin
+      if (ll[i] <> TCustomService(FCnc)) then
+      begin
+        LogServer(' tentatively stopping '+ll[i].ServiceName);
+        ll[i].StopService;
+        LogServer(' Service stoped : '+ll[i].ServiceName);
+      end;
+    end;
+  finally
+    Services.ServicesUnlock;
+  end;
+  LogServer('done.');
+  //All service are stoped, cnc remain here.
+  LogServer('Server stopping cnc...');
+  Sleep(1000);
+  FCnc.StopService;
+  inherited; //Mandatory
+end;
+
+
+{ TCustomEmbededGridServer }
+
+constructor TCustomEmbededGridServer.Create;
+var s : TCustomService;
+    fh : TGridHypervisor;
+begin
+  inherited;
+  s := AddGRIDService(TGridHypervisor.GetDefaultImplementation,true);
+  fh := TGridHypervisor(s.Task);
+  while not fh.ServiceReady do;
 end;
 
 end.

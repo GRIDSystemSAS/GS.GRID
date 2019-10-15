@@ -4,9 +4,10 @@ unit gridlog.backend;
 interface
 
 uses classes, sysutils, System.SyncObjs,
-     gs.bus,
-     gs.Stream,
-     gs.Threads.pool,
+     GS.common,
+     GS.bus,
+     GS.Stream,
+     GS.Threads.pool,
      GS.GRID.Common.Protocols.KissB,
      GS.GRID.Common.types,
      GS.GRID.Client,
@@ -16,22 +17,22 @@ uses classes, sysutils, System.SyncObjs,
 
 
 Type
-  TBackend = class(TStackTaskProc)
+  TBackend = class(TStackTask)
   protected
     fback : TBusClientReader;
     lOrder : TStringList;
   public
     procedure backendupdate(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
-    procedure Execute; override;
+    procedure Execute(Worker : TThread); override;
   end;
 
   //Function
 
   TGridDetect = class(TStackTask)
-    procedure Execute; Override;
+    procedure Execute(Worker : TThread); Override;
   end;
 
-  TGridConnection = class(TStackTaskProc)
+  TGridConnection = class(TStackTask)
   protected
     Fclient : TGRIDClientKissB;
     fcontrol : TBusClientReader;
@@ -43,7 +44,7 @@ Type
   public
     constructor create(host : string; port : integer; user, pass, cid : string); reintroduce;
     procedure controlUpdate(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
-    procedure Execute; override;
+    procedure Execute(Worker : TThread); override;
   end;
 
 var
@@ -109,14 +110,14 @@ begin
   end;
 end;
 
-procedure TBackend.Execute;
+procedure TBackend.Execute(Worker : TThread);
 begin
   lOrder := TStringList.Create;
   fback := Bus.Subscribe('backend',backendupdate);
   fback.ClientBusID := 'xxx';
   fback.Event :=  bus.GetNewEvent;
 
-  while Not Terminated do
+  while Not TVisibilityThread(Worker).Terminated do
   begin
     case fback.Event.WaitFor(250) of
       wrSignaled :
@@ -133,7 +134,7 @@ end;
 
 { TGridDetect }
 
-procedure TGridDetect.Execute;
+procedure TGridDetect.Execute(Worker : TThread);
 var l : TGridClientGRIDResolver;
     res : TBusMessage;
     i : integer;
@@ -196,7 +197,7 @@ begin
   fAPIName := 'grid_connection_response';
 end;
 
-procedure TGridConnection.Execute;
+procedure TGridConnection.Execute(Worker : TThread);
 var mes : TBusMessage;
     lchan : string;
     l : TGRIDProtocol_KB_SRV_NEGOCIATE_RESPONSE;
@@ -244,7 +245,7 @@ begin
         bus.Send(mes,'feature','','',false,fcontrol.ClientBusID);
 
         //begin loop awaiting order.
-        while Not Terminated do
+        while Not TVisibilityThread(Worker).Terminated do
         begin
           case fcontrol.Event.WaitFor(250) of
             wrSignaled :

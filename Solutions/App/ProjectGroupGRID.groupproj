@@ -15,6 +15,12 @@
         <Projects Include="Demo\SenseHATDemo\RaspSenseHatControl.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\..\MicroServices\GSMGraphicsOriented\ProtoGUI\ProjectGSGraphicsServiceProto.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\Components\Delphi\Package\PackageDT_Delphi103.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +65,32 @@
     <Target Name="RaspSenseHatControl:Make">
         <MSBuild Projects="Demo\SenseHATDemo\RaspSenseHatControl.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ProjectGSGraphicsServiceProto">
+        <MSBuild Projects="..\..\MicroServices\GSMGraphicsOriented\ProtoGUI\ProjectGSGraphicsServiceProto.dproj"/>
+    </Target>
+    <Target Name="ProjectGSGraphicsServiceProto:Clean">
+        <MSBuild Projects="..\..\MicroServices\GSMGraphicsOriented\ProtoGUI\ProjectGSGraphicsServiceProto.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectGSGraphicsServiceProto:Make">
+        <MSBuild Projects="..\..\MicroServices\GSMGraphicsOriented\ProtoGUI\ProjectGSGraphicsServiceProto.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PackageDT_Delphi103">
+        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_Delphi103.dproj"/>
+    </Target>
+    <Target Name="PackageDT_Delphi103:Clean">
+        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_Delphi103.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PackageDT_Delphi103:Make">
+        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_Delphi103.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL;RaspSenseHatControl"/>
+        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL;RaspSenseHatControl;ProjectGSGraphicsServiceProto;PackageDT_Delphi103"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean;RaspSenseHatControl:Clean"/>
+        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean;RaspSenseHatControl:Clean;ProjectGSGraphicsServiceProto:Clean;PackageDT_Delphi103:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make;RaspSenseHatControl:Make"/>
+        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make;RaspSenseHatControl:Make;ProjectGSGraphicsServiceProto:Make;PackageDT_Delphi103:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
     <ItemGroup Condition="'$(BuildGroup)'=='Win - DEBUG'">
@@ -82,6 +106,12 @@
             <Platforms>Win32</Platforms>
             <Enabled>False</Enabled>
         </BuildGroupProject>
+        <BuildGroupProject Include="..\..\MicroServices\GSMGraphicsOriented\ProtoGUI\ProjectGSGraphicsServiceProto.dproj">
+            <ProjectGuid>{9718DBFE-196E-477D-8D61-1CE4706D7AA5}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
         <BuildGroupProject Include="Demo\SenseHATDemo\RaspSenseHatControl.dproj">
             <ProjectGuid>{BBDBDAB5-4708-4A18-B35E-CD7ACB867309}</ProjectGuid>
             <Configurations>Debug</Configurations>
@@ -90,6 +120,12 @@
         </BuildGroupProject>
         <BuildGroupProject Include="GRIDLogViewerApp\AppVCL\GRIDLogViewVCL.dproj">
             <ProjectGuid>{6BA893D2-4AAC-4411-A35E-641C1328D718}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win32</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="..\Components\Delphi\Package\PackageDT_Delphi103.dproj">
+            <ProjectGuid>{43B61585-64EA-4176-B20F-0B69340C1346}</ProjectGuid>
             <Configurations>Debug</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>False</Enabled>

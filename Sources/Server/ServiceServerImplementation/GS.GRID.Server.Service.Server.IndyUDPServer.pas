@@ -196,8 +196,7 @@ var
    n:Integer;
    s : string;
 begin
-  Log('ServerAfterBind',ClassName);
-  s := GStack.LocalAddresses.Text;
+  Log('UDP Binding Local addresses : '+GStack.LocalAddresses.Text,className);
   for n:= 0 to FUDPServer.Bindings.Count-1 do
   begin
     with FUDPServer.Bindings[n] do
@@ -206,10 +205,9 @@ begin
       begin
         FUDPServer.DefaultPort := FUDPServer.Bindings[n].Port;
       end;
-      s := s + ( ip+':'+IntToStr(Port) ) + ' / ' + PeerIP + #13#10;
+      Log('UDP Binding : ( '+ip+':'+IntToStr(Port)+' ) / Peer:' + PeerIP,ClassName);
     end;
   end;
-  Log(s,ClassName);
 end;
 
 procedure TGRIDServiceIndyUDPServer.OnIdUDPServerUDPRead(

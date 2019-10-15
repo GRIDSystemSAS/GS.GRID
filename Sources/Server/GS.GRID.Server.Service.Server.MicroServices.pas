@@ -66,7 +66,7 @@ Type
 
     property ServiceInformations : TMsg_FromService_ServiceData read FServiceInfo Write FServiceInfo;
     Property Available : Boolean read FAvailable;
-    Property UpDateTimee : TDateTime read FUpDateTime;
+    Property UpDateTime : TDateTime read FUpDateTime;
     property RegisterCount : Uint32 read FRegisterCount;
     property UserIdOwner : String read FUserID;
     property ChannelExecute : String read FChannelExecute Write FChannelExecute;

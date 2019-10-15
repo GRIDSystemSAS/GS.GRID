@@ -48,6 +48,7 @@ uses
 Const
   CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_REGISTRATION = 'System.HV.SvcReg';
   CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_LIST = 'System.HV.SvcLst';
+  CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT = 'system.hv';
   CST_FORMAT_NOT_SUPPORTED = 'MicroService : Protocol not supported';
 
 Type
@@ -62,7 +63,7 @@ Type
   //TGsMSBehaviour :
   // Coop : Service Is manualy launched : GS will not tryed to start it or stop it.
   // Resident : Service is launched by GS and never shutdown.
-  // OnDemand : Service is launched by GS on demand.
+  // OnDemand : Service is launched by GS on demand and must shutdownitself.
   TGsMSBehaviour = (Coop, Resident, OnDemand);
 
   //TGsMSInstanceBehaviour :                  (Impact : Server side only)
@@ -106,7 +107,7 @@ Type
 
   //Protocol.
   // [SERVICE] -------------------------------------------------- [GRID] -------------------- [CLIENT]
-  // [Registering service.
+  // [Registering service]
   // [SERVICE] TMsg_FromService_ServiceData --------------------> [GRID]
   // [SERVICE] <----- TMsg_FromServer_ServiceRegistrationResponse [GRID]
   //

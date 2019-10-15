@@ -90,12 +90,14 @@ private
   FUserConf : TCNCUserConfiguration;
   FInfo : TGRIDCentralCNCInformation;
   FLogCategories: TGridLogCategories;
+  FLogIntoFile: Boolean;
 
   procedure SetUpLogFile;
   procedure PublishCNCInfo;
 
   procedure InternalInstantPythonConfiguration;
   procedure InternalUserConfiguration;
+  procedure SetLogIntoFile(const Value: Boolean);
 protected
   FLogChannelClient : TBusClientReader;
   FAuthClient : TBusClientReader;
@@ -115,6 +117,7 @@ public
   Procedure LoadConfiguration; Override;
 
   property LogCategories : TGridLogCategories read FLogCategories write FLogCategories;
+  property logIntoFile : Boolean read FLogIntoFile write SetLogIntoFile;
 end;
 
 TGRIDServiceCentralCnC = class(TCustomGRIDServiceCentralCnC)
@@ -165,8 +168,8 @@ begin
 
   while Not(MasterThread.Terminated) do
   begin
-    BusProcessMessages(cl);
-    sleep(CST_ONE_SEC);
+    if BusProcessMessages(cl)=0 then
+      sleep(CST_100_MSEC);
     //MasterThread.DoHeartBeat; Not realy used for instance.
   end;
 end;
@@ -189,16 +192,16 @@ end;
 
 procedure TCustomGRIDServiceCentralCnC.Initialize;
 begin
-  FLogCategories := [TGridLogCategory.glcWarning, TGridLogCategory.glcException, TGridLogCategory.glcFatal];
+  FLogCategories := [TGridLogCategory.glcInfo, TGridLogCategory.glcWarning, TGridLogCategory.glcException, TGridLogCategory.glcFatal];
   FUserConf := TCNCUserConfiguration.Create;
   FInfo := TGRIDCentralCNCInformation.Create;
   MasterThread.Bus.DeclareDataRepository(CST_BUSDATAREPO_SERVERINFO);
-  inherited;
 
   FLogChannelClient := FGridBus.Subscribe(CST_CHANNELNAME_LOGROOT,OnLogIncoming);
   FPythonUpdate := FGridBus.Subscribe(CST_CHANNELNAME_CNC_PYTHONCONFUPDATE,OnPythonConfUpdateIncoming);
   FUsrUpdate := FGridBus.Subscribe(CST_CHANNELNAME_CNC_USERCONFUPDATE,OnUserConfUpdateIncoming);
   FAuthClient := FGridBus.Subscribe(CST_CHANNELNAME_CNC_AUTH_GLOBAL,OnAuthIncoming);
+  inherited;
 
   //Userconf.
   InternalUserConfiguration;
@@ -249,17 +252,34 @@ begin
 end;
 
 procedure TCustomGRIDServiceCentralCnC.LoadConfiguration;
+var l : TStringList;
+
+  procedure load;
+  begin
+    log('Loading CNC configuration file...',ClassName,'CNC');
+    if l.Count=0 then
+      l.LoadFromFile(CST_CNC_FILENAME_CONF);
+    FInfo.SetGridServerName(l.Values['servername']);
+    FLogIntoFile := StrToBool(l.Values['logtofile']);
+  end;
+
+  procedure save;
+  begin
+    log('No CNC configuration file... Create it',ClassName,'CNC');
+    l.Add('servername=Noname server');
+    l.Add('logtofile=false');
+    l.SaveToFile(CST_CNC_FILENAME_CONF);
+  end;
+
+
 begin
-  if FileExists(CST_CNC_FILENAME_CONF) then
-  begin
-    //Read File conf.
-//    readconf;
-  end
-  else
-  begin
-//    createconf;
-//    readconf;
-    //Create default file, and read it.
+  l := TStringList.Create;
+  try
+    if Not FileExists(CST_CNC_FILENAME_CONF) then
+      save;
+    load;
+  finally
+    FreeandNil(l);
   end;
 end;
 
@@ -303,6 +323,9 @@ var ls : TGRIDLogChunk;
     l : TMemoryStream;
     ll : String;
 begin
+  if Not FLogIntoFile then
+    Exit;
+
   //log from EVERYWHERE.
   l := Packet.ContentMessage.AsStream;
   try
@@ -314,8 +337,9 @@ begin
 
   if ls.Category in LogCategories then
   begin
-    ll := FormatDateTime('hhnnsszzzz',now) + '/' + Format('[%d]/%d/  %s/%s',[ls.ThreadID,Byte(ls.Category),ls.LogText,ls.Module]);
+    ll := FormatDateTime('hhnnsszzzz',now) + '/' + Format('[%d]/%d/  %s/%s/%s',[ls.ThreadID,Byte(ls.Category),ls.LogText,ls.LoggerClassName,ls.Module]);
     Writeln(FFileLog,ll);
+    Flush(FFileLog);
   end;
 end;
 
@@ -352,15 +376,29 @@ begin
   end;
 end;
 
+procedure TCustomGRIDServiceCentralCnC.SetLogIntoFile(const Value: Boolean);
+begin
+  if FLogIntoFile=Value then
+    Exit;
+
+  if Not(FLogIntoFile) then
+    SetUpLogFile;
+  FLogIntoFile := Value;
+end;
+
 procedure TCustomGRIDServiceCentralCnC.SetUpLogFile;
 var ln : string;
 begin
-  ln := 'GRIDLOG_'+FormatDateTime('YYYYMMDDhhnnsszzzz',now)+'.log';
-  ln := ExtractFilePath(ParamStr(0))+ln;
-  AssignFile(FFileLog,ln); // FFileLog := TFileStream.Create(ln, fmCreate);
-  Rewrite(FFileLog);
+  if FLogIntoFile then
+  begin
+    ln := 'GRIDLOG_'+FormatDateTime('YYYYMMDDhhnnsszzzz',now)+'.log';
+    ln := ExtractFilePath(ParamStr(0))+ln;
+    AssignFile(FFileLog,ln); // FFileLog := TFileStream.Create(ln, fmCreate);
+    Rewrite(FFileLog);
+  end;
   { TODO : delete all log file from a date ?}
 end;
+
 
 { TGRIDServiceCentralCnC }
 

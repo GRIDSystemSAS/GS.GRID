@@ -65,10 +65,6 @@ public
 
   function DefaultServerAllowPrefixByteCount : Boolean; override;
 
-  
-
-  Procedure LoadConfiguration; Override;
-
   Function ServerReady : boolean; Override;
 
   //Warning : Execute in Server thread context.
@@ -177,12 +173,6 @@ begin
   assert(aData is TPipeServerClient);
   uid := TPipeServerClient(aData).ClientId;
   Result := TGRIDServerUser.Create(uid,aProtocolInstance,TGRIDServerUserTransportLayer.net_pipe);
-end;
-
-procedure TGRIDServiceWinNamedPipeServer.LoadConfiguration;
-begin
-  inherited;
-
 end;
 
 procedure TGRIDServiceWinNamedPipeServer.OnGlobalInstructionIncoming(
