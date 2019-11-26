@@ -50,6 +50,7 @@ uses
  System.SyncObjs,
  System.Generics.collections,
  {$ENDIF}
+ GS.Common,
  GS.Bus,
  GS.Bus.Services,
  GS.Threads.Pool,
@@ -60,10 +61,6 @@ uses
  GS.GRID.Common.Types,
  os_api_unit
  ;
-
-
-const
-  CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT = 'system.hv';
 
 Type
 
@@ -112,13 +109,37 @@ Type
     RunCount : Integer;
   end;
 
+  //Use this if you not need input channel. (base class)
   TStackTaskHypervised = class(TStackTask)
+  protected
   public
     HypervisorBus : TBus;
     TaskDefinition : TGridHypervisorTaskDefinition;
 
+    constructor Create; virtual;
+    destructor destroy; override;
+
+    procedure log( const Text : String;
+                   const Module : String = '';
+                   const Category : TGridLogCategory = TGridLogCategory.glcInfo;
+                   const aForcedClassName : String = '');
+
     procedure notifyProgress(txt : string; const percentavailable : boolean= false; const percent : single = 0.0);
   end;
+
+  //This one will have a ready to use input channel and bus related stuff.
+  // override "ClientQuery" to serve.
+  TStackTaskHypervisedIO = class(TStackTaskHypervised)
+  protected
+    energiser : TThread; //worker.
+    messagePacket : PTBusEnvelop;
+    reader : TBusClientReader;
+    procedure doWork(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
+  public
+    procedure clientQuery; virtual; abstract;
+    procedure execute(Worker : TThread); override;
+  end;
+
 
   TCustomGridHypervisor = Class(TGRIDService)
   private
@@ -220,6 +241,8 @@ begin
   FThreadPool := TStackDynamicThreadPool.Create;
   FThreadPool.OnTaskStart := OnTaskStart;
   FThreadPool.OnTaskFinished := OnTaskFinished;
+  FThreadPool.FreeTaskOnceProcessed := true;
+  FThreadPool.Synchronized := false;
 
   FMicroService_ClientAskByTxt := GridBus.Subscribe(CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT,InternalSystemHypervisorMicroServiceAskByText);
   FMicroService_ClientAskByTxt.Event := GridBus.GetNewEvent;
@@ -375,7 +398,7 @@ begin
           for enum in FMicroServices do
           begin
             tp := 'internal';
-            if enum.Value.ServiceImplementation.ImplType <> TMicroServiceImplementationType.externalBinary then
+            if enum.Value.ServiceImplementation.ImplType <> TMicroServiceImplementationType.internalThread then
               tp := 'external';
             FStrTxtOrder.Add(format('service%d="%s","%s","%s","%s"',[i,enum.Value.Name,enum.Value.Description,enum.Value.ServiceImplementation.address,tp]));
             inc(i);
@@ -532,12 +555,93 @@ end;
 
 { TStackTaskHypervised }
 
+constructor TStackTaskHypervised.Create;
+begin
+  //... must be declared, in order to work on injection (GLB_InternalTasksClassList).
+end;
+
+destructor TStackTaskHypervised.destroy;
+begin
+  //... must be declared, in order to work on injection (GLB_InternalTasksClassList).
+  inherited;
+end;
+
+procedure TStackTaskHypervised.log( const Text : String;
+                   const Module : String = '';
+                   const Category : TGridLogCategory = TGridLogCategory.glcInfo;
+                   const aForcedClassName : String = '');
+var lLogMessage : TBusMessage;
+    ls : TGRIDLogChunk;
+    l : TMemoryStream;
+begin
+  if assigned(HypervisorBus) then
+  begin
+    ls.DateTime := now;
+    ls.ThreadID := TThread.CurrentThread.ThreadID;
+    ls.LogText := Text;
+    ls.Category := TGridLogCategory.glcInfo;
+    if aForcedClassName<>'' then
+      ls.LoggerClassName := aForcedClassName
+    else
+      ls.LoggerClassName := ClassName;
+    ls.Module := Module;
+    l := lLogMessage.AsStream;
+    try
+      ls.Serialize(TStream(l));
+      lLogMessage.FromStream(l);
+      HypervisorBus.Send(lLogMessage,CST_CHANNELNAME_LOGROOT_HT);
+    finally
+      FreeAndNil(l);
+    end;
+  end;
+end;
+
 procedure TStackTaskHypervised.notifyProgress(txt: string;
   const percentavailable: boolean; const percent: single);
 begin
   { TODO : notify Task launch on system.hv.taskprogress }
   //mes.FromString(...)
   //yourBus.Send(mes,'system.hv.taskprogress');
+end;
+
+{ TStackTaskHypervisedIO }
+
+procedure TStackTaskHypervisedIO.doWork(Sender: TBusSystem;
+  aReader: TBusClientReader; var Packet: TBusEnvelop);
+begin
+  try
+    try
+      //Working !
+      MessagePacket := @Packet;
+      Reader := aReader;
+      clientQuery;
+    finally
+      Energiser.Terminate; //Exit.
+    end;
+  except
+    On E : Exception do
+    begin
+    end;
+  end;
+end;
+
+procedure TStackTaskHypervisedIO.execute(Worker: TThread);
+var inChan : TBusClientReader;
+begin
+  inherited;
+  Energiser := Worker;
+  inchan := HypervisorBus.Subscribe(TaskDefinition.stdInChan,doWork);
+  inChan.Event := TEvent.Create(nil,False,False,EmptyStr);
+
+  //waiting for client.
+  while Not(TVisibilityThread(Worker).Terminated) do
+  begin
+    if inChan.Event.WaitFor(CST_BUSTIMER) = wrSignaled then
+      BusProcessMessages(inchan);
+  end;
+  HypervisorBus.UnSubscribe(inChan);
+  inChan.Event.Free;
+  FreeandNil(inChan);
 end;
 
 end.

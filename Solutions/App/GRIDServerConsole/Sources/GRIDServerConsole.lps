@@ -8,10 +8,10 @@
       <Unit0>
         <Filename Value="GRIDServerConsole.dpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="55"/>
         <CursorPos X="8" Y="58"/>
         <UsageCount Value="21"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="..\..\..\..\..\Sources\Pascal\Server\GS.GRID.Server.Service.Hypervisor.pas"/>
@@ -235,152 +235,40 @@
       </Unit44>
       <Unit45>
         <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="64"/>
         <CursorPos X="11" Y="36"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit45>
       <Unit46>
         <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit46>
       <Unit47>
         <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit47>
       <Unit48>
         <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.Services.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit48>
       <Unit49>
         <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2769"/>
         <CursorPos X="54" Y="2797"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
-      <Position1>
-        <Filename Value="GRIDServerConsole.dpr"/>
-      </Position1>
-      <Position2>
-        <Filename Value="GRIDServerConsole.dpr"/>
-        <Caret Line="39" Column="2"/>
-      </Position2>
-      <Position3>
-        <Filename Value="GRIDServerConsole.dpr"/>
-        <Caret Line="60" Column="3" TopLine="40"/>
-      </Position3>
-      <Position4>
-        <Filename Value="GRIDServerConsole.dpr"/>
-        <Caret Line="39" Column="2" TopLine="19"/>
-      </Position4>
-      <Position5>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-        <Caret Line="213" TopLine="193"/>
-      </Position5>
-      <Position6>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-        <Caret Line="272" Column="42" TopLine="252"/>
-      </Position6>
-      <Position7>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-        <Caret Line="592" Column="17" TopLine="585"/>
-      </Position7>
-      <Position8>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-      </Position8>
-      <Position9>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.Pool.pas"/>
-        <Caret Line="741" TopLine="702"/>
-      </Position9>
-      <Position10>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Threads.pas"/>
-        <Caret Line="477" TopLine="438"/>
-      </Position10>
-      <Position11>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
-        <Caret Line="80" TopLine="80"/>
-      </Position11>
-      <Position12>
-        <Filename Value="..\..\..\..\..\GS.Core\GS.Common.pas"/>
-        <Caret Line="589" Column="5" TopLine="550"/>
-      </Position12>
-      <Position13>
-        <Filename Value="GRIDServerConsole.dpr"/>
-        <Caret Line="58" Column="8" TopLine="55"/>
-      </Position13>
-      <Position14>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="152" Column="95" TopLine="143"/>
-      </Position14>
-      <Position15>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="153" Column="8" TopLine="143"/>
-      </Position15>
-      <Position16>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="159" Column="16" TopLine="143"/>
-      </Position16>
-      <Position17>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="160" Column="19" TopLine="143"/>
-      </Position17>
-      <Position18>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="161" Column="19" TopLine="143"/>
-      </Position18>
-      <Position19>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="206" Column="8" TopLine="174"/>
-      </Position19>
-      <Position20>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="214" Column="17" TopLine="182"/>
-      </Position20>
-      <Position21>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="215" Column="19" TopLine="183"/>
-      </Position21>
-      <Position22>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-      </Position22>
-      <Position23>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="805" Column="60" TopLine="771"/>
-      </Position23>
-      <Position24>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="1266" Column="34" TopLine="1249"/>
-      </Position24>
-      <Position25>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="1265" Column="25" TopLine="1249"/>
-      </Position25>
-      <Position26>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="628" Column="15" TopLine="609"/>
-      </Position26>
-      <Position27>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="2789" Column="55" TopLine="2779"/>
-      </Position27>
-      <Position28>
-        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
-        <Caret Line="2793" Column="25" TopLine="2769"/>
-      </Position28>
-    </JumpHistory>
+    <General>
+      <ActiveWindowIndexAtStart Value="-1"/>
+    </General>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

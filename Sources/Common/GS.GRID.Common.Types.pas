@@ -60,7 +60,10 @@ Uses
 
 Const
   CST_CHANNELNAME_LOGROOT                 = '.GRIDServer.System.Log';
+  CST_CHANNELNAME_LOGROOT_HT              = '.GRIDServer.System.Log.HypervisedTask';
   CST_CHANNELNAME_SEPARATOR               = '.';
+  CST_PUBLIC_CHANNAME_HYPERVISOR_SERVICE_ASKBYTXT = 'system.hv';
+
 
 
 Type

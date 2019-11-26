@@ -266,12 +266,12 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <TopLine Value="2769"/>
-        <CursorPos Y="2789"/>
+        <CursorPos X="54" Y="2797"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit49>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="GRIDServerConsole.dpr"/>
       </Position1>
@@ -377,6 +377,10 @@
         <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
         <Caret Line="2789" Column="55" TopLine="2779"/>
       </Position27>
+      <Position28>
+        <Filename Value="..\..\..\..\..\GS.Bus\GS.Bus.pas"/>
+        <Caret Line="2793" Column="25" TopLine="2769"/>
+      </Position28>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
