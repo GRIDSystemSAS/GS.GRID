@@ -79,6 +79,8 @@ Type
   TMicroServiceBinaryStartBehaviour = (onDemand, awakeOnGridStart);
   TMicroServiceBinaryEndBehaviour = (serviceResponsability, noMoreClient);
 
+  TMicroServiceRunBehaviour = (onlyOnceRun, resident);
+
   TMicroServiceDefinition = Class
   public
     Name : String;
@@ -87,8 +89,8 @@ Type
     ServiceImplementation : TMicroServiceImplementation;
     StartBehaviour : TMicroServiceBinaryStartBehaviour;
     EndBehaviour : TMicroServiceBinaryStartBehaviour;
+    RunBehaviour : TMicroServiceRunBehaviour;
   End;
-
 
   TGridHypervisorTaskDefinitionTaskStatus = (defined, starting, processing, finished);
   TGridHypervisorTaskDefinition = class
@@ -159,6 +161,7 @@ Type
 
   protected
     FTimerScheduler : TGSTimerSchedulerThreadContainer;
+
     FThreadPool :TStackDynamicThreadPool; //that will execute internal and external business task.
 
     //ThreadPool :
@@ -170,7 +173,6 @@ Type
     procedure PublishSecond;
 
     function GetServiceReady: boolean; override;
-
 
     //High level service usage : This one is "drivable" by text,
     //thought KissB, MQTT, event web or even bus (embedded app)  : Text order based and response via messaging.
@@ -440,9 +442,9 @@ begin
             mm.ServiceImplementation.ImplType := TMicroServiceImplementationType.internalThread;
             if FStrTxtOrder.Values['implType'] <> 'internal' then
               mm.ServiceImplementation.ImplType := TMicroServiceImplementationType.externalBinary;
-
+            if FStrTxtOrder.Values['runBehaviour'] <> 'onlyOnceRun' then
+              mm.RunBehaviour := TMicroServiceRunBehaviour.Resident;
             FMicroServices.Add(mm.Name,mm);
-
             FStrTxtOrder.Clear;
             FStrTxtOrder.Add('response=OK');
             resp.FromString(FStrTxtOrder.Text);
@@ -459,14 +461,23 @@ begin
             respoChan := taskdef.TaskHypervisorClientResponseID;
             if respoChan<>'' then
             begin
-              if InternalHypervisorlaunchProcess(taskdef) then //takeoff.
-              begin
-                generateOkMessage(format('service %s has been launched',[taskdef.MicroServiceDefinition.Name]));
-              end
-              else
-              begin
-                generateExceptionMessage(format('service %s launch error : %s',[taskdef.MicroServiceDefinition.Name,taskdef.TaskKODesc]));
-              end;
+//              case taskdef.MicroServiceDefinition.RunBehaviour of
+//                TMicroServiceRunBehaviour.onlyOnceRun:
+                begin
+                  if InternalHypervisorlaunchProcess(taskdef) then //takeoff.
+                  begin
+                    generateOkMessage(format('service %s has been launched',[taskdef.MicroServiceDefinition.Name]));
+                  end
+                  else
+                  begin
+                    generateExceptionMessage(format('service %s launch error : %s',[taskdef.MicroServiceDefinition.Name,taskdef.TaskKODesc]));
+                  end;
+                end;
+//                TMicroServiceRunBehaviour.resident:
+//                begin
+//                  generateExceptionMessage('RESIDENT TODO !!');
+//                end;
+//              end;
             end;
           end
           else
@@ -481,8 +492,7 @@ begin
         end
         else
         begin
-          //order is uknown, it mustbe an API invoke.
-          if FMicroServices.TryGetValue(order,mm) then
+          if FMicroServices.TryGetValue(order,mm) then //No. Is already a MicrosServices
           begin
             //Open task definition : Next ask will launch task.
             taskdef := TGridHypervisorTaskDefinition.Create;
@@ -610,17 +620,14 @@ procedure TStackTaskHypervisedIO.doWork(Sender: TBusSystem;
   aReader: TBusClientReader; var Packet: TBusEnvelop);
 begin
   try
-    try
-      //Working !
-      MessagePacket := @Packet;
-      Reader := aReader;
-      clientQuery;
-    finally
-      Energiser.Terminate; //Exit.
-    end;
+    //Working !
+    MessagePacket := @Packet;
+    Reader := aReader;
+    clientQuery;
   except
     On E : Exception do
     begin
+      Energiser.Terminate; //Exit.
     end;
   end;
 end;
