@@ -139,7 +139,7 @@ Type
     procedure doWork(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
   public
     procedure clientQuery; virtual; abstract;
-    procedure execute(Worker : TThread); override;
+    procedure execute(Worker : TThreadTask); override;
   end;
 
 
@@ -632,7 +632,7 @@ begin
   end;
 end;
 
-procedure TStackTaskHypervisedIO.execute(Worker: TThread);
+procedure TStackTaskHypervisedIO.execute(Worker: TThreadTask);
 var inChan : TBusClientReader;
 begin
   inherited;
@@ -641,7 +641,7 @@ begin
   inChan.Event := TEvent.Create(nil,False,False,EmptyStr);
 
   //waiting for client.
-  while Not(TVisibilityThread(Worker).Terminated) do
+  while Not(Worker.Terminated) do
   begin
     if inChan.Event.WaitFor(CST_BUSTIMER) = wrSignaled then
       BusProcessMessages(inchan);

@@ -23,13 +23,13 @@ Type
     lOrder : TStringList;
   public
     procedure backendupdate(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
-    procedure Execute(Worker : TThread); override;
+    procedure Execute(Worker : TThreadTask); override;
   end;
 
   //Function
 
   TGridDetect = class(TStackTask)
-    procedure Execute(Worker : TThread); Override;
+    procedure Execute(Worker : TThreadTask); Override;
   end;
 
   TGridConnection = class(TStackTask)
@@ -44,7 +44,7 @@ Type
   public
     constructor create(host : string; port : integer; user, pass, cid : string); reintroduce;
     procedure controlUpdate(Sender : TBusSystem; aReader : TBusClientReader; Var Packet : TBusEnvelop);
-    procedure Execute(Worker : TThread); override;
+    procedure Execute(Worker : TThreadTask); override;
   end;
 
 var
@@ -110,14 +110,14 @@ begin
   end;
 end;
 
-procedure TBackend.Execute(Worker : TThread);
+procedure TBackend.Execute(Worker : TThreadTask);
 begin
   lOrder := TStringList.Create;
   fback := Bus.Subscribe('backend',backendupdate);
   fback.ClientBusID := 'xxx';
   fback.Event :=  bus.GetNewEvent;
 
-  while Not TVisibilityThread(Worker).Terminated do
+  while Not Worker.Terminated do
   begin
     case fback.Event.WaitFor(250) of
       wrSignaled :
@@ -134,7 +134,7 @@ end;
 
 { TGridDetect }
 
-procedure TGridDetect.Execute(Worker : TThread);
+procedure TGridDetect.Execute(Worker : TThreadTask);
 var l : TGridClientGRIDResolver;
     res : TBusMessage;
     i : integer;
@@ -197,7 +197,7 @@ begin
   fAPIName := 'grid_connection_response';
 end;
 
-procedure TGridConnection.Execute(Worker : TThread);
+procedure TGridConnection.Execute(Worker : TThreadTask);
 var mes : TBusMessage;
     lchan : string;
     l : TGRIDProtocol_KB_SRV_NEGOCIATE_RESPONSE;
@@ -245,7 +245,7 @@ begin
         bus.Send(mes,'feature','','',false,fcontrol.ClientBusID);
 
         //begin loop awaiting order.
-        while Not TVisibilityThread(Worker).Terminated do
+        while Not Worker.Terminated do
         begin
           case fcontrol.Event.WaitFor(250) of
             wrSignaled :

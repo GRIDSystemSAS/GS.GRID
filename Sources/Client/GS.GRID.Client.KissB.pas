@@ -45,6 +45,7 @@ uses SysUtils,
      GS.GRID.Client.Transport,
      GS.GRID.Client;
 
+
 Type
 TGRIDClientKissB = class(TGRIDClient)
 private
@@ -835,7 +836,7 @@ end;
 procedure TGRIDClientKissB.CheckMsgWait(var MessageBox: TGRIDMessages);
 begin
   repeat
-    CheckMsg(MessageBox,50);
+    CheckMsg(MessageBox,CST_FIFTY_MS);
   until Length(MessageBox)>0;
 end;
 

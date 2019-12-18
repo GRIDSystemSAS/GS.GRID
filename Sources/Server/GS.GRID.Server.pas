@@ -94,8 +94,8 @@ public
 end;
 
 //Grid server for app : Only bus and hypervisor.
-//No security, no service responding on mqtt or kissb protocol : Zhe minimal to
-//work with hypervisor and bus services.
+//No security, no service responding on mqtt or kissb protocol.
+//Minimal stuff to work with hypervisor and bus services.
 TCustomEmbededGridServer = class(TCustomGridServer)
 public
   constructor Create; Override;

@@ -44,6 +44,8 @@ uses SysUtils,
 
 const
   CST_NOT_CONNECTED = 'client not connected.';
+  CST_FIFTY_MS = 50;
+
 
 Type
 TGRIDMessage = Packed record  //Only for response.
