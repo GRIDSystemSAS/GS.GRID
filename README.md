@@ -1,3 +1,9 @@
+[![](https://tokei.rs/b1/github/GRIDSystemSAS/GS.GRID?category=code)](https://github.com/GRIDSystemSAS/GS.GRID)
+[![](https://tokei.rs/b1/github/GRIDSystemSAS/GS.GRID?category=files)](https://github.com/GRIDSystemSAS/GS.GRID)
+[![](https://tokei.rs/b1/github/GRIDSystemSAS/GS.GRID?category=lines)](https://github.com/GRIDSystemSAS/GS.GRID)
+[![](https://tokei.rs/b1/github/GRIDSystemSAS/GS.GRID?category=blanks)](https://github.com/GRIDSystemSAS/GS.GRID)
+[![](https://tokei.rs/b1/github/GRIDSystemSAS/GS.GRID?category=comments)](https://github.com/GRIDSystemSAS/GS.GRID)
+
 # GS.GRID
  Multi-Server  - MQTT broker, KissB enabled and more !
   
