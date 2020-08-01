@@ -21,9 +21,6 @@
         <Projects Include="..\Components\Delphi\Package\PackageDT_Delphi103.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\Components\Delphi\Package\PackageDT_GS_GRID_GAM_Delphi103.dproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -86,23 +83,14 @@
     <Target Name="PackageDT_Delphi103:Make">
         <MSBuild Projects="..\Components\Delphi\Package\PackageDT_Delphi103.dproj" Targets="Make"/>
     </Target>
-    <Target Name="PackageDT_GS_GRID_GAM_Delphi103">
-        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_GS_GRID_GAM_Delphi103.dproj"/>
-    </Target>
-    <Target Name="PackageDT_GS_GRID_GAM_Delphi103:Clean">
-        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_GS_GRID_GAM_Delphi103.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="PackageDT_GS_GRID_GAM_Delphi103:Make">
-        <MSBuild Projects="..\Components\Delphi\Package\PackageDT_GS_GRID_GAM_Delphi103.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL;RaspSenseHatControl;ProjectGSGraphicsServiceProto;PackageDT_Delphi103;PackageDT_GS_GRID_GAM_Delphi103"/>
+        <CallTarget Targets="GRIDClientConsole;GRIDServerConsole;GRIDLogViewVCL;RaspSenseHatControl;ProjectGSGraphicsServiceProto;PackageDT_Delphi103"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean;RaspSenseHatControl:Clean;ProjectGSGraphicsServiceProto:Clean;PackageDT_Delphi103:Clean;PackageDT_GS_GRID_GAM_Delphi103:Clean"/>
+        <CallTarget Targets="GRIDClientConsole:Clean;GRIDServerConsole:Clean;GRIDLogViewVCL:Clean;RaspSenseHatControl:Clean;ProjectGSGraphicsServiceProto:Clean;PackageDT_Delphi103:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make;RaspSenseHatControl:Make;ProjectGSGraphicsServiceProto:Make;PackageDT_Delphi103:Make;PackageDT_GS_GRID_GAM_Delphi103:Make"/>
+        <CallTarget Targets="GRIDClientConsole:Make;GRIDServerConsole:Make;GRIDLogViewVCL:Make;RaspSenseHatControl:Make;ProjectGSGraphicsServiceProto:Make;PackageDT_Delphi103:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
     <ItemGroup Condition="'$(BuildGroup)'=='Win - DEBUG'">
@@ -120,12 +108,6 @@
         </BuildGroupProject>
         <BuildGroupProject Include="..\Components\Delphi\Package\PackageDT_Delphi103.dproj">
             <ProjectGuid>{43B61585-64EA-4176-B20F-0B69340C1346}</ProjectGuid>
-            <Configurations>Debug</Configurations>
-            <Platforms>Win32</Platforms>
-            <Enabled>False</Enabled>
-        </BuildGroupProject>
-        <BuildGroupProject Include="..\Components\Delphi\Package\PackageDT_GS_GRID_GAM_Delphi103.dproj">
-            <ProjectGuid>{A92788B3-FC66-4470-BC9C-B4B9214E9E78}</ProjectGuid>
             <Configurations>Debug</Configurations>
             <Platforms>Win32</Platforms>
             <Enabled>False</Enabled>

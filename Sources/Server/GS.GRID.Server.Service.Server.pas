@@ -66,8 +66,8 @@ TGRIDServerUserTransportLayer = (none, net_tcp, net_udp, net_http, net_ws, net_p
 TCustomGRIDServiceServer = class;
 TCustomGRIDServerUser = Class
 private
-    procedure SetDataRecept(const Value: Uint64);
-    procedure SetDataSent(const Value: Uint64);
+  procedure SetDataRecept(const Value: Uint64);
+  procedure SetDataSent(const Value: Uint64);
 protected
   FClientId : String; //Given by server inplementation. Unique GRID wise.
   FGlobalUserName: String; //Given by server inplementation : UserName of real user. Just for info.

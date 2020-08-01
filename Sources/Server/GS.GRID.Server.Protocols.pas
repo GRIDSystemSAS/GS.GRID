@@ -16,7 +16,7 @@ TGRIDServerProtocol = class(TGRIDProtocol)
 protected
 public
   //When a new connection occurs, server begin to negociate with a non empty incoming stream.
-  //this negociation constits of try to read signature, and compare with a one GPCommand.
+  //this negociation consists of try to read signature, and compare with a one GPCommand.
   //For example, this GP command could be a connection negotiation.
   class function Negotiate(aStream : TStream) : Boolean; virtual;
 
