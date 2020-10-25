@@ -61,7 +61,7 @@ Uses
  GS.GRID.Common.Protocols,
  GS.GRID.Common.Protocols.KissB,
  GS.GRID.Server.Service.Server.BasedProtocols,
- GS.CPUUsage;
+ GS.System.CPU;
 
  procedure internalHandling_Bus( const Server: TGRIDServiceServerBasedProtocol;
                                     aUser : TGridServerUser;

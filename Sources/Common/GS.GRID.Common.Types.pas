@@ -55,7 +55,7 @@ Uses
  GS.Bus,
  GS.Bus.Services,
  GS.Stream,
- GS.CPUUsage;
+ GS.System.CPU;
 
 
 Const

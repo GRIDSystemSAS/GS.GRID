@@ -45,7 +45,7 @@ uses
  System.SyncObjs,
  {$ENDIF}
  GS.Common,
- GS.CPUUsage,
+ GS.System.CPU,
  GS.GRID.Server.Service.Types,
  GS.GRID.Server.Service.Server;
 

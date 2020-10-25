@@ -54,7 +54,7 @@ uses
  GS.Bus,
  GS.Bus.Services,
  GS.Threads.Pool,
- GS.CPUUsage,
+ GS.System.CPU,
  GS.Stream,
  GS.TimerScheduler,
  GS.GRID.Server.Service.Types,
